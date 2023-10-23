@@ -1,23 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/core/init/cache/cache_manager.dart';
-import 'package:quit_mate/src/core/init/theme/app_theme_state.dart';
-import 'package:quit_mate/src/core/init/theme/custom_text_theme.dart';
+import 'package:quit_mate/src/core/cache/cache_manager.dart';
 
-final appThemeStateNotifier = ChangeNotifierProvider((ref) => AppThemeState());
+import 'custom_text_theme.dart';
+
+final themeProvider =
+    StateNotifierProvider.autoDispose<ThemeProvider, ThemeData>((ref) {
+  return ThemeProvider();
+});
 
 class ThemeProvider extends StateNotifier<ThemeData> {
   ThemeProvider() : super(lightTheme) {
-    currentTheme = lightTheme;
+    _loadTheme();
   }
-  void toggleTheme() async {
-    currentTheme = (currentTheme == lightTheme) ? darkTheme : lightTheme;
-    state = currentTheme;
-    CacheManager.setTheme(currentTheme.toString());
+  ThemeData currentTheme = lightTheme;
+
+  Future<void> _loadTheme() async {
+    final String themeName = await CacheManager.getTheme();
+    if (themeName == "darkTheme") {
+      state = ThemeProvider.darkTheme;
+      currentTheme = ThemeProvider.darkTheme;
+    } else {
+      state = ThemeProvider.lightTheme;
+      currentTheme = ThemeProvider.lightTheme;
+    }
   }
 
-  late ThemeData currentTheme;
-  ThemeData get getCurrentTheme => currentTheme;
+  void toggleTheme() async {
+    if (state == ThemeProvider.lightTheme) {
+      state = ThemeProvider.darkTheme;
+      await CacheManager.setTheme("darkTheme");
+    } else {
+      state = ThemeProvider.lightTheme;
+      await CacheManager.setTheme("lightTheme");
+    }
+  }
 
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: const Color(0xffe7e7e7),

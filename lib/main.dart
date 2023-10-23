@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/core/init/init_app.dart';
+import 'package:quit_mate/src/core/theme/theme_provider.dart';
+import 'package:quit_mate/src/feature/splash/view/splash_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  InitApp().initApp();
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentTheme = ref.watch(themeProvider);
+    return MaterialApp(
+      theme: currentTheme,
+      debugShowCheckedModeBanner: false,
+      home: SplashView(),
+    );
   }
 }
