@@ -29,58 +29,51 @@ class RegisterView extends ConsumerWidget {
               height: DeviceSize.kHeight(context),
               width: DeviceSize.kWidth(context),
             ),
-            Column(
-              children: [
-                const SizedBox(
-                  height: 18,
-                ),
-                SvgPicture.asset(
-                  'assets/svg/register.svg',
-                  height: 170,
-                ),
-                const SizedBox(
-                  height: 18,
-                ),
-                Text(
-                  Strings.register,
-                  style: currentTheme.textTheme.displaySmall?.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.w700),
-                ),
-                const SizedBox(
-                  height: 18,
-                ),
-                CustomTextField(
-                    controller: usernameController,
-                    hintText: Strings.username,
-                    obscureText: false,
-                    icon: const Icon(Icons.contact_mail)),
-                const SizedBox(
-                  height: 18,
-                ),
-                CustomTextField(
-                    controller: emailController,
-                    hintText: Strings.email,
-                    obscureText: false,
-                    icon: const Icon(Icons.email)),
-                const SizedBox(
-                  height: 18,
-                ),
-                CustomTextField(
-                    controller: passwordController,
-                    hintText: Strings.password,
-                    obscureText: false,
-                    icon: const Icon(Icons.lock)),
-                const SizedBox(
-                  height: 18,
-                ),
-                AuthElevatedButton(text: "Register"),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'change',
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ))
-              ],
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  SvgPicture.asset(
+                    'assets/svg/register.svg',
+                    height: 160,
+                  ),
+                  const SizedBox(
+                    height: 18,
+                  ),
+                  Text(
+                    Strings.register,
+                    style: currentTheme.textTheme.headlineLarge?.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(
+                    height: 18,
+                  ),
+                  CustomTextField(
+                      controller: usernameController,
+                      hintText: Strings.username,
+                      obscureText: false,
+                      icon: const Icon(Icons.contact_mail)),
+                  const SizedBox(
+                    height: 18,
+                  ),
+                  CustomTextField(
+                      controller: emailController,
+                      hintText: Strings.email,
+                      obscureText: false,
+                      icon: const Icon(Icons.email)),
+                  const SizedBox(
+                    height: 18,
+                  ),
+                  CustomTextField(
+                      controller: passwordController,
+                      hintText: Strings.password,
+                      obscureText: false,
+                      icon: const Icon(Icons.lock)),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  AuthElevatedButton(text: Strings.register, onTap: () {}),
+                ],
+              ),
             )
           ],
         ),

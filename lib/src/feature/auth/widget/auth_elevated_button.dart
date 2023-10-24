@@ -36,14 +36,14 @@ class AuthElevatedButton extends ConsumerWidget {
         maximumSize: MaterialStateProperty.all<Size>(
           Size(double.infinity - 100, DeviceSize.kHeight(context) * 0.065),
         ),
-        elevation: MaterialStateProperty.all<double>(2),
+        elevation: MaterialStateProperty.all<double>(3),
         shape: MaterialStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
         backgroundColor: MaterialStateProperty.all<Color>(
-          color ?? currentTheme.primaryColor,
+          color ?? currentTheme.canvasColor,
         ),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
           const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
@@ -55,7 +55,8 @@ class AuthElevatedButton extends ConsumerWidget {
         maxLines: 1,
         overflow: TextOverflow.fade,
         style: textStyle ??
-            currentTheme.textTheme.titleLarge?.copyWith(color: Colors.white),
+            currentTheme.textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.w400),
       ),
     );
   }

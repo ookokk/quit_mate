@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/core/const/routes.dart';
 import 'package:quit_mate/src/core/init/init_app.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/auth/register/view/register_view.dart';
+import 'package:quit_mate/src/feature/auth/login/view/login_view.dart';
 
 void main() {
   InitApp().initApp();
@@ -17,8 +18,9 @@ class MyApp extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     return MaterialApp(
       theme: currentTheme,
+      routes: Routes.routes,
       debugShowCheckedModeBanner: false,
-      home: RegisterView(),
+      home: LoginView(),
     );
   }
 }

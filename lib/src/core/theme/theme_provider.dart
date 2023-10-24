@@ -44,7 +44,7 @@ class ThemeProvider extends StateNotifier<ThemeData> {
     cardColor: const Color(0xff5dad67),
     shadowColor: const Color(0xffcfdcec),
     splashColor: const Color(0xffF39F5A),
-    dialogBackgroundColor: const Color(0xff0af40c),
+    dialogBackgroundColor: const Color(0xffe8576a),
     canvasColor: const Color(0xfff0f0f0),
     primaryColor: const Color(0xff2371b0),
     disabledColor: const Color(0xff6499E9),
