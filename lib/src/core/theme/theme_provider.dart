@@ -38,7 +38,7 @@ class ThemeProvider extends StateNotifier<ThemeData> {
   }
 
   static final ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: const Color(0xffe7e7e7),
+    scaffoldBackgroundColor: const Color(0xffeadfdf),
     indicatorColor: Colors.black,
     brightness: Brightness.light,
     cardColor: const Color(0xff5dad67),

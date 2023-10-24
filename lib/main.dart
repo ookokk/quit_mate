@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/init/init_app.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/get_started/view/get_started_view.dart';
+import 'package:quit_mate/src/feature/auth/register/view/register_view.dart';
 
 void main() {
   InitApp().initApp();
@@ -18,7 +18,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       theme: currentTheme,
       debugShowCheckedModeBanner: false,
-      home: GetStartedView(),
+      home: RegisterView(),
     );
   }
 }

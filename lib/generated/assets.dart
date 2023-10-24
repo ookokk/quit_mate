@@ -2,9 +2,20 @@
 class Assets {
   Assets._();
 
+  static const String animationsCircular = 'assets/animations/circular.json';
   static const String animationsForest = 'assets/animations/forest.json';
+  static const String animationsHearth = 'assets/animations/hearth.json';
   static const String fontsPoppinsLight = 'assets/fonts/Poppins-Light.ttf';
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
   static const String imagesApp = 'assets/images/app.png';
+  static const String imagesAppBig = 'assets/images/app_big.png';
+  static const String imagesAppNoName = 'assets/images/app_no_name.png';
+  static const String imagesBgGet = 'assets/images/bg_get.jpg';
+  static const String svgBack = 'assets/svg/back.svg';
+  static const String svgGetStarted1 = 'assets/svg/get_started1.svg';
+  static const String svgGetStarted2 = 'assets/svg/get_started2.svg';
+  static const String svgGetStarted3 = 'assets/svg/get_started3.svg';
+  static const String svgLogin = 'assets/svg/login.svg';
+  static const String svgRegister = 'assets/svg/register.svg';
 }
