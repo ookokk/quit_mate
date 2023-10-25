@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
-class AuthElevatedButton extends ConsumerWidget {
+class NextButton extends ConsumerWidget {
   final VoidCallback? onTap;
   final String text;
   final Color? color;
   final TextStyle? textStyle;
   final Color? borderColor;
 
-  const AuthElevatedButton({
+  const NextButton({
     Key? key,
     this.textStyle,
     this.borderColor,
@@ -22,7 +22,6 @@ class AuthElevatedButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
-
     return ElevatedButton(
       onPressed: onTap,
       style: ButtonStyle(
@@ -30,11 +29,12 @@ class AuthElevatedButton extends ConsumerWidget {
           BorderSide(color: borderColor ?? currentTheme.hoverColor),
         ),
         minimumSize: MaterialStateProperty.all<Size>(
-          Size(DeviceSize.kWidth(context) * 0.9,
+          Size(DeviceSize.kWidth(context) - 1,
               DeviceSize.kHeight(context) * 0.03),
         ),
         maximumSize: MaterialStateProperty.all<Size>(
-          Size(double.infinity - 100, DeviceSize.kHeight(context) * 0.065),
+          Size(DeviceSize.kWidth(context) - 1,
+              DeviceSize.kHeight(context) * 0.065),
         ),
         elevation: MaterialStateProperty.all<double>(3),
         shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -43,7 +43,7 @@ class AuthElevatedButton extends ConsumerWidget {
           ),
         ),
         backgroundColor: MaterialStateProperty.all<Color>(
-          color ?? currentTheme.canvasColor,
+          color ?? currentTheme.cardColor,
         ),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
           const EdgeInsets.symmetric(vertical: 15, horizontal: 30),

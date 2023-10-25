@@ -14,7 +14,7 @@ class AddictiveFactorList extends ConsumerStatefulWidget {
 }
 
 class _AddictiveFactorListState extends ConsumerState<AddictiveFactorList> {
-  String? selectedAddictiveFactor = "";
+  String? selectedAddictiveFactor = "Alcohol";
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
@@ -36,7 +36,6 @@ class _AddictiveFactorListState extends ConsumerState<AddictiveFactorList> {
             onTap: () {
               setState(() {
                 selectedAddictiveFactor = item;
-                print(selectedAddictiveFactor);
               });
             },
           );
