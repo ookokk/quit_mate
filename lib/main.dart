@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/routes.dart';
 import 'package:quit_mate/src/core/init/init_app.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/auth/login/view/login_view.dart';
 import 'package:quit_mate/src/feature/get_user_information/view/addictive_factor_view.dart';
 
 void main() {

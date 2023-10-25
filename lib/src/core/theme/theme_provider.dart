@@ -38,10 +38,10 @@ class ThemeProvider extends StateNotifier<ThemeData> {
   }
 
   static final ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: const Color(0xffeadfdf),
+    scaffoldBackgroundColor: Colors.white,
     indicatorColor: Colors.black,
     brightness: Brightness.light,
-    hoverColor: Colors.white,
+    hoverColor: const Color(0xfff1f1ec),
     cardColor: const Color(0xff5dad67),
     shadowColor: const Color(0xffcfdcec),
     splashColor: const Color(0xffF39F5A),
@@ -86,8 +86,8 @@ class ThemeProvider extends StateNotifier<ThemeData> {
 
   static final ThemeData darkTheme = ThemeData(
     indicatorColor: Colors.white,
-    hoverColor: Colors.black,
-    scaffoldBackgroundColor: const Color(0xff3e484d),
+    hoverColor: const Color(0xff3e484d),
+    scaffoldBackgroundColor: Colors.black,
     disabledColor: const Color(0xff6499E9),
     cardColor: const Color(0xff5dad67),
     shadowColor: const Color(0xff343942),
