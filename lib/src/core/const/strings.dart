@@ -10,4 +10,6 @@ class Strings {
   static const String email = "Email";
   static const String password = "Password";
   static const String username = "Username";
+  //user info
+  static const String whatAreYou = "What are you getting sober from?";
 }

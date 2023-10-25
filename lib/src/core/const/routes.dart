@@ -11,7 +11,8 @@ class Routes {
   //AUTH
   static const String login = '/login';
   static const String register = '/register';
-
+  //GET USER INFORMATION
+  static const String addictive = '/addictive';
   //HOME
   static const String home = '/home';
 
