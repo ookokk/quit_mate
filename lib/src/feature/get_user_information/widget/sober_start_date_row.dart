@@ -17,18 +17,24 @@ class _SoberStartDateRowState extends ConsumerState<SoberStartDateRow> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
-    final selectedDate = ref.read(selectedDateProvider.notifier).state;
+    final selectedDate = ref.watch(selectedDateProvider);
+
     return Card(
       color: currentTheme.hoverColor,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-              child: Text(
-            selectedDate.toString(),
-            style: currentTheme.textTheme.headlineSmall,
-          )),
-          const Expanded(flex: 2, child: StartDateTimePicker()),
+              flex: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  selectedDate,
+                  style: currentTheme.textTheme.headlineSmall,
+                  textAlign: TextAlign.center,
+                ),
+              )),
+          const Expanded(child: StartDateTimePicker()),
         ],
       ),
     );

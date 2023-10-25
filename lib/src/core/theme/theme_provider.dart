@@ -41,6 +41,9 @@ class ThemeProvider extends StateNotifier<ThemeData> {
     scaffoldBackgroundColor: Colors.white,
     indicatorColor: Colors.black,
     brightness: Brightness.light,
+    datePickerTheme: const DatePickerThemeData(
+      backgroundColor: Colors.white,
+    ),
     hoverColor: const Color(0xfff1f1ec),
     cardColor: const Color(0xff5dad67),
     shadowColor: const Color(0xffcfdcec),
@@ -86,6 +89,9 @@ class ThemeProvider extends StateNotifier<ThemeData> {
 
   static final ThemeData darkTheme = ThemeData(
     indicatorColor: Colors.white,
+    datePickerTheme: const DatePickerThemeData(
+      backgroundColor: Color(0xff3e484d),
+    ),
     hoverColor: const Color(0xff3e484d),
     scaffoldBackgroundColor: Colors.black,
     disabledColor: const Color(0xff6499E9),
