@@ -31,7 +31,7 @@ class SoberStartDateView extends ConsumerWidget {
               padding: const EdgeInsets.all(14.0),
               child: Text(
                 Strings.whenWas,
-                style: currentTheme.textTheme.titleLarge
+                style: currentTheme.textTheme.titleMedium
                     ?.copyWith(fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,
               ),

@@ -56,7 +56,7 @@ class NextButton extends ConsumerWidget {
         overflow: TextOverflow.fade,
         style: textStyle ??
             currentTheme.textTheme.titleMedium
-                ?.copyWith(fontWeight: FontWeight.w400),
+                ?.copyWith(fontWeight: FontWeight.w400, color: Colors.white),
       ),
     );
   }

@@ -22,7 +22,7 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
         elevation: 0,
-        backgroundColor: currentTheme.hoverColor,
+        backgroundColor: currentTheme.scaffoldBackgroundColor,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);

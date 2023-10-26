@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -21,30 +20,25 @@ class WeightPickerState extends ConsumerState<CustomNumberPicker> {
     return SizedBox(
       height: DeviceSize.kHeight(context) * 0.4,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           NumberPicker(
-            textStyle: currentTheme.textTheme.headlineMedium,
+            textStyle: currentTheme.textTheme.titleSmall,
             value: weight,
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(color: Colors.grey)),
-            minValue: 40,
-            maxValue: 150,
+            minValue: 0,
+            maxValue: 7,
             onChanged: (value) {
               setState(() {
                 ref.read(frequencyProvider.notifier).state = value;
               });
             },
-            itemHeight: 70,
-            axis: Axis.vertical,
-          ),
-          const SizedBox(
-            width: 24,
-          ),
-          Text(
-            "kFirstWeightKG".tr(),
-            style: currentTheme.textTheme.displayMedium,
+            itemHeight: 50,
+            axis: Axis.horizontal,
           ),
         ],
       ),
@@ -53,5 +47,5 @@ class WeightPickerState extends ConsumerState<CustomNumberPicker> {
 }
 
 final frequencyProvider = StateProvider<int>((ref) {
-  return 70;
+  return 0;
 });

@@ -25,12 +25,12 @@ class _SoberStartDateRowState extends ConsumerState<SoberStartDateRow> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-              flex: 3,
+              flex: 4,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
                   selectedDate,
-                  style: currentTheme.textTheme.headlineSmall,
+                  style: currentTheme.textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
               )),
