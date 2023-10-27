@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/get_user_information/widget/next_button.dart';
+import 'package:quit_mate/src/feature/get_user_information/widget/custom_percent_indicator.dart';
 import 'package:quit_mate/src/feature/get_user_information/widget/sober_start_date_row.dart';
-import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
 
 class SoberStartDateView extends ConsumerWidget {
   SoberStartDateView({
@@ -17,16 +16,17 @@ class SoberStartDateView extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     return SafeArea(
         child: Scaffold(
-      appBar: const CustomAppBar(),
       backgroundColor: currentTheme.scaffoldBackgroundColor,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: NextButton(
-        text: Strings.next,
-        onTap: () {},
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(
+              height: 18,
+            ),
+            const CustomPercentIndicator(percent: 0.4),
+            const SizedBox(
+              height: 18,
+            ),
             Padding(
               padding: const EdgeInsets.all(14.0),
               child: Text(

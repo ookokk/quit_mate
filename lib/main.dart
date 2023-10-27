@@ -3,8 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/routes.dart';
 import 'package:quit_mate/src/core/init/init_app.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/get_user_information/view/sober_start_date_view.dart';
-import 'package:quit_mate/src/feature/get_user_information/view/weekly_frequency_of_use.dart';
+import 'package:quit_mate/src/feature/get_user_information/view/get_user_information_view.dart';
 
 void main() {
   InitApp().initApp();
@@ -21,7 +20,7 @@ class MyApp extends ConsumerWidget {
       theme: currentTheme,
       routes: Routes.routes,
       debugShowCheckedModeBanner: false,
-      home: WeeklyFrequencyOfUseView(),
+      home: GetUserInformationView(),
     );
   }
 }

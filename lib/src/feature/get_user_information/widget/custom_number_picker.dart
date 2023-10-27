@@ -7,7 +7,11 @@ import 'package:quit_mate/src/core/theme/theme_provider.dart';
 class CustomNumberPicker extends ConsumerStatefulWidget {
   const CustomNumberPicker({
     Key? key,
+    this.minValue,
+    this.maxValue,
   }) : super(key: key);
+  final int? minValue;
+  final int? maxValue;
   @override
   WeightPickerState createState() => WeightPickerState();
 }

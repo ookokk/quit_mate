@@ -5,8 +5,8 @@ import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/get_user_information/widget/custom_number_picker.dart';
 import 'package:quit_mate/src/feature/get_user_information/widget/custom_percent_indicator.dart';
 
-class WeeklyFrequencyOfUseView extends ConsumerWidget {
-  const WeeklyFrequencyOfUseView({
+class DailyUseOnDaysView extends ConsumerWidget {
+  const DailyUseOnDaysView({
     Key? key,
   }) : super(key: key);
 
@@ -23,20 +23,23 @@ class WeeklyFrequencyOfUseView extends ConsumerWidget {
             const SizedBox(
               height: 18,
             ),
-            const CustomPercentIndicator(percent: 0.6),
+            const CustomPercentIndicator(percent: 0.8),
             const SizedBox(
               height: 18,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                Strings.howMany,
+                Strings.howManyTimesEach,
                 style: currentTheme.textTheme.titleMedium
                     ?.copyWith(fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,
               ),
             ),
-            const CustomNumberPicker()
+            const CustomNumberPicker(
+              minValue: 0,
+              maxValue: 15,
+            )
           ],
         ),
       ),
