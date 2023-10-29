@@ -36,7 +36,7 @@ class DailyUseOnDaysView extends ConsumerWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            const CustomNumberPicker(
+            CustomNumberPicker(
               minValue: 0,
               maxValue: 15,
             )

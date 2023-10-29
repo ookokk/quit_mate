@@ -12,11 +12,12 @@ class StartDateTimePicker extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     Future<void> selectDate(BuildContext context) async {
       final DateTime picked = (await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2101),
-      ))!;
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2000),
+            lastDate: DateTime(2101),
+          )) ??
+          DateTime.now();
 
       final formattedDate = DateFormat('dd.MM.yyyy').format(picked);
       ref.read(selectedDateProvider.notifier).state = formattedDate;
