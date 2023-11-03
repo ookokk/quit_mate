@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CacheManager {
+final class CacheManager {
   static const String themeKey = 'theme';
   static const String tokenKey = 'token';
 

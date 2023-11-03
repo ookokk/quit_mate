@@ -4,7 +4,7 @@ import 'package:quit_mate/src/feature/auth/register/view/register_view.dart';
 import 'package:quit_mate/src/feature/get_started/view/get_started_view.dart';
 import 'package:quit_mate/src/feature/splash/view/splash_view.dart';
 
-class Routes {
+final class Routes {
   //BASE
   static const String splash = '/splash';
   static const String getStarted = '/getStarted';

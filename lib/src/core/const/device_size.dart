@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DeviceSize {
+final class DeviceSize {
   static double kWidth(BuildContext context) =>
       MediaQuery.of(context).size.width;
 

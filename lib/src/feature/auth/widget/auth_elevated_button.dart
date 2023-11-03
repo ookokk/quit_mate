@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
-class AuthElevatedButton extends ConsumerWidget {
+final class AuthElevatedButton extends ConsumerWidget {
   final VoidCallback? onTap;
   final String text;
   final Color? color;

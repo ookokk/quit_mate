@@ -7,7 +7,7 @@ import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/auth/widget/auth_elevated_button.dart';
 import 'package:quit_mate/src/feature/auth/widget/custom_text_field.dart';
 
-class RegisterView extends ConsumerWidget {
+final class RegisterView extends ConsumerWidget {
   RegisterView({
     Key? key,
   }) : super(key: key);

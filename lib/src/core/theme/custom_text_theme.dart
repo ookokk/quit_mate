@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTextTheme {
+final class CustomTextTheme {
   CustomTextTheme._init();
   static CustomTextTheme? _instance;
   static CustomTextTheme? get instance {

@@ -9,7 +9,7 @@ final themeProvider =
   return ThemeProvider();
 });
 
-class ThemeProvider extends StateNotifier<ThemeData> {
+final class ThemeProvider extends StateNotifier<ThemeData> {
   ThemeProvider() : super(lightTheme) {
     _loadTheme();
   }
