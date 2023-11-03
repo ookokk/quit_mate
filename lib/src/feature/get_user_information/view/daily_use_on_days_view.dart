@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/get_user_information/widget/custom_number_picker.dart';
+import 'package:quit_mate/src/feature/get_user_information/widget/custom_number_picker_daily.dart';
 import 'package:quit_mate/src/feature/get_user_information/widget/custom_percent_indicator.dart';
 
 class DailyUseOnDaysView extends ConsumerWidget {
@@ -36,7 +36,7 @@ class DailyUseOnDaysView extends ConsumerWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            CustomNumberPicker(
+            const CustomNumberPickerDaily(
               minValue: 0,
               maxValue: 15,
             )

@@ -4,23 +4,23 @@ import 'package:numberpicker/numberpicker.dart';
 import 'package:quit_mate/src/core/const/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
-class CustomNumberPicker extends ConsumerStatefulWidget {
-  const CustomNumberPicker({
+class CustomNumberPickerDaily extends ConsumerStatefulWidget {
+  const CustomNumberPickerDaily({
     Key? key,
-    this.minValue,
-    this.maxValue,
+    required this.minValue,
+    required this.maxValue,
   }) : super(key: key);
-  final int? minValue;
-  final int? maxValue;
+  final int minValue;
+  final int maxValue;
   @override
   WeightPickerState createState() => WeightPickerState();
 }
 
-class WeightPickerState extends ConsumerState<CustomNumberPicker> {
+class WeightPickerState extends ConsumerState<CustomNumberPickerDaily> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
-    final weight = ref.watch(frequencyProvider.notifier).state;
+    final drinkTimePerMeal = ref.watch(dailyFrequencyProvider.notifier).state;
     return SizedBox(
       height: DeviceSize.kHeight(context) * 0.4,
       child: Row(
@@ -29,16 +29,16 @@ class WeightPickerState extends ConsumerState<CustomNumberPicker> {
         children: <Widget>[
           NumberPicker(
             textStyle: currentTheme.textTheme.titleSmall,
-            value: weight,
+            value: drinkTimePerMeal,
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(color: Colors.grey)),
-            minValue: 0,
-            maxValue: 7,
+            minValue: widget.minValue,
+            maxValue: widget.maxValue,
             onChanged: (value) {
               setState(() {
-                ref.read(frequencyProvider.notifier).state = value;
+                ref.read(dailyFrequencyProvider.notifier).state = value;
               });
             },
             itemHeight: 50,
@@ -50,6 +50,6 @@ class WeightPickerState extends ConsumerState<CustomNumberPicker> {
   }
 }
 
-final frequencyProvider = StateProvider<int>((ref) {
+final dailyFrequencyProvider = StateProvider<int>((ref) {
   return 0;
 });
