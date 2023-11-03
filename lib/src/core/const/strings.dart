@@ -1,4 +1,4 @@
-final class Strings {
+class Strings {
   static const String appName = "QuitMate";
   static const String getStarted = "Get Started";
   static const String firstOfAll = "First of all, congrats!";
@@ -17,4 +17,5 @@ final class Strings {
   static const String howManyTimesEach =
       "On days you drank, how many drinks did you have?";
   static const String next = "Next";
+  static const confirmYourDaily = "Confirm your daily pledge and reivew times";
 }
