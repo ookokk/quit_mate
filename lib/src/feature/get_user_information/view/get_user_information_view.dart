@@ -4,8 +4,9 @@ import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/get_user_information/view/addictive_factor_view.dart';
 import 'package:quit_mate/src/feature/get_user_information/view/daily_use_on_days_view.dart';
+import 'package:quit_mate/src/feature/get_user_information/view/set_daily_notifications_view.dart';
 import 'package:quit_mate/src/feature/get_user_information/view/sober_start_date_view.dart';
-import 'package:quit_mate/src/feature/get_user_information/view/weekly_frequency_of_use.dart';
+import 'package:quit_mate/src/feature/get_user_information/view/weekly_frequency_of_use_view.dart';
 import 'package:quit_mate/src/feature/get_user_information/widget/next_button.dart';
 import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
 
@@ -37,6 +38,7 @@ class GetUserInformationView extends ConsumerWidget {
         SoberStartDateView(),
         const WeeklyFrequencyOfUseView(),
         const DailyUseOnDaysView(),
+        const SetDailyNotificationsView(),
       ]),
     ));
   }

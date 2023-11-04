@@ -17,5 +17,9 @@ class Strings {
   static const String howManyTimesEach =
       "On days you drank, how many drinks did you have?";
   static const String next = "Next";
-  static const confirmYourDaily = "Confirm your daily pledge and reivew times";
+  static const confirmYourDaily = "Confirm your daily pledge and review times";
+  static const pledge = "Daily Pledge";
+  static const review = "Daily Review";
+  static const youWillReceive =
+      "You will receive notifications at these times.";
 }
