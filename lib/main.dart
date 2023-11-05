@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/routes.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/get_user_information/view/get_user_information_view.dart';
+import 'package:quit_mate/src/feature/home/view/home_view.dart';
 
 void main() {
   //InitApp().initApp();
@@ -19,7 +19,7 @@ class MyApp extends ConsumerWidget {
       theme: currentTheme,
       routes: Routes.routes,
       debugShowCheckedModeBanner: false,
-      home: GetUserInformationView(),
+      home: HomeView(),
     );
   }
 }
