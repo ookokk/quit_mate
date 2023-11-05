@@ -19,7 +19,7 @@ class MyApp extends ConsumerWidget {
       theme: currentTheme,
       routes: Routes.routes,
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      home: const HomeView(),
     );
   }
 }
