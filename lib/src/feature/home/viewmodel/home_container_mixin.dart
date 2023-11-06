@@ -10,10 +10,12 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
   double currentDay = 10.0;
   final StreamController<Map<String, double>> dataStreamController =
       StreamController<Map<String, double>>();
-  //final UserRepository userRepository = UserRepository();
+  final UserRepository userRepository = UserRepository();
   @override
-  void initState() {
+  void initState() async {
     super.initState();
+    final user = await userRepository.getUser('user1234');
+    print(user!.soberStartDate.toString());
     Timer.periodic(const Duration(seconds: 1), (timer) {
       currentSecond += 1.0;
       if (currentSecond >= 60) {

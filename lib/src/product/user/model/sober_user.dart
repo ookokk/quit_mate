@@ -16,22 +16,6 @@ class SoberUser {
     required this.pledgeTime,
     required this.reviewTime,
   });
-  Map<String, double> parseSoberStartDate(DateTime soberStartDate) {
-    DateTime now = DateTime.now();
-    Duration difference = now.difference(soberStartDate);
-    double seconds = difference.inSeconds.toDouble();
-    double minutes = difference.inMinutes.toDouble();
-    double hours = difference.inHours.toDouble();
-    double days = difference.inDays.toDouble();
-
-    return {
-      'second': seconds,
-      'minute': minutes,
-      'hour': hours,
-      'day': days,
-    };
-  }
-
   SoberUser.fromJson(Map<String, dynamic> json)
       : addictiveFactor = json['addictiveFactor'],
         soberStartDate = DateTime.parse(json['soberStartDate']),
