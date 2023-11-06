@@ -9,6 +9,7 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
+//gün saat dakika saniye
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 

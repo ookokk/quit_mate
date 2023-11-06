@@ -11,14 +11,37 @@ class HomeContainer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
 
-    StreamController<double> secondStreamController =
-        StreamController<double>();
+    StreamController<Map<String, double>> dataStreamController =
+        StreamController<Map<String, double>>();
 
-    double currentSecond = 0.0; // Başlangıç saniyesi
+    double currentSecond = 0.0;
+    double currentMinute = 0.0;
+    double currentHour = 0.0;
+    double currentDay = 0.0;
 
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      currentSecond += 1.0; // Her saniyede bir saniyeyi artır
-      secondStreamController.sink.add(currentSecond);
+      currentSecond += 1.0;
+      if (currentSecond >= 60) {
+        currentSecond = 0.0;
+        currentMinute += 1.0;
+      }
+
+      if (currentMinute >= 60) {
+        currentMinute = 0.0;
+        currentHour += 1.0;
+      }
+
+      if (currentHour >= 24) {
+        currentHour = 0.0;
+        currentDay += 1.0;
+      }
+
+      dataStreamController.sink.add({
+        'second': currentSecond,
+        'minute': currentMinute,
+        'hour': currentHour,
+        'day': currentDay,
+      });
     });
 
     return SafeArea(
@@ -26,49 +49,72 @@ class HomeContainer extends ConsumerWidget {
         backgroundColor: currentTheme.scaffoldBackgroundColor,
         body: SizedBox(
           height: 500,
-          child: Center(
-            child: StreamBuilder<double>(
-              stream: secondStreamController.stream,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  double second = snapshot.data!;
+          child: StreamBuilder<Map<String, double>>(
+            stream: dataStreamController.stream,
+            builder: (context, snapshot) {
+              final data = snapshot.data;
+              if (data == null) {
+                return CircularProgressIndicator();
+              }
+              final currentSecond = data['second'] ?? 0.0;
+              final currentMinute = data['minute'] ?? 0.0;
+              final currentHour = data['hour'] ?? 0.0;
+              final currentDay = data['day'] ?? 0.0;
 
-                  return SizedBox(
-                    height: 300,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Saniye: $second",
-                          style: currentTheme.textTheme.displaySmall,
-                        ),
-                        const SizedBox(height: 16),
-                        Expanded(
-                          child: BarChart(
-                            BarChartData(
-                              gridData: const FlGridData(show: false),
-                              titlesData: const FlTitlesData(show: false),
-                              borderData: FlBorderData(show: false),
-                              barGroups: [
-                                BarChartGroupData(x: 0, barRods: [
-                                  BarChartRodData(
-                                    fromY: 60 - second,
-                                    toY: 60,
-                                    width: 16,
-                                  ),
-                                ]),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        print(currentSecond);
+                      },
+                      icon: Icon(Icons.plus_one_outlined),
                     ),
-                  );
-                } else {
-                  return const Text("Veri alınamadı...");
-                }
-              },
-            ),
+                    const SizedBox(height: 16),
+                    Expanded(
+                      child: BarChart(
+                        BarChartData(
+                          gridData: const FlGridData(show: false),
+                          titlesData: const FlTitlesData(show: false),
+                          borderData: FlBorderData(show: false),
+                          barGroups: [
+                            BarChartGroupData(x: 0, barRods: [
+                              BarChartRodData(
+                                fromY: 24 - currentDay,
+                                toY: 24,
+                                width: 16,
+                              ),
+                            ]),
+                            BarChartGroupData(x: 1, barRods: [
+                              BarChartRodData(
+                                fromY: 24 - currentHour,
+                                toY: 24,
+                                width: 16,
+                              ),
+                            ]),
+                            BarChartGroupData(x: 2, barRods: [
+                              BarChartRodData(
+                                fromY: 60 - currentMinute,
+                                toY: 60,
+                                width: 16,
+                              ),
+                            ]),
+                            BarChartGroupData(x: 3, barRods: [
+                              BarChartRodData(
+                                fromY: 60 - currentSecond,
+                                toY: 60,
+                                width: 16,
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ),
