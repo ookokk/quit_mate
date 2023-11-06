@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:quit_mate/src/feature/home/viewmodel/home_state_mixin.dart';
-import 'package:quit_mate/src/product/user/model/sober_user.dart';
-import 'package:quit_mate/src/product/user/repository/user_repository.dart';
+import 'package:quit_mate/src/feature/home/viewmodel/home_container_mixin.dart';
 
 class HomeContainer extends ConsumerStatefulWidget {
   const HomeContainer({Key? key}) : super(key: key);
@@ -14,13 +12,10 @@ class HomeContainer extends ConsumerStatefulWidget {
 }
 
 class _HomeContainerState extends ConsumerState<HomeContainer>
-    with HomeStateMixin {
+    with HomeContainerMixin {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
-    final UserRepository userRepository = UserRepository();
-    final String userId = "user1234";
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: currentTheme.scaffoldBackgroundColor,
