@@ -8,6 +8,15 @@ class SoberUser {
   final TimeOfDay pledgeTime;
   final TimeOfDay reviewTime;
 
+  SoberUser({
+    required this.addictiveFactor,
+    required this.soberStartDate,
+    required this.weeklyUse,
+    required this.dailyUseOnDays,
+    required this.pledgeTime,
+    required this.reviewTime,
+  });
+
   SoberUser.fromJson(Map<String, dynamic> json)
       : addictiveFactor = json['addictiveFactor'],
         soberStartDate = DateTime.parse(json['soberStartDate']),

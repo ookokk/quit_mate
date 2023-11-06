@@ -4,12 +4,13 @@ import 'package:quit_mate/src/core/const/routes.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/home/view/home_view.dart';
 
+import 'src/core/init/init_app.dart';
+
 void main() {
-  //InitApp().initApp();
+  InitApp().initApp();
   runApp(const ProviderScope(child: MyApp()));
 }
 
-//gün saat dakika saniye
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
