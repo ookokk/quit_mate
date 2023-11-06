@@ -54,7 +54,7 @@ class HomeContainer extends ConsumerWidget {
             builder: (context, snapshot) {
               final data = snapshot.data;
               if (data == null) {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
               final currentSecond = data['second'] ?? 0.0;
               final currentMinute = data['minute'] ?? 0.0;
@@ -69,7 +69,7 @@ class HomeContainer extends ConsumerWidget {
                       onPressed: () {
                         print(currentSecond);
                       },
-                      icon: Icon(Icons.plus_one_outlined),
+                      icon: const Icon(Icons.plus_one_outlined),
                     ),
                     const SizedBox(height: 16),
                     Expanded(
