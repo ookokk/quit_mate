@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyANRf8NUkZj-7Jo8g1dfouXccu-qup5_iY',
-    appId: '1:945547854775:android:85d2044ccd10cf0cc3de32',
-    messagingSenderId: '945547854775',
-    projectId: 'quit-mate',
-    storageBucket: 'quit-mate.appspot.com',
+    apiKey: 'AIzaSyC3icReTy-H3m2iRWK-CVAoF3gDlZiV_78',
+    appId: '1:589044561198:android:22fa43f7d4d36bba3d76bf',
+    messagingSenderId: '589044561198',
+    projectId: 'quit-mate-1',
+    storageBucket: 'quit-mate-1.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCOUblR1ciuXozaYTsnGpLJizNKJIOPCCI',
-    appId: '1:945547854775:ios:5be401d3350884dec3de32',
-    messagingSenderId: '945547854775',
-    projectId: 'quit-mate',
-    storageBucket: 'quit-mate.appspot.com',
+    apiKey: 'AIzaSyBBOe1cM-zmPySim8K7dH5TVzDQwXMjZMo',
+    appId: '1:589044561198:ios:fde6cbdd2f7bb1e33d76bf',
+    messagingSenderId: '589044561198',
+    projectId: 'quit-mate-1',
+    storageBucket: 'quit-mate-1.appspot.com',
     iosBundleId: 'com.okok.quitMate',
   );
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/home/view/home_container.dart';
 import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
@@ -10,11 +11,11 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
   double currentDay = 10.0;
   final StreamController<Map<String, double>> dataStreamController =
       StreamController<Map<String, double>>();
- // final UserRepository userRepository = UserRepository();
-
+  //final UserRepository userRepository = UserRepository();
   @override
   void initState() {
     super.initState();
+    //  userRepository.getUser('user123');
     Timer.periodic(const Duration(seconds: 1), (timer) {
       currentSecond += 1.0;
       if (currentSecond >= 60) {

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "945547854775",
-    "project_id": "quit-mate",
-    "storage_bucket": "quit-mate.appspot.com"
+    "project_number": "589044561198",
+    "project_id": "quit-mate-1",
+    "storage_bucket": "quit-mate-1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:945547854775:android:85d2044ccd10cf0cc3de32",
+        "mobilesdk_app_id": "1:589044561198:android:22fa43f7d4d36bba3d76bf",
         "android_client_info": {
           "package_name": "com.okok.quit_mate"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyANRf8NUkZj-7Jo8g1dfouXccu-qup5_iY"
+          "current_key": "AIzaSyC3icReTy-H3m2iRWK-CVAoF3gDlZiV_78"
         }
       ],
       "services": {
