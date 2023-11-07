@@ -50,7 +50,7 @@ class HomeViewState extends ConsumerState<HomeView> {
               selectedIndex = index;
             });
           },
-          children: const [HomeContainer()],
+          children: [HomeContainer()],
         ),
         bottomNavigationBar: CustomNavBar(
           selectedIndex: selectedIndex,

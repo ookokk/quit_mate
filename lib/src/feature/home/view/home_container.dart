@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:quit_mate/src/feature/home/viewmodel/home_container_mixin.dart';
+import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class HomeContainer extends ConsumerStatefulWidget {
-  const HomeContainer({Key? key}) : super(key: key);
+  final UserRepository userRepository = UserRepository();
+  HomeContainer({Key? key}) : super(key: key);
   @override
   ConsumerState<HomeContainer> createState() => _HomeContainerState();
 }

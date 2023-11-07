@@ -11,7 +11,6 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
   double currentDay = 10.0;
   final StreamController<Map<String, double>> dataStreamController =
       StreamController<Map<String, double>>();
-  //final UserRepository userRepository = UserRepository();
   @override
   void initState() {
     super.initState();
