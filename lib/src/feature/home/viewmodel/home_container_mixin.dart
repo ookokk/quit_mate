@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/home/view/home_container.dart';
-import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 mixin HomeContainerMixin on ConsumerState<HomeContainer> {
   double currentSecond = 50.0;
