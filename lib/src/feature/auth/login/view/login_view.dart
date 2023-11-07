@@ -16,6 +16,7 @@ final class LoginView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
+    //final authManager = AuthManager();
     return SafeArea(
       child: Scaffold(
         backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -62,7 +63,13 @@ final class LoginView extends ConsumerWidget {
                   const SizedBox(
                     height: 48,
                   ),
-                  AuthElevatedButton(text: Strings.login, onTap: () {}),
+                  AuthElevatedButton(
+                      text: Strings.login,
+                      onTap: () {
+                        /*    authManager.signInWithEmailAndPassword(
+                            emailController.text.trim(),
+                            passwordController.text.trim());*/
+                      }),
                 ],
               ),
             )

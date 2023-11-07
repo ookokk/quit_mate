@@ -6,7 +6,6 @@ import 'package:quit_mate/src/feature/home/viewmodel/home_container_mixin.dart';
 
 class HomeContainer extends ConsumerStatefulWidget {
   const HomeContainer({Key? key}) : super(key: key);
-
   @override
   ConsumerState<HomeContainer> createState() => _HomeContainerState();
 }

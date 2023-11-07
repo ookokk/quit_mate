@@ -44,4 +44,4 @@ app.*.map.json
 /android/app/release
 
 # My keys
-lib/src/core/network/firebase_options.dart
+# lib/src/core/network/firebase_options.dart

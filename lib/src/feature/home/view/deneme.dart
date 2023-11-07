@@ -12,7 +12,6 @@ class Deneme extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
     final UserRepository userRepository = UserRepository();
-
     return SafeArea(
         child: Scaffold(
       backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -23,7 +22,7 @@ class Deneme extends ConsumerWidget {
                 final user = await userRepository.getUser('user1234');
                 print(user!.soberStartDate.toString());
               },
-              icon: Icon(Icons.print))
+              icon: const Icon(Icons.print))
         ],
       ),
     ));

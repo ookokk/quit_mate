@@ -4,9 +4,9 @@ import 'package:quit_mate/src/core/network/firebase_options.dart';
 
 final class InitApp {
   void initApp() async {
-    WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    WidgetsFlutterBinding.ensureInitialized();
   }
 }
