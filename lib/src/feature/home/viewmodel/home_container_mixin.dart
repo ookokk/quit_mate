@@ -7,32 +7,39 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
   double currentMinute = 10.0;
   double currentHour = 10.0;
   double currentDay = 10.0;
+  DateTime? soberStartDate;
   final StreamController<Map<String, double>> dataStreamController =
       StreamController<Map<String, double>>();
+
   @override
   void initState() {
     super.initState();
-    //  userRepository.getUser('user123');
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      currentSecond += 1.0;
-      if (currentSecond >= 60) {
-        currentSecond = 0.0;
-        currentMinute += 1.0;
+
+    widget.userRepository.getUser('user123').then((user) {
+      if (user != null) {
+        soberStartDate = user.soberStartDate;
+
+        Timer.periodic(const Duration(seconds: 1), (timer) {
+          if (soberStartDate != null) {
+            DateTime now = DateTime.now();
+            Duration duration = now.difference(soberStartDate!);
+
+            setState(() {
+              currentSecond = duration.inSeconds.toDouble();
+              currentMinute = duration.inMinutes.toDouble();
+              currentHour = duration.inHours.toDouble();
+              currentDay = duration.inDays.toDouble();
+            });
+
+            dataStreamController.sink.add({
+              'second': currentSecond,
+              'minute': currentMinute,
+              'hour': currentHour,
+              'day': currentDay,
+            });
+          }
+        });
       }
-      if (currentMinute >= 60) {
-        currentMinute = 0.0;
-        currentHour += 1.0;
-      }
-      if (currentHour >= 24) {
-        currentHour = 0.0;
-        currentDay += 1.0;
-      }
-      dataStreamController.sink.add({
-        'second': currentSecond,
-        'minute': currentMinute,
-        'hour': currentHour,
-        'day': currentDay,
-      });
     });
   }
 

@@ -40,10 +40,9 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                   children: [
                     IconButton(
                       onPressed: () {
-                        print(currentSecond);
-                        print(currentMinute);
-                        print(currentHour);
-                        print(currentDay);
+                        /* widget.userRepository.getUser('user123').then((user) {
+                          print(user?.soberStartDate);
+                        });*/
                       },
                       icon: const Icon(Icons.plus_one_outlined),
                     ),
