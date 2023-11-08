@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quit_mate/src/core/const/device_size.dart';
+import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/splash/viewmodel/splash_view_model.dart';
 

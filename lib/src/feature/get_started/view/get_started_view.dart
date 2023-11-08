@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quit_mate/src/core/const/device_size.dart';
+import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/feature/get_started/widget/get_started_button.dart';
 import '../../../core/theme/theme_provider.dart';

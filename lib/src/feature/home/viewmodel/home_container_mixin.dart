@@ -18,6 +18,7 @@ mixin HomeContainerMixin on ConsumerState<SoberChart> {
   void initState() {
     super.initState();
 
+    //get user data from database and draw the chart
     widget.userRepository.getUser('user123').then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
