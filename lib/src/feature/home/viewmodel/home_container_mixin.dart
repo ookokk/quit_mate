@@ -4,9 +4,11 @@ import 'dart:async';
 
 mixin HomeContainerMixin on ConsumerState<HomeContainer> {
   double currentSecond = 0;
-  double currentMinute = 10.0;
-  double currentHour = 10.0;
-  double currentDay = 10.0;
+  double currentMinute = 0;
+  double currentHour = 0.0;
+  double currentDay = 0.0;
+  double currentMonth = 0.0;
+  double currentYear = 0.0;
   DateTime? soberStartDate;
 
   final StreamController<Map<String, double>> dataStreamController =
@@ -24,20 +26,30 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
           if (soberStartDate != null) {
             DateTime now = DateTime.now();
             Duration duration = now.difference(soberStartDate!);
-
             int days = duration.inDays;
             int hours = duration.inHours % 24;
             int minutes = duration.inMinutes % 60;
             int seconds = duration.inSeconds % 60;
+            int months = calculateMonths(duration);
+            int years = calculateYears(duration);
+
+            // Sınırları kontrol et
+            if (months > 12) months = 12;
+            if (days > 30) days = 30;
+            if (hours > 24) hours = 24;
 
             setState(() {
               currentDay = days.toDouble();
               currentHour = hours.toDouble();
               currentMinute = minutes.toDouble();
               currentSecond = seconds.toDouble();
+              currentMonth = months.toDouble();
+              currentYear = years.toDouble();
             });
 
             dataStreamController.sink.add({
+              'year': currentYear,
+              'month': currentMonth,
               'day': currentDay,
               'hour': currentHour,
               'minute': currentMinute,
@@ -50,7 +62,6 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
           updateData();
         });
 
-        // İlk veriyi güncelleyin
         updateData();
       }
     });
@@ -59,6 +70,14 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
   int calculateDaysDifference(DateTime startDate, DateTime endDate) {
     final difference = endDate.difference(startDate);
     return difference.inDays;
+  }
+
+  int calculateMonths(Duration duration) {
+    return (duration.inDays ~/ 30);
+  }
+
+  int calculateYears(Duration duration) {
+    return (duration.inDays ~/ 365);
   }
 
   @override

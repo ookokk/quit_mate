@@ -4,6 +4,7 @@ import 'package:quit_mate/src/core/const/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:quit_mate/src/feature/home/viewmodel/home_container_mixin.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class HomeContainer extends ConsumerStatefulWidget {
@@ -38,10 +39,12 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
             children: [
               TextButton(
                   onPressed: () async {
-                    print(currentDay);
-                    print(currentHour);
-                    print(currentMinute);
-                    print(currentSecond);
+                    print('day : $currentDay');
+                    print('hour : $currentHour');
+                    print('minute: $currentMinute');
+                    print('second : $currentSecond');
+                    print('month : $currentMonth');
+                    print('year : $currentYear');
                   },
                   child: Text('check')),
               SizedBox(
@@ -67,6 +70,8 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                               reservedSize: 40,
                               getTitlesWidget: (double value, TitleMeta meta) {
                                 final titles = [
+                                  'Yıl',
+                                  'Ay',
                                   'Gün',
                                   'Saat',
                                   'Dakika',
@@ -81,25 +86,39 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                       BarChartGroupData(x: 0, barRods: [
                         BarChartRodData(
                             fromY: 0,
-                            toY: currentDay,
+                            toY: currentYear,
                             width: 35,
                             borderRadius: BorderRadius.circular(5)),
                       ]),
                       BarChartGroupData(x: 1, barRods: [
                         BarChartRodData(
                             fromY: 0,
-                            toY: currentHour,
+                            toY: currentMonth,
                             width: 35,
                             borderRadius: BorderRadius.circular(5)),
                       ]),
                       BarChartGroupData(x: 2, barRods: [
                         BarChartRodData(
                             fromY: 0,
-                            toY: currentMinute,
+                            toY: currentDay,
                             width: 35,
                             borderRadius: BorderRadius.circular(5)),
                       ]),
                       BarChartGroupData(x: 3, barRods: [
+                        BarChartRodData(
+                            fromY: 0,
+                            toY: currentHour,
+                            width: 35,
+                            borderRadius: BorderRadius.circular(5)),
+                      ]),
+                      BarChartGroupData(x: 4, barRods: [
+                        BarChartRodData(
+                            fromY: 0,
+                            toY: currentMinute,
+                            width: 35,
+                            borderRadius: BorderRadius.circular(5)),
+                      ]),
+                      BarChartGroupData(x: 5, barRods: [
                         BarChartRodData(
                             fromY: 0,
                             toY: currentSecond,
