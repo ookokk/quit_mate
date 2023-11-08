@@ -61,54 +61,12 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                     ),
                     borderData: FlBorderData(show: false),
                     barGroups: [
-                      BarChartGroupData(x: 0, barRods: [
-                        BarChartRodData(
-                            fromY: 0,
-                            toY: currentYear,
-                            width: 35,
-                            borderRadius: BorderRadius.circular(
-                                ProjectRadius.small.value)),
-                      ]),
-                      BarChartGroupData(x: 1, barRods: [
-                        BarChartRodData(
-                            fromY: 0,
-                            toY: currentMonth,
-                            width: 35,
-                            borderRadius: BorderRadius.circular(
-                                ProjectRadius.small.value)),
-                      ]),
-                      BarChartGroupData(x: 2, barRods: [
-                        BarChartRodData(
-                            fromY: 0,
-                            toY: currentDay,
-                            width: 35,
-                            borderRadius: BorderRadius.circular(
-                                ProjectRadius.small.value)),
-                      ]),
-                      BarChartGroupData(x: 3, barRods: [
-                        BarChartRodData(
-                            fromY: 0,
-                            toY: currentHour,
-                            width: 35,
-                            borderRadius: BorderRadius.circular(
-                                ProjectRadius.small.value)),
-                      ]),
-                      BarChartGroupData(x: 4, barRods: [
-                        BarChartRodData(
-                            fromY: 0,
-                            toY: currentMinute,
-                            width: 35,
-                            borderRadius: BorderRadius.circular(
-                                ProjectRadius.small.value)),
-                      ]),
-                      BarChartGroupData(x: 5, barRods: [
-                        BarChartRodData(
-                            fromY: 0,
-                            toY: currentSecond,
-                            width: 35,
-                            borderRadius: BorderRadius.circular(
-                                ProjectRadius.small.value)),
-                      ]),
+                      buildBarChartGroupData(0, 0, currentYear),
+                      buildBarChartGroupData(1, 0, currentMonth),
+                      buildBarChartGroupData(2, 0, currentDay),
+                      buildBarChartGroupData(3, 0, currentHour),
+                      buildBarChartGroupData(4, 0, currentMinute),
+                      buildBarChartGroupData(5, 0, currentSecond),
                     ],
                   ),
                 ),
@@ -118,6 +76,20 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
         },
       ),
     );
+  }
+
+  BarChartGroupData buildBarChartGroupData(
+    int x,
+    double fromY,
+    double toY,
+  ) {
+    return BarChartGroupData(x: x, barRods: [
+      BarChartRodData(
+          fromY: fromY,
+          toY: toY,
+          width: 35,
+          borderRadius: BorderRadius.circular(ProjectRadius.small.value)),
+    ]);
   }
 
   AxisTitles buildBottomData(ThemeData currentTheme) {
