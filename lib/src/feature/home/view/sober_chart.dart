@@ -73,7 +73,6 @@ class _HomeContainerState extends ConsumerState<SoberChart>
                   ),
                 ),
               ),
-              IconButton(onPressed: () {}, icon: Icon(Icons.password))
             ],
           );
         },
