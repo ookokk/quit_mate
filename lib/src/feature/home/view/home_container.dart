@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/device_size.dart';
+import 'package:quit_mate/src/core/const/project_radius.dart';
+import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:quit_mate/src/feature/home/viewmodel/home_container_mixin.dart';
-import 'package:quit_mate/src/product/user/model/sober_user.dart';
 import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class HomeContainer extends ConsumerStatefulWidget {
@@ -37,16 +38,6 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                  onPressed: () async {
-                    print('day : $currentDay');
-                    print('hour : $currentHour');
-                    print('minute: $currentMinute');
-                    print('second : $currentSecond');
-                    print('month : $currentMonth');
-                    print('year : $currentYear');
-                  },
-                  child: Text('check')),
               SizedBox(
                 height: DeviceSize.kHeight(context) * 0.4,
                 child: BarChart(
@@ -59,26 +50,13 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                       show: false,
                     ),
                     titlesData: FlTitlesData(
-                      topTitles: const AxisTitles(drawBelowEverything: false),
+                      topTitles: buildTopData(currentDay, currentHour,
+                          currentMinute, currentSecond, currentTheme),
                       leftTitles: const AxisTitles(drawBelowEverything: false),
                       rightTitles: const AxisTitles(
                         drawBelowEverything: false,
                       ),
-                      bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                              showTitles: true,
-                              reservedSize: 40,
-                              getTitlesWidget: (double value, TitleMeta meta) {
-                                final titles = [
-                                  'Yıl',
-                                  'Ay',
-                                  'Gün',
-                                  'Saat',
-                                  'Dakika',
-                                  'Saniye'
-                                ];
-                                return Text(titles[value.toInt()]);
-                              })),
+                      bottomTitles: buildBottomData(currentTheme),
                       show: true,
                     ),
                     borderData: FlBorderData(show: false),
@@ -88,42 +66,48 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                             fromY: 0,
                             toY: currentYear,
                             width: 35,
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(
+                                ProjectRadius.small.value)),
                       ]),
                       BarChartGroupData(x: 1, barRods: [
                         BarChartRodData(
                             fromY: 0,
                             toY: currentMonth,
                             width: 35,
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(
+                                ProjectRadius.small.value)),
                       ]),
                       BarChartGroupData(x: 2, barRods: [
                         BarChartRodData(
                             fromY: 0,
                             toY: currentDay,
                             width: 35,
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(
+                                ProjectRadius.small.value)),
                       ]),
                       BarChartGroupData(x: 3, barRods: [
                         BarChartRodData(
                             fromY: 0,
                             toY: currentHour,
                             width: 35,
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(
+                                ProjectRadius.small.value)),
                       ]),
                       BarChartGroupData(x: 4, barRods: [
                         BarChartRodData(
                             fromY: 0,
                             toY: currentMinute,
                             width: 35,
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(
+                                ProjectRadius.small.value)),
                       ]),
                       BarChartGroupData(x: 5, barRods: [
                         BarChartRodData(
                             fromY: 0,
                             toY: currentSecond,
                             width: 35,
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(
+                                ProjectRadius.small.value)),
                       ]),
                     ],
                   ),
@@ -134,5 +118,49 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
         },
       ),
     );
+  }
+
+  AxisTitles buildBottomData(ThemeData currentTheme) {
+    return AxisTitles(
+        sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 40,
+            getTitlesWidget: (double value, TitleMeta meta) {
+              final titles = [
+                Strings.year,
+                Strings.month,
+                Strings.day,
+                Strings.hour,
+                Strings.minute,
+                Strings.second,
+              ];
+              return Text(
+                titles[value.toInt()],
+                style: currentTheme.textTheme.titleSmall,
+              );
+            }));
+  }
+
+  AxisTitles buildTopData(double currentDay, double currentHour,
+      double currentMinute, double currentSecond, ThemeData currentTheme) {
+    return AxisTitles(
+        sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 40,
+            getTitlesWidget: (value, meta) {
+              final titles = [
+                currentYear.toInt(),
+                currentMonth.toInt(),
+                currentDay.toInt(),
+                currentHour.toInt(),
+                currentMinute.toInt(),
+                currentSecond.toInt(),
+              ];
+
+              return Text(
+                titles[value.toInt()].toString(),
+                style: currentTheme.textTheme.titleSmall,
+              );
+            }));
   }
 }

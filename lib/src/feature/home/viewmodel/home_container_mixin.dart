@@ -21,7 +21,6 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
     widget.userRepository.getUser('user123').then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
-
         void updateData() {
           if (soberStartDate != null) {
             DateTime now = DateTime.now();
@@ -32,8 +31,6 @@ mixin HomeContainerMixin on ConsumerState<HomeContainer> {
             int seconds = duration.inSeconds % 60;
             int months = calculateMonths(duration);
             int years = calculateYears(duration);
-
-            // Sınırları kontrol et
             if (months > 12) months = 12;
             if (days > 30) days = 30;
             if (hours > 24) hours = 24;

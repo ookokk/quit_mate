@@ -22,4 +22,11 @@ class Strings {
   static const review = "Daily Review";
   static const youWillReceive =
       "You will receive notifications at these times.";
+  //sober graphic
+  static const year = "Year";
+  static const month = "Month";
+  static const day = "Day";
+  static const hour = "Hour";
+  static const minute = "Minute";
+  static const second = "Second";
 }
