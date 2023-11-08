@@ -8,19 +8,20 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:quit_mate/src/feature/home/viewmodel/home_container_mixin.dart';
 import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
-class HomeContainer extends ConsumerStatefulWidget {
+class SoberChart extends ConsumerStatefulWidget {
   final UserRepository userRepository = UserRepository();
-  HomeContainer({Key? key}) : super(key: key);
+  SoberChart({Key? key}) : super(key: key);
   @override
-  ConsumerState<HomeContainer> createState() => _HomeContainerState();
+  ConsumerState<SoberChart> createState() => _HomeContainerState();
 }
 
-class _HomeContainerState extends ConsumerState<HomeContainer>
+class _HomeContainerState extends ConsumerState<SoberChart>
     with HomeContainerMixin {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
     return Container(
+      // color: currentTheme.hoverColor,
       color: currentTheme.scaffoldBackgroundColor,
       height: DeviceSize.kHeight(context) * 0.4,
       child: StreamBuilder<Map<String, double>>(
@@ -36,12 +37,13 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
           final currentHour = data['hour'] ?? 0.0;
           final currentDay = data['day'] ?? 0.0;
           return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: DeviceSize.kHeight(context) * 0.4,
+                width: DeviceSize.kWidth(context),
+                height: DeviceSize.kHeight(context) * 0.35,
                 child: BarChart(
-                  swapAnimationDuration: const Duration(milliseconds: 300),
+                  swapAnimationDuration: const Duration(milliseconds: 100),
                   BarChartData(
                     alignment: BarChartAlignment.spaceAround,
                     maxY: 60,
@@ -61,16 +63,17 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                     ),
                     borderData: FlBorderData(show: false),
                     barGroups: [
-                      buildBarChartGroupData(0, 0, currentYear),
-                      buildBarChartGroupData(1, 0, currentMonth),
-                      buildBarChartGroupData(2, 0, currentDay),
-                      buildBarChartGroupData(3, 0, currentHour),
-                      buildBarChartGroupData(4, 0, currentMinute),
-                      buildBarChartGroupData(5, 0, currentSecond),
+                      buildBarChartGroupData(0, 0, currentYear, currentTheme),
+                      buildBarChartGroupData(1, 0, currentMonth, currentTheme),
+                      buildBarChartGroupData(2, 0, currentDay, currentTheme),
+                      buildBarChartGroupData(3, 0, currentHour, currentTheme),
+                      buildBarChartGroupData(4, 0, currentMinute, currentTheme),
+                      buildBarChartGroupData(5, 0, currentSecond, currentTheme),
                     ],
                   ),
                 ),
-              )
+              ),
+              IconButton(onPressed: () {}, icon: Icon(Icons.password))
             ],
           );
         },
@@ -82,9 +85,11 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
     int x,
     double fromY,
     double toY,
+    ThemeData currentTheme,
   ) {
     return BarChartGroupData(x: x, barRods: [
       BarChartRodData(
+          color: currentTheme.primaryColor,
           fromY: fromY,
           toY: toY,
           width: 35,

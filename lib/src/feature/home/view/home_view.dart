@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/home/view/home_container.dart';
+import 'package:quit_mate/src/feature/home/view/sober_chart.dart';
 import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
 import 'package:quit_mate/src/product/widget/custom_nav_bar.dart';
 
@@ -50,7 +50,7 @@ class HomeViewState extends ConsumerState<HomeView> {
               selectedIndex = index;
             });
           },
-          children: [HomeContainer()],
+          children: [SoberChart()],
         ),
         bottomNavigationBar: CustomNavBar(
           selectedIndex: selectedIndex,

@@ -44,7 +44,7 @@ final class ThemeProvider extends StateNotifier<ThemeData> {
     datePickerTheme: const DatePickerThemeData(
       backgroundColor: Colors.white,
     ),
-    hoverColor: const Color(0xfff1f1ec),
+    hoverColor: const Color(0xffDDF2FD),
     cardColor: const Color(0xff5dad67),
     shadowColor: const Color(0xffcfdcec),
     splashColor: const Color(0xffF39F5A),
