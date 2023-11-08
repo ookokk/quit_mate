@@ -40,7 +40,7 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
-                        onPressed: () {
+                        onPressed: () async {
                           print(currentDay);
                           print(currentHour);
                           print(currentMinute);
@@ -56,22 +56,22 @@ class _HomeContainerState extends ConsumerState<HomeContainer>
                           barGroups: [
                             BarChartGroupData(x: 0, barRods: [
                               BarChartRodData(
-                                fromY: currentDay,
-                                toY: 0,
+                                fromY: 60 - currentDay,
+                                toY: 60,
                                 width: 16,
                               ),
                             ]),
                             BarChartGroupData(x: 1, barRods: [
                               BarChartRodData(
-                                fromY: currentHour,
-                                toY: 0,
+                                fromY: 60 - currentHour,
+                                toY: 60,
                                 width: 16,
                               ),
                             ]),
                             BarChartGroupData(x: 2, barRods: [
                               BarChartRodData(
-                                fromY: currentMinute,
-                                toY: 0,
+                                fromY: 60 - currentMinute,
+                                toY: 60,
                                 width: 16,
                               ),
                             ]),
