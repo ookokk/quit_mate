@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/core/cache/cache_manager.dart';
+import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 
 import 'custom_text_theme.dart';
 

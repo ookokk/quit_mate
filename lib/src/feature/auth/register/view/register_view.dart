@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quit_mate/generated/assets.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
@@ -24,7 +25,7 @@ final class RegisterView extends ConsumerWidget {
           alignment: Alignment.center,
           children: [
             SvgPicture.asset(
-              'assets/svg/bg.svg',
+              Assets.svgBg,
               fit: BoxFit.cover,
               height: DeviceSize.kHeight(context),
               width: DeviceSize.kWidth(context),
@@ -33,7 +34,7 @@ final class RegisterView extends ConsumerWidget {
               child: Column(
                 children: [
                   SvgPicture.asset(
-                    'assets/svg/register.svg',
+                    Assets.svgRegister,
                     height: 160,
                   ),
                   const SizedBox(
