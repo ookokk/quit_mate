@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/feature/home/view/sober_chart.dart';
+import 'package:quit_mate/src/feature/progress/view/sober_chart.dart';
 import 'dart:async';
 
-mixin HomeContainerMixin on ConsumerState<SoberChart> {
+mixin SoberChartMixin on ConsumerState<SoberChart> {
   double currentSecond = 0;
   double currentMinute = 0;
   double currentHour = 0.0;

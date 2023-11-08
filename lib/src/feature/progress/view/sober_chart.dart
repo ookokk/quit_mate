@@ -5,7 +5,7 @@ import 'package:quit_mate/src/core/const/material/project_radius.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:quit_mate/src/feature/home/viewmodel/home_container_mixin.dart';
+import 'package:quit_mate/src/feature/progress/viewmodel/sober_chart_mixin.dart';
 import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class SoberChart extends ConsumerStatefulWidget {
@@ -16,7 +16,7 @@ class SoberChart extends ConsumerStatefulWidget {
 }
 
 class _HomeContainerState extends ConsumerState<SoberChart>
-    with HomeContainerMixin {
+    with SoberChartMixin {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
