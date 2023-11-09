@@ -29,11 +29,11 @@ class SetBGImageBtn extends ConsumerWidget {
           BorderSide(color: borderColor ?? currentTheme.hoverColor),
         ),
         minimumSize: MaterialStateProperty.all<Size>(
-          Size(DeviceSize.kWidth(context) - 1,
+          Size(DeviceSize.kWidth(context) - 30,
               DeviceSize.kHeight(context) * 0.03),
         ),
         maximumSize: MaterialStateProperty.all<Size>(
-          Size(DeviceSize.kWidth(context) - 1,
+          Size(DeviceSize.kWidth(context) - 30,
               DeviceSize.kHeight(context) * 0.065),
         ),
         elevation: MaterialStateProperty.all<double>(3),
@@ -43,7 +43,7 @@ class SetBGImageBtn extends ConsumerWidget {
           ),
         ),
         backgroundColor: MaterialStateProperty.all<Color>(
-          color ?? currentTheme.cardColor,
+          color ?? currentTheme.disabledColor,
         ),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
           const EdgeInsets.symmetric(vertical: 15, horizontal: 30),

@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/generated/assets.dart';
 import 'package:quit_mate/src/core/cache/sp_background_image/sp_background_image.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
+import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
+import 'package:quit_mate/src/feature/set_bg_image/widget/set_bg_image_btn.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SetBGImageView extends ConsumerStatefulWidget {
@@ -36,6 +38,14 @@ class SetBGImageViewState extends ConsumerState<SetBGImageView> {
     final sharedBGManager = SPBackgroundImage();
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: SetBGImageBtn(
+            text: Strings.setBGImage,
+            onTap: () async {
+              final int currentIndex = _pageController.page?.round() ?? 0;
+              await sharedBGManager
+                  .setNewBackgroundImage(backgroundImages[currentIndex]);
+            }),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         backgroundColor: currentTheme.hoverColor,
         body: SingleChildScrollView(
           child: Column(
@@ -70,19 +80,20 @@ class SetBGImageViewState extends ConsumerState<SetBGImageView> {
               ),
               pageIndicatorAndArrowButtonsRow(currentTheme),
               ElevatedButton(
-                onPressed: () async {
-                  final int currentIndex = _pageController.page?.round() ?? 0;
-                  await sharedBGManager
-                      .setNewBackgroundImage(backgroundImages[currentIndex]);
-                  setState(() {});
-                },
-                child: const Text('Resmi Arkaplan Yap'),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  final ahmet = await sharedBGManager.getBackgroundImage();
+                onPressed: () {
+                  /* final ahmet = await sharedBGManager.getBackgroundImage();
                   print(ahmet);
-                  setState(() {});
+                  setState(() {});*/
+                  final snackBar = SnackBar(
+                    backgroundColor: Colors.black,
+                    content: Text(
+                      Strings.bgImageUpdated,
+                      style: currentTheme.textTheme.titleMedium
+                          ?.copyWith(color: Colors.white),
+                    ),
+                    duration: const Duration(seconds: 4),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 child: const Text('Kontrol'),
               ),

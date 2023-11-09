@@ -29,4 +29,8 @@ class Strings {
   static const hour = "Hour";
   static const minute = "Minute";
   static const second = "Second";
+  //bg image
+  static const setBGImage = "Set Background Image";
+  static const bgImageUpdated = "Background image has been updated.";
+  static const okay = "Okay";
 }
