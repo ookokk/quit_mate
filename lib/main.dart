@@ -20,7 +20,7 @@ class MyApp extends ConsumerWidget {
       theme: currentTheme,
       routes: Routes.routes,
       debugShowCheckedModeBanner: false,
-      home: const SetBGImageView(),
+      home: SetBGImageView(),
     );
   }
 }
