@@ -18,13 +18,19 @@ class SetBGImageViewState extends ConsumerState<SetBGImageView> {
     Assets.imagesWp1,
     Assets.imagesWp2,
     Assets.imagesWp3,
+    Assets.imagesWp4,
+    Assets.imagesWp5,
+    Assets.imagesWp6,
+    Assets.imagesWp7,
+    Assets.imagesWp8,
+    Assets.imagesWp9,
+    Assets.imagesWp10,
   ];
 
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
     final sharedBGManager = SPBackgroundImage();
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: currentTheme.scaffoldBackgroundColor,
