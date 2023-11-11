@@ -6,9 +6,9 @@ import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/affirmation/viewmodel/affirmation_mixin.dart';
 
 class AffirmationView extends ConsumerStatefulWidget {
-  final String? imagePath;
-
-  const AffirmationView({Key? key, this.imagePath}) : super(key: key);
+  const AffirmationView({
+    Key? key,
+  }) : super(key: key);
 
   @override
   AffirmationViewState createState() => AffirmationViewState();
@@ -16,13 +16,6 @@ class AffirmationView extends ConsumerStatefulWidget {
 
 class AffirmationViewState extends ConsumerState<AffirmationView>
     with AffirmationMixin {
-  late String dailyAffirmation;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
@@ -33,7 +26,7 @@ class AffirmationViewState extends ConsumerState<AffirmationView>
           alignment: Alignment.center,
           children: [
             Image.asset(
-              widget.imagePath ?? Assets.imagesWp1,
+              bgImagePath ?? Assets.imagesWp10,
               fit: BoxFit.cover,
               height: DeviceSize.kHeight(context),
               width: DeviceSize.kWidth(context),
