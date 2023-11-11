@@ -1,4 +1,4 @@
-class Affirmations {
+final class Affirmations {
   static const String affirmation1 =
       "Asking for help is a sign of self-respect and self-awareness.";
   static const String affirmation2 =

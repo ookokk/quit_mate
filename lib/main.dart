@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/routes.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/set_bg_image/view/set_bg_image_view.dart';
+import 'package:quit_mate/src/feature/affirmation/view/affirmation_view.dart';
 import 'src/core/init/init_app.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends ConsumerWidget {
       theme: currentTheme,
       routes: Routes.routes,
       debugShowCheckedModeBanner: false,
-      home: SetBGImageView(),
+      home: AffirmationView(),
     );
   }
 }
