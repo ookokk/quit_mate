@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:quit_mate/src/feature/affirmation/model/affirmations.dart';
 
 class GetRandomAffirmation {
@@ -105,8 +104,10 @@ class GetRandomAffirmation {
       Affirmations.affirmation99,
     ];
 
-    final random = Random();
-    final randomIndex = random.nextInt(affirmationsList.length);
+    final now = DateTime.now();
+    final dayOfYear = now.difference(DateTime(now.year, 1, 1)).inDays + 1;
+
+    final randomIndex = dayOfYear % affirmationsList.length;
 
     return affirmationsList[randomIndex];
   }
