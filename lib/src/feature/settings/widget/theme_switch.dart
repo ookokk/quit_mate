@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class ThemeSwitch extends ConsumerStatefulWidget {
@@ -26,8 +25,8 @@ class _CustomSwitchState extends ConsumerState<ThemeSwitch> {
     return GestureDetector(
       onTap: () async {
         ref.read(themeProvider.notifier).toggleTheme();
-        final String themeName = await CacheManager.getTheme();
-        print(themeName);
+        internalValue = !internalValue;
+        setState(() {});
       },
       child: Container(
         width: 60.0,
@@ -35,7 +34,7 @@ class _CustomSwitchState extends ConsumerState<ThemeSwitch> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(17.0),
           color: internalValue
-              ? currentTheme.dialogBackgroundColor
+              ? currentTheme.indicatorColor
               : currentTheme.canvasColor,
         ),
         child: Stack(

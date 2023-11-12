@@ -1,8 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
+import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/settings/widget/language_bottom_sheet.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_category_row.dart';
@@ -29,13 +29,13 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: DeviceSize.kHeight(context) * 0.15,
+                    height: DeviceSize.kHeight(context) * 0.1,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Lottie.asset(
                           'assets/animations/settings.json',
-                          animate: true,
+                          animate: false,
                         )
                       ],
                     ),
@@ -44,55 +44,22 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                     margin: const EdgeInsets.all(8),
                     height: DeviceSize.kHeight(context) * 0.8,
                     child: ListView(children: [
-                      SettingsCategoryRow(
-                          headerText: "kSettingsPersonal".tr(),
+                      const SettingsCategoryRow(
+                          headerText: Strings.account,
                           iconData: Icons.account_circle),
                       SettingsListTile(
-                          text: "kSettingsGender".tr(),
-                          trailingChild: Text(
-                            "",
-                            style: currentTheme.textTheme.headlineLarge,
+                          text: Strings.signOut,
+                          trailingChild: IconButton(
+                            onPressed: () {
+                              //auth.manager .logout
+                            },
+                            icon: Icon(
+                              Icons.logout,
+                              color: currentTheme.indicatorColor,
+                            ),
                           )),
-                      SettingsListTile(
-                          text: "kSettingsWeight".tr(),
-                          trailingChild: Text(
-                            "",
-                            style: currentTheme.textTheme.headlineLarge,
-                          )),
-                      SettingsListTile(
-                          text: "kSettingsExerciseFrequency".tr(),
-                          trailingChild: Text(
-                            "",
-                            style: currentTheme.textTheme.headlineLarge,
-                          )),
-                      SettingsListTile(
-                          text: "kSettingsWakeUpTime".tr(),
-                          trailingChild: Text(
-                            '',
-                            style: currentTheme.textTheme.headlineLarge,
-                          )),
-                      SettingsListTile(
-                          text: "kSettingsBedTime".tr(),
-                          trailingChild: Text(
-                            '',
-                            style: currentTheme.textTheme.headlineLarge,
-                          )),
-                      SettingsListTile(
-                          onTap: () {},
-                          text: "kSettingsEditPersonal".tr(),
-                          trailingChild: Icon(
-                            Icons.arrow_forward_ios,
-                            color: currentTheme.indicatorColor,
-                          )),
-                      SettingsListTile(
-                          onTap: () {},
-                          text: "kSettingsReset".tr(),
-                          trailingChild: Icon(
-                            Icons.refresh,
-                            color: currentTheme.indicatorColor,
-                          )),
-                      SettingsCategoryRow(
-                          headerText: "kSettingsMore".tr(),
+                      const SettingsCategoryRow(
+                          headerText: Strings.about,
                           iconData: Icons.dashboard_customize_outlined),
                       SettingsListTile(
                           onTap: () {
@@ -102,14 +69,47 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                                   return const LanguageBottomSheet();
                                 });
                           },
-                          text: "kSettingsLanguage".tr(),
+                          text: Strings.language,
+                          trailingChild: Icon(
+                            Icons.arrow_forward_ios,
+                            color: currentTheme.indicatorColor,
+                          )),
+                      const SettingsListTile(
+                          text: Strings.darkTheme,
+                          trailingChild: ThemeSwitch()),
+                      const SettingsCategoryRow(
+                          headerText: Strings.privacy,
+                          iconData: Icons.privacy_tip_outlined),
+                      SettingsListTile(
+                          text: Strings.privacyPolicy,
+                          trailingChild: Icon(
+                            Icons.arrow_forward_ios,
+                            color: currentTheme.indicatorColor,
+                          )),
+                      const SettingsCategoryRow(
+                          headerText: Strings.feedback,
+                          iconData: Icons.feedback_outlined),
+                      SettingsListTile(
+                          text: Strings.rateThisApp,
                           trailingChild: Icon(
                             Icons.arrow_forward_ios,
                             color: currentTheme.indicatorColor,
                           )),
                       SettingsListTile(
-                          text: "kSettingsDarkTheme".tr(),
-                          trailingChild: const ThemeSwitch()),
+                          text: Strings.sendUs,
+                          trailingChild: Icon(
+                            Icons.arrow_forward_ios,
+                            color: currentTheme.indicatorColor,
+                          )),
+                      const SettingsCategoryRow(
+                          headerText: Strings.notifications,
+                          iconData: Icons.notifications),
+                      SettingsListTile(
+                          text: Strings.muteNotify,
+                          trailingChild: Icon(
+                            Icons.arrow_forward_ios,
+                            color: currentTheme.indicatorColor,
+                          )),
                     ]),
                   ),
                 ],

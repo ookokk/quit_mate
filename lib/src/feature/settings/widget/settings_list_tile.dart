@@ -20,26 +20,25 @@ class _SettingsListTileState extends ConsumerState<SettingsListTile> {
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
     return Container(
-      height: 60,
-      margin: const EdgeInsets.all(4),
+      height: 50,
+      margin: const EdgeInsets.all(6),
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
+                color: Colors.grey.withOpacity(0.1),
                 spreadRadius: 2,
-                blurRadius: 3,
+                blurRadius: 6,
                 offset: const Offset(0, 1))
           ],
           shape: BoxShape.rectangle,
           color: currentTheme.scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(14)),
+          borderRadius: BorderRadius.circular(10)),
       child: ListTile(
-        contentPadding: const EdgeInsets.all(4),
         onTap: widget.onTap,
         tileColor: currentTheme.scaffoldBackgroundColor,
         title: Text(
           widget.text,
-          style: currentTheme.textTheme.headlineLarge,
+          style: currentTheme.textTheme.titleMedium,
         ),
         trailing: widget.trailingChild,
         shape: RoundedRectangleBorder(

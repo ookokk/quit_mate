@@ -19,22 +19,25 @@ class _SettingsCategoryRowState extends ConsumerState<SettingsCategoryRow> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
-    return Row(
-      children: [
-        Icon(
-          widget.iconData,
-          size: 35,
-          color: currentTheme.indicatorColor,
-        ),
-        const SizedBox(
-          width: 16,
-        ),
-        Text(
-          widget.headerText,
-          style: currentTheme.textTheme.displaySmall
-              ?.copyWith(fontWeight: FontWeight.bold),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Icon(
+            widget.iconData,
+            color: currentTheme.indicatorColor,
+            size: 25,
+          ),
+          const SizedBox(
+            width: 16,
+          ),
+          Text(
+            widget.headerText,
+            style: currentTheme.textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
     );
   }
 }

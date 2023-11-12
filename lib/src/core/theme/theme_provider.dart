@@ -93,7 +93,7 @@ final class ThemeProvider extends StateNotifier<ThemeData> {
       backgroundColor: Color(0xff3e484d),
     ),
     hoverColor: const Color(0xff3e484d),
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: Colors.black45,
     disabledColor: const Color(0xff6499E9),
     cardColor: const Color(0xff5dad67),
     shadowColor: const Color(0xff343942),

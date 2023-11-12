@@ -4,6 +4,7 @@ import 'package:quit_mate/src/feature/auth/login/view/login_view.dart';
 import 'package:quit_mate/src/feature/auth/register/view/register_view.dart';
 import 'package:quit_mate/src/feature/get_started/view/get_started_view.dart';
 import 'package:quit_mate/src/feature/set_bg_image/view/set_bg_image_view.dart';
+import 'package:quit_mate/src/feature/settings/view/settings_view.dart';
 import 'package:quit_mate/src/feature/splash/view/splash_view.dart';
 
 final class Routes {
@@ -19,6 +20,8 @@ final class Routes {
   static const String home = '/home';
   static const String setBG = '/setBG';
   static const String affirmation = '/affirmation';
+  static const String settings = '/settings';
+  //settings
 
   static final Map<String, WidgetBuilder> routes = {
     splash: (context) => SplashView(),
@@ -27,5 +30,6 @@ final class Routes {
     register: (context) => RegisterView(),
     setBG: (context) => SetBGImageView(),
     affirmation: (context) => const AffirmationView(),
+    settings: (context) => const SettingsView(),
   };
 }
