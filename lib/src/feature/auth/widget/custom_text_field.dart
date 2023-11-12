@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
-final class CustomTextField extends ConsumerWidget {
+class CustomTextField extends ConsumerWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
   final VoidCallback? onIconButtonPressed;
   final Icon icon;
-  final String? isRequiredText;
   final TextInputType? keyboardType;
 
   const CustomTextField({
@@ -18,7 +17,6 @@ final class CustomTextField extends ConsumerWidget {
     required this.obscureText,
     this.onIconButtonPressed,
     required this.icon,
-    this.isRequiredText,
     this.keyboardType,
   }) : super(key: key);
 
@@ -30,14 +28,6 @@ final class CustomTextField extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (isRequiredText != null)
-            Padding(
-              padding: const EdgeInsets.only(left: 18),
-              child: Text(
-                isRequiredText!,
-                style: currentTheme.textTheme.titleMedium,
-              ),
-            ),
           SizedBox(
             height: 52,
             child: TextFormField(
