@@ -26,7 +26,6 @@ final class ThemeProvider extends StateNotifier<ThemeData> {
     }
   }
 
-// ref.read(themeProvider.notifier).toggleTheme();
   void toggleTheme() async {
     if (state == ThemeProvider.lightTheme) {
       state = ThemeProvider.darkTheme;

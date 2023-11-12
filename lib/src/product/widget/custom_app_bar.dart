@@ -18,8 +18,8 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
         centerTitle: true,
         title: Text(
           title ?? "",
-          style: currentTheme.textTheme.displaySmall
-              ?.copyWith(fontWeight: FontWeight.bold),
+          style: currentTheme.textTheme.titleLarge
+              ?.copyWith(fontWeight: FontWeight.w600),
         ),
         elevation: 0,
         backgroundColor: currentTheme.scaffoldBackgroundColor,

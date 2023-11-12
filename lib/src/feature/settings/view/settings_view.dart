@@ -82,10 +82,11 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                           iconData: Icons.privacy_tip_outlined),
                       SettingsListTile(
                           text: Strings.privacyPolicy,
-                          trailingChild: Icon(
-                            Icons.arrow_forward_ios,
-                            color: currentTheme.indicatorColor,
-                          )),
+                          onTap: () {
+                            Navigator.pushNamed(context, '/privacy');
+                          },
+                          trailingChild: Icon(Icons.arrow_forward_ios,
+                              color: currentTheme.indicatorColor)),
                       const SettingsCategoryRow(
                           headerText: Strings.feedback,
                           iconData: Icons.feedback_outlined),
