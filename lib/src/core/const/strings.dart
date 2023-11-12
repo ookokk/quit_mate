@@ -9,6 +9,9 @@ class Strings {
       "Take the first step to get started and start your transformation journey now!";
   //register
   static const String register = "Register";
+  static const String already = "Already have an account?";
+  static const String doNotHave = "Don't have an account?";
+
   static const String login = "Login";
   static const String email = "Email";
   static const String password = "Password";

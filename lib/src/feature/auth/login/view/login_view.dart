@@ -10,6 +10,7 @@ import 'package:quit_mate/src/feature/auth/viewmodel/password_visibility_notifie
 import 'package:quit_mate/src/feature/auth/widget/auth_alert_dialog.dart';
 import 'package:quit_mate/src/feature/auth/widget/auth_elevated_button.dart';
 import 'package:quit_mate/src/feature/auth/widget/custom_text_field.dart';
+import 'package:quit_mate/src/feature/auth/widget/navigate_register_or_login_row.dart';
 
 class LoginView extends ConsumerWidget {
   LoginView({
@@ -81,7 +82,17 @@ class LoginView extends ConsumerWidget {
                     },
                   ),
                   const SizedBox(
-                    height: 48,
+                    height: 18,
+                  ),
+                  NavigateRegisterOrLoginRow(
+                      rowText: Strings.doNotHave,
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/register', (route) => false);
+                      },
+                      btnText: Strings.register),
+                  const SizedBox(
+                    height: 18,
                   ),
                   AuthElevatedButton(
                     text: Strings.login,
