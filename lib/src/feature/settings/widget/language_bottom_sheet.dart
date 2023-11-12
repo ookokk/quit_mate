@@ -86,7 +86,7 @@ class LanguageBottomSheet extends ConsumerWidget {
       ),
       title: Text(
         listTileText,
-        style: currentTheme.textTheme.headlineLarge,
+        style: currentTheme.textTheme.titleMedium,
       ),
       onTap: listTileOnTap,
     );

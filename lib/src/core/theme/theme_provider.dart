@@ -98,7 +98,7 @@ final class ThemeProvider extends StateNotifier<ThemeData> {
     shadowColor: const Color(0xff343942),
     primaryColor: const Color(0xff5d5d5d),
     splashColor: const Color(0xff204354),
-    canvasColor: const Color(0xffcdcdd2),
+    canvasColor: const Color(0xff164863),
     dialogBackgroundColor: const Color(0xff557ec2),
     brightness: Brightness.dark,
     textTheme: TextTheme(

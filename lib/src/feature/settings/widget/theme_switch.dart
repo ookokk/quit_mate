@@ -34,7 +34,7 @@ class _CustomSwitchState extends ConsumerState<ThemeSwitch> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(17.0),
           color: internalValue
-              ? currentTheme.indicatorColor
+              ? currentTheme.primaryColor
               : currentTheme.canvasColor,
         ),
         child: Stack(

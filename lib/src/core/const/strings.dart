@@ -1,4 +1,7 @@
 class Strings {
+  // All of strings that below this comment line created before v1.0.0
+
+  //base
   static const String appName = "QuitMate";
   static const String getStarted = "Get Started";
   static const String firstOfAll = "First of all, congrats!";
@@ -10,6 +13,9 @@ class Strings {
   static const String email = "Email";
   static const String password = "Password";
   static const String username = "Username";
+  static const String error = "Error";
+  static const String cancel = "Cancel";
+  static const String errorOccurred = "An error occurred.";
   //user info
   static const String whatAreYou = "What are you getting sober from?";
   static const String whenWas = "When was your sober start date?";

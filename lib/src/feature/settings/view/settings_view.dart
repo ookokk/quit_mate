@@ -64,6 +64,7 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                       SettingsListTile(
                           onTap: () {
                             showModalBottomSheet(
+                                backgroundColor: currentTheme.canvasColor,
                                 context: context,
                                 builder: (BuildContext context) {
                                   return const LanguageBottomSheet();
