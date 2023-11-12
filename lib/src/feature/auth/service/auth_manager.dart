@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthManager {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<User?> signInWithEmailAndPassword(
+  Future<String?> signInWithEmailAndPassword(
       String email, String password) async {
     try {
       final UserCredential userCredential =
@@ -11,10 +11,12 @@ class AuthManager {
         email: email,
         password: password,
       );
-      return userCredential.user;
+
+      String? token = await userCredential.user!.getIdToken();
+
+      return token;
     } catch (e) {
-      print("Giriş hatası: $e");
-      return null;
+      return e.toString();
     }
   }
 

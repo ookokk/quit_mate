@@ -15,21 +15,21 @@ class AuthAlertDialog extends ChangeNotifier {
           backgroundColor: currentTheme.scaffoldBackgroundColor,
           title: Text(
             alertTitle ?? Strings.error,
-            style: currentTheme.textTheme.headlineLarge
+            style: currentTheme.textTheme.titleLarge
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 Text(errorMessage ?? Strings.errorOccurred,
-                    style: currentTheme.textTheme.titleLarge),
+                    style: currentTheme.textTheme.titleMedium),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text(Strings.okay,
-                  style: currentTheme.textTheme.headlineLarge),
+              child:
+                  Text(Strings.okay, style: currentTheme.textTheme.titleLarge),
               onPressed: () {
                 Navigator.of(context).pop();
               },

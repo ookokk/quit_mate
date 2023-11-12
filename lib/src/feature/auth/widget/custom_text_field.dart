@@ -53,10 +53,6 @@ final class CustomTextField extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(8),
                     borderSide: const BorderSide(color: Colors.grey),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28),
-                    borderSide: const BorderSide(color: Colors.grey),
-                  ),
                   fillColor: currentTheme.scaffoldBackgroundColor,
                   filled: true,
                   hintText: hintText,
