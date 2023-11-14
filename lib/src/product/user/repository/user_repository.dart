@@ -15,17 +15,12 @@ class UserRepository {
   }
 
   Future<SoberUser?> getUser(String userId) async {
-    try {
-      DocumentSnapshot snapshot = await _userCollection.doc(userId).get();
-      if (snapshot.exists) {
-        final Map<String, dynamic> data =
-            snapshot.data() as Map<String, dynamic>;
-        return SoberUser.fromJson(data);
-      }
-      return null;
-    } catch (e) {
-      print("getUser Error: $e");
-      return null;
+    DocumentSnapshot snapshot = await _userCollection.doc(userId).get();
+    print("Snapshot data: ${snapshot.data()}");
+    if (snapshot.exists) {
+      final Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      return SoberUser.fromJson(data);
     }
+    return null;
   }
 }

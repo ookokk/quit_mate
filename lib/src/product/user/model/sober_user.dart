@@ -19,19 +19,22 @@ class SoberUser {
     required this.reviewTime,
   });
   SoberUser.fromJson(Map<String, dynamic> json)
-      : addictiveFactor = json['addictiveFactor'],
-        soberStartDate = DateTime.parse(json['soberStartDate']),
-        userName = json['userName'],
-        weeklyUse = json['weeklyUse'],
-        dailyUseOnDays = json['dailyUseOnDays'],
-        pledgeTime = TimeOfDay(
-          hour: json['pledgeTime']['hour'],
-          minute: json['pledgeTime']['minute'],
-        ),
-        reviewTime = TimeOfDay(
-          hour: json['reviewTime']['hour'],
-          minute: json['reviewTime']['minute'],
-        );
+      : addictiveFactor = json['addictiveFactor'] ?? '',
+        soberStartDate = DateTime.parse(json['soberStartDate'] ?? ''),
+        userName = json['userName'] ?? '',
+        weeklyUse = json['weeklyUse'] ?? 0,
+        dailyUseOnDays = json['dailyUseOnDays'] ?? 0,
+        pledgeTime = _parseTime(json['pledgeTime']),
+        reviewTime = _parseTime(json['reviewTime']);
+
+  static TimeOfDay _parseTime(Map<String, dynamic>? timeData) {
+    if (timeData == null) return const TimeOfDay(hour: 0, minute: 0);
+
+    final int hour = timeData['hour'] ?? 0;
+    final int minute = timeData['minute'] ?? 0;
+
+    return TimeOfDay(hour: hour, minute: minute);
+  }
 
   Map<String, dynamic> toJson() {
     return {

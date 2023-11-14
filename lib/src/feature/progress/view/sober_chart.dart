@@ -29,7 +29,13 @@ class _HomeContainerState extends ConsumerState<SoberChart>
           final data = snapshot.data;
           if (data == null) {
             return const SizedBox(
-                height: 50, width: 50, child: CircularProgressIndicator());
+                height: 50,
+                width: 50,
+                child: Column(
+                  children: [
+                    CircularProgressIndicator(),
+                  ],
+                ));
           }
           final currentSecond = data['second'] ?? 0.0;
           final currentMinute = data['minute'] ?? 0.0;
