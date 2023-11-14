@@ -64,23 +64,9 @@ class LoginView extends ConsumerWidget {
                   const SizedBox(
                     height: 18,
                   ),
-                  CustomTextField(
-                    controller: passwordController,
-                    hintText: Strings.password,
-                    obscureText: passwordVisibility.isPasswordObscured,
-                    icon: passwordVisibility.isPasswordObscured
-                        ? const Icon(
-                            Icons.lock,
-                            color: Colors.blue,
-                          )
-                        : const Icon(
-                            Icons.lock_open,
-                            color: Colors.blue,
-                          ),
-                    onIconButtonPressed: () {
-                      passwordVisibility.togglePasswordVisibility();
-                    },
-                  ),
+                  PasswordControllerTextField(
+                      passwordController: passwordController,
+                      passwordVisibility: passwordVisibility),
                   const SizedBox(
                     height: 18,
                   ),
@@ -93,38 +79,74 @@ class LoginView extends ConsumerWidget {
                   const SizedBox(
                     height: 18,
                   ),
-                  AuthElevatedButton(
-                    text: Strings.login,
-                    onTap: () async {
-                      String? user =
-                          await authManager.signInWithEmailAndPassword(
-                        emailController.text.trim(),
-                        passwordController.text.trim(),
-                      );
-                      if (user != null) {
-                        if (user.toLowerCase().contains("error") ||
-                            user.toLowerCase().contains("invalid")) {
-                          Future.microtask(() {
-                            AuthAlertDialog().showAuthAlertDialog(
-                              context,
-                              ref,
-                              Strings.error,
-                              user,
-                            );
-                          });
-                        }
-                      } else {
-                        print('başarılı giriş');
-                        //navigate edilecek
-                      }
-                    },
-                  ),
+                  buildAuthElevatedButton(authManager, context, ref),
                 ],
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  AuthElevatedButton buildAuthElevatedButton(
+      AuthManager authManager, BuildContext context, WidgetRef ref) {
+    return AuthElevatedButton(
+      text: Strings.login,
+      onTap: () async {
+        String? user = await authManager.signInWithEmailAndPassword(
+          emailController.text.trim(),
+          passwordController.text.trim(),
+        );
+        if (user != null) {
+          if (user.toLowerCase().contains("error") ||
+              user.toLowerCase().contains("invalid")) {
+            Future.microtask(() {
+              AuthAlertDialog().showAuthAlertDialog(
+                context,
+                ref,
+                Strings.error,
+                user,
+              );
+            });
+          }
+        } else {
+          print('başarılı giriş');
+          //navigate edilecek
+        }
+      },
+    );
+  }
+}
+
+class PasswordControllerTextField extends StatelessWidget {
+  const PasswordControllerTextField({
+    super.key,
+    required this.passwordController,
+    required this.passwordVisibility,
+  });
+
+  final TextEditingController passwordController;
+  final PasswordVisibilityNotifier passwordVisibility;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextField(
+      controller: passwordController,
+      hintText: Strings.password,
+      obscureText: passwordVisibility.isPasswordObscured,
+      icon: passwordVisibility.isPasswordObscured
+          ? const Icon(
+              Icons.lock,
+              color: Colors.blue,
+            )
+          : const Icon(
+              Icons.lock_open,
+              color: Colors.blue,
+            ),
+      onIconButtonPressed: () {
+        passwordVisibility.togglePasswordVisibility();
+      },
     );
   }
 }
