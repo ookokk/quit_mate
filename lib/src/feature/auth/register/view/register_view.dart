@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -96,7 +95,9 @@ class RegisterView extends ConsumerWidget {
                   const SizedBox(
                     height: 48,
                   ),
-                  buildAuthElevatedButton(context, ref, authManager)
+                  buildAuthElevatedButton(context, ref, authManager),
+                  IconButton(
+                      onPressed: () {}, icon: Icon(Icons.plus_one_outlined)),
                 ],
               ),
             )

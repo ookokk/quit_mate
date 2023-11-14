@@ -80,6 +80,8 @@ class LoginView extends ConsumerWidget {
                     height: 18,
                   ),
                   buildAuthElevatedButton(authManager, context, ref),
+                  IconButton(
+                      onPressed: () {}, icon: Icon(Icons.plus_one_outlined)),
                 ],
               ),
             )

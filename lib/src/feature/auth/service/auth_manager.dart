@@ -28,5 +28,11 @@ class AuthManager {
 
   Future<void> signOut() async {
     await _auth.signOut();
+    token = null;
+  }
+
+  String? getCurrentUserId() {
+    User? currentUser = _auth.currentUser;
+    return currentUser?.uid;
   }
 }
