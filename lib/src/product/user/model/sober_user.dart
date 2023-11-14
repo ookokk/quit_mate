@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SoberUser {
+  final String userName;
   final String addictiveFactor;
   final DateTime soberStartDate;
   final int weeklyUse;
@@ -9,6 +10,7 @@ class SoberUser {
   final TimeOfDay reviewTime;
 
   SoberUser({
+    required this.userName,
     required this.addictiveFactor,
     required this.soberStartDate,
     required this.weeklyUse,
@@ -19,6 +21,7 @@ class SoberUser {
   SoberUser.fromJson(Map<String, dynamic> json)
       : addictiveFactor = json['addictiveFactor'],
         soberStartDate = DateTime.parse(json['soberStartDate']),
+        userName = json['userName'],
         weeklyUse = json['weeklyUse'],
         dailyUseOnDays = json['dailyUseOnDays'],
         pledgeTime = TimeOfDay(
@@ -32,6 +35,7 @@ class SoberUser {
 
   Map<String, dynamic> toJson() {
     return {
+      'userName': userName,
       'addictiveFactor': addictiveFactor,
       'soberStartDate': soberStartDate.toIso8601String(),
       'weeklyUse': weeklyUse,

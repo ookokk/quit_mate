@@ -9,6 +9,11 @@ class UserRepository {
     await _userCollection.doc(userId).set(user.toJson());
   }
 
+  Future<void> saveUserName(String userId, String userName) async {
+    Map<String, dynamic> userData = {'userName': userName};
+    await _userCollection.doc(userId).set(userData);
+  }
+
   Future<SoberUser?> getUser(String userId) async {
     try {
       DocumentSnapshot snapshot = await _userCollection.doc(userId).get();

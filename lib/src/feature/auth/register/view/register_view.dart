@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +13,7 @@ import 'package:quit_mate/src/feature/auth/widget/auth_alert_dialog.dart';
 import 'package:quit_mate/src/feature/auth/widget/auth_elevated_button.dart';
 import 'package:quit_mate/src/feature/auth/widget/custom_text_field.dart';
 import 'package:quit_mate/src/feature/auth/widget/navigate_register_or_login_row.dart';
+import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class RegisterView extends ConsumerWidget {
   RegisterView({
@@ -20,6 +23,8 @@ class RegisterView extends ConsumerWidget {
   final TextEditingController pwCnt = TextEditingController();
   final TextEditingController pwAgainCnt = TextEditingController();
   final TextEditingController usernameCnt = TextEditingController();
+  final userRepository = UserRepository();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
@@ -112,12 +117,15 @@ class RegisterView extends ConsumerWidget {
                 context, ref, Strings.error, Strings.pwDoNotMatch);
             return;
           }
-          await authManager.registerWithEmailAndPassword(
+          User? user = await authManager.registerWithEmailAndPassword(
             emailCnt.text,
             pwCnt.text,
           );
-          Future.microtask(() => AuthAlertDialog().showAuthAlertDialog(
-              context, ref, Strings.success, Strings.userCreated));
+          if (user != null) {
+            userRepository.saveUserName(user.uid, usernameCnt.text.trim());
+            Future.microtask(() => AuthAlertDialog().showAuthAlertDialog(
+                context, ref, Strings.success, Strings.userCreated));
+          }
         } catch (e) {
           String errorMessage = e.toString().toLowerCase();
           if (errorMessage.contains("error") ||
