@@ -11,10 +11,14 @@ class Strings {
   static const String register = "Register";
   static const String already = "Already have an account?";
   static const String doNotHave = "Don't have an account?";
+  static const String pwDoNotMatch = "Passwords do not match";
 
   static const String login = "Login";
+  static const String success = "Success ";
+  static const String userCreated = "User created successfully ";
   static const String email = "Email";
   static const String password = "Password";
+  static const String passwordAgain = "Password again";
   static const String username = "Username";
   static const String error = "Error";
   static const String cancel = "Cancel";

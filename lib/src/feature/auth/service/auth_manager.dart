@@ -5,34 +5,25 @@ class AuthManager {
   String? token;
   Future<String?> signInWithEmailAndPassword(
       String email, String password) async {
-    try {
-      final UserCredential userCredential =
-          await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+    final UserCredential userCredential =
+        await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
 
-      String? firebaseToken = await userCredential.user!.getIdToken();
-      token = firebaseToken;
-      return null;
-    } catch (e) {
-      return e.toString();
-    }
+    String? firebaseToken = await userCredential.user!.getIdToken();
+    token = firebaseToken;
+    return token;
   }
 
   Future<User?> registerWithEmailAndPassword(
       String email, String password) async {
-    try {
-      final UserCredential userCredential =
-          await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return userCredential.user;
-    } catch (e) {
-      print("Kayıt hatası: $e");
-      return null;
-    }
+    final UserCredential userCredential =
+        await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return userCredential.user;
   }
 
   Future<void> signOut() async {

@@ -87,8 +87,7 @@ class LoginView extends ConsumerWidget {
                   NavigateRegisterOrLoginRow(
                       rowText: Strings.doNotHave,
                       onTap: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, '/register', (route) => false);
+                        Navigator.pushNamed(context, '/register');
                       },
                       btnText: Strings.register),
                   const SizedBox(
@@ -105,7 +104,7 @@ class LoginView extends ConsumerWidget {
                       if (user != null) {
                         if (user.toLowerCase().contains("error") ||
                             user.toLowerCase().contains("invalid")) {
-                          Future.delayed(const Duration(milliseconds: 10), () {
+                          Future.microtask(() {
                             AuthAlertDialog().showAuthAlertDialog(
                               context,
                               ref,
