@@ -3,24 +3,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/splash/viewmodel/splash_view_model.dart';
+import 'package:quit_mate/src/feature/splash/viewmodel/splash_state_mixin.dart';
 
 class SplashView extends ConsumerStatefulWidget {
-  SplashView({
+  const SplashView({
     Key? key,
   }) : super(key: key);
-  final SplashViewModel viewModel = SplashViewModel(null);
 
   @override
   ConsumerState createState() => SplashViewState();
 }
 
-class SplashViewState extends ConsumerState<SplashView> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class SplashViewState extends ConsumerState<SplashView> with SplashStateMixin {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);

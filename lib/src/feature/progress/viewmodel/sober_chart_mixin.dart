@@ -18,8 +18,8 @@ mixin SoberChartMixin on ConsumerState<SoberChart> {
   @override
   void initState() {
     super.initState();
-    final String? currentUserId = authManager.getCurrentUserId();
-    widget.userRepository.getUser(currentUserId ?? "").then((user) {
+    // final String? currentUserId = authManager.getCurrentUserId();
+    widget.userRepository.getUser('user1234').then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
         void updateData() {
