@@ -28,12 +28,15 @@ class _HomeContainerState extends ConsumerState<SoberChart>
         builder: (context, snapshot) {
           final data = snapshot.data;
           if (data == null) {
-            return const SizedBox(
+            return SizedBox(
                 height: 50,
                 width: 50,
                 child: Column(
                   children: [
-                    CircularProgressIndicator(),
+                    Icon(
+                      Icons.refresh,
+                      color: currentTheme.indicatorColor,
+                    ),
                   ],
                 ));
           }

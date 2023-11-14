@@ -12,7 +12,6 @@ class Strings {
   static const String already = "Already have an account?";
   static const String doNotHave = "Don't have an account?";
   static const String pwDoNotMatch = "Passwords do not match";
-
   static const String login = "Login";
   static const String success = "Success ";
   static const String userCreated = "User created successfully ";
@@ -43,6 +42,9 @@ class Strings {
   static const String hour = "Hour";
   static const String minute = "Minute";
   static const String second = "Second";
+  static const String thereWasAnError =
+      "There was an error loading the graphic";
+
   //bg image
   static const String setBGImage = "Set Background Image";
   static const String bgImageUpdated = "Background image has been updated.";
