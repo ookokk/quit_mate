@@ -21,7 +21,6 @@ class _HomeContainerState extends ConsumerState<SoberChart>
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
     return Container(
-      // color: currentTheme.hoverColor,
       color: currentTheme.scaffoldBackgroundColor,
       height: DeviceSize.kHeight(context) * 0.4,
       child: StreamBuilder<Map<String, double>>(

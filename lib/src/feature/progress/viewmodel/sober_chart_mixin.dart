@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/progress/view/sober_chart.dart';
 import 'dart:async';
 
@@ -10,14 +11,15 @@ mixin SoberChartMixin on ConsumerState<SoberChart> {
   double currentMonth = 0.0;
   double currentYear = 0.0;
   DateTime? soberStartDate;
-
+  final authManager = AuthManager();
   final StreamController<Map<String, double>> dataStreamController =
       StreamController<Map<String, double>>();
 
   @override
   void initState() {
     super.initState();
-    widget.userRepository.getUser('user123').then((user) {
+    final String? currentUserId = authManager.getCurrentUserId();
+    widget.userRepository.getUser(currentUserId ?? "").then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
         void updateData() {

@@ -21,7 +21,7 @@ class AuthAlertDialog extends ChangeNotifier {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(errorMessage ?? Strings.errorOccurred,
+                Text(errorMessage ?? Strings.anUnexpectedError,
                     style: currentTheme.textTheme.titleMedium),
               ],
             ),

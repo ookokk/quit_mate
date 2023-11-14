@@ -96,8 +96,6 @@ class RegisterView extends ConsumerWidget {
                     height: 48,
                   ),
                   buildAuthElevatedButton(context, ref, authManager),
-                  IconButton(
-                      onPressed: () {}, icon: Icon(Icons.plus_one_outlined)),
                 ],
               ),
             )
@@ -123,7 +121,9 @@ class RegisterView extends ConsumerWidget {
             pwCnt.text,
           );
           if (user != null) {
-            userRepository.saveUserName(user.uid, usernameCnt.text.trim());
+            final String? currentUserId = authManager.getCurrentUserId();
+            userRepository.saveUserName(
+                currentUserId ?? "", usernameCnt.text.trim());
             Future.microtask(() => AuthAlertDialog().showAuthAlertDialog(
                 context, ref, Strings.success, Strings.userCreated));
           }
@@ -146,7 +146,7 @@ class RegisterView extends ConsumerWidget {
                 context,
                 ref,
                 Strings.error,
-                'An unexpected error occurred.',
+                Strings.anUnexpectedError,
               );
             });
           }

@@ -22,7 +22,7 @@ class Strings {
   static const String username = "Username";
   static const String error = "Error";
   static const String cancel = "Cancel";
-  static const String errorOccurred = "An error occurred.";
+  static const String anUnexpectedError = "An unexpected error occurred.";
   //user info
   static const String whatAreYou = "What are you getting sober from?";
   static const String whenWas = "When was your sober start date?";
