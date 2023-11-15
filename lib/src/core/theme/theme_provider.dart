@@ -16,7 +16,7 @@ class ThemeProvider extends StateNotifier<ThemeData> {
   ThemeData currentTheme = lightTheme;
 
   Future<void> _loadTheme() async {
-    final String themeName = await CacheManager.getTheme();
+    final String? themeName = await CacheManager.getString('theme');
     if (themeName == "darkTheme") {
       state = ThemeProvider.darkTheme;
       currentTheme = ThemeProvider.darkTheme;
@@ -29,10 +29,10 @@ class ThemeProvider extends StateNotifier<ThemeData> {
   void toggleTheme() async {
     if (state == ThemeProvider.lightTheme) {
       state = ThemeProvider.darkTheme;
-      await CacheManager.setTheme("darkTheme");
+      await CacheManager.setString("theme", "darkTheme");
     } else {
       state = ThemeProvider.lightTheme;
-      await CacheManager.setTheme("lightTheme");
+      await CacheManager.setString("theme", "lightTheme");
     }
   }
 

@@ -1,31 +1,34 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-final class CacheManager {
-  static const String themeKey = 'theme';
-  static const String tokenKey = 'token';
-
-  static Future<void> setTheme(String themeName) async {
+class CacheManager {
+  static Future<void> setString(String key, String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(themeKey, themeName);
+    await prefs.setString(key, value);
   }
 
-  static Future<String> getTheme() async {
+  static Future<String?> getString(String key,
+      {String defaultValue = ""}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(themeKey) ?? "lightTheme";
+    return prefs.getString(key) ?? defaultValue;
   }
 
-  static Future<void> setToken(String token) async {
+  static Future<void> removeString(String key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(tokenKey, token);
+    await prefs.remove(key);
   }
 
-  static Future<String?> getToken() async {
+  static Future<void> setBool(String key, bool value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(tokenKey);
+    await prefs.setBool(key, value);
   }
 
-  static Future<void> removeToken() async {
+  static Future<bool?> getBool(String key, {bool defaultValue = false}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove(tokenKey);
+    return prefs.getBool(key) ?? defaultValue;
+  }
+
+  static Future<void> removeBool(String key) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
   }
 }

@@ -15,6 +15,7 @@ class GetUserInformationView extends ConsumerWidget {
     Key? key,
   }) : super(key: key);
   final PageController _pageController = PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
@@ -24,13 +25,18 @@ class GetUserInformationView extends ConsumerWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: NextButton(
         onTap: () {
-          if (_pageController.page != 3) {
+          if (_pageController.page != 4) {
             _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.ease);
+          } else {
+            print('sayfalar bitti');
           }
         },
-        text: Strings.next,
+        text: /*_pageController.page != null && _pageController.page! == 4
+            ? Strings.complete
+            :*/
+            Strings.next,
       ),
       backgroundColor: currentTheme.scaffoldBackgroundColor,
       body: PageView(controller: _pageController, children: [

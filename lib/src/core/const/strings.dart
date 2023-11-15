@@ -24,6 +24,7 @@ class Strings {
   static const String anUnexpectedError = "An unexpected error occurred.";
   //user info
   static const String whatAreYou = "What are you getting sober from?";
+  static const String complete = "Complete";
   static const String whenWas = "When was your sober start date?";
   static const String howMany = "How many days per week did you drink?";
   static const String howManyTimesEach =

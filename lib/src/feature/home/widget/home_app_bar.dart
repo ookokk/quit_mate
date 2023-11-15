@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
@@ -34,9 +35,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
         ),
         Expanded(
           flex: 6,
-          child: Image.asset(
-            'assets/images/app_bar.png',
-          ),
+          child: SvgPicture.asset('assets/svg/appbar.svg'),
         ),
         Expanded(
           child: IconButton(
