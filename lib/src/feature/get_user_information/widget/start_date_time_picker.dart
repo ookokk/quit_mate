@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/get_user_information/viewmodel/selected_date_viewmodel.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class StartDateTimePicker extends ConsumerWidget {
   const StartDateTimePicker({super.key});
@@ -10,6 +11,7 @@ class StartDateTimePicker extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
+    final SoberUser soberUser = SoberUser();
     Future<void> selectDate(BuildContext context) async {
       final DateTime picked = (await showDatePicker(
             context: context,
@@ -21,15 +23,8 @@ class StartDateTimePicker extends ConsumerWidget {
 
       final formattedDate = DateFormat('dd.MM.yyyy').format(picked);
       ref.read(selectedDateProvider.notifier).state = formattedDate;
-      /*     final SoberUser user = SoberUser(
-          userName: "",
-          addictiveFactor: "",
-          soberStartDate: picked,
-          weeklyUse: 0,
-          dailyUseOnDays: 0,
-          pledgeTime: const TimeOfDay(minute: 0, hour: 0),
-          reviewTime: const TimeOfDay(minute: 0, hour: 0));
-      await userRepository.saveUser(authManager.userId, MockUser().mockUser.);*/
+      soberUser.setSoberStartDate(picked);
+      print(soberUser.soberStartDate);
     }
 
     return Column(

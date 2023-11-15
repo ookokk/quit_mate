@@ -25,7 +25,6 @@ class SoberUser {
     _instance.dailyUseOnDays = json['dailyUseOnDays'] ?? 0;
     _instance.pledgeTime = _parseTime(json['pledgeTime']);
     _instance.reviewTime = _parseTime(json['reviewTime']);
-
     return _instance;
   }
 
