@@ -51,6 +51,8 @@ class Strings {
   static const String okay = "Okay";
   //settings
   static const String account = "Account";
+  static const String warning = "Warning";
+  static const String areYouSure = "Are you sure you want to log out ?";
   static const String signOut = "Sign out";
   static const String language = "Language";
   static const String darkTheme = "Dark theme";

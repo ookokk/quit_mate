@@ -5,6 +5,7 @@ import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/settings/widget/language_bottom_sheet.dart';
+import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_category_row.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_list_tile.dart';
 import 'package:quit_mate/src/feature/settings/widget/theme_switch.dart';
@@ -22,6 +23,7 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
+
     return SafeArea(
         child: Scaffold(
             backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -48,11 +50,13 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                           headerText: Strings.account,
                           iconData: Icons.account_circle),
                       SettingsListTile(
+                          onTap: () {
+                            SettingsAlertDialog()
+                                .showSettingsAlertDialog(context, ref);
+                          },
                           text: Strings.signOut,
                           trailingChild: IconButton(
-                            onPressed: () {
-                              //auth.manager .logout
-                            },
+                            onPressed: () {},
                             icon: Icon(
                               Icons.logout,
                               color: currentTheme.indicatorColor,
