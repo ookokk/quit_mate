@@ -23,7 +23,9 @@ mixin SoberChartMixin on ConsumerState<SoberChart> {
 
   void getUserInformation() {
     // final String? currentUserId = authManager.getCurrentUserId();
-    widget.userRepository.getUser('user1234').then((user) {
+
+
+    widget.userRepository.getUser('user123').then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
         void updateData() {

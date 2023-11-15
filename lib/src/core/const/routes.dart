@@ -9,7 +9,7 @@ import 'package:quit_mate/src/feature/settings/feature/privacy/view/privacy_view
 import 'package:quit_mate/src/feature/settings/view/settings_view.dart';
 import 'package:quit_mate/src/feature/splash/view/splash_view.dart';
 
-final class Routes {
+class Routes {
   //BASE
   static const String splash = '/splash';
   static const String getStarted = '/getStarted';
