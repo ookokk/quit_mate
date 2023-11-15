@@ -18,7 +18,9 @@ class GetStartedView extends ConsumerWidget {
         child: Scaffold(
       floatingActionButton: GetStartedButton(
         text: Strings.getStarted,
-        onTap: () {},
+        onTap: () {
+          Navigator.pushReplacementNamed(context, '/getUserInfo');
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: currentTheme.scaffoldBackgroundColor,

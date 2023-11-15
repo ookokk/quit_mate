@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthManager {
+  String userId = "";
   final FirebaseAuth _auth = FirebaseAuth.instance;
   String? token;
   Future<String?> signInWithEmailAndPassword(
@@ -34,5 +35,9 @@ class AuthManager {
   String? getCurrentUserId() {
     User? currentUser = _auth.currentUser;
     return currentUser?.uid;
+  }
+
+  void setCurrentUserId() {
+    userId = _auth.currentUser!.uid;
   }
 }

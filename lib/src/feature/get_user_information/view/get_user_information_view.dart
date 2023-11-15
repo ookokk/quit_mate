@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/get_user_information/view/addictive_factor_view.dart';
@@ -30,13 +31,12 @@ class GetUserInformationView extends ConsumerWidget {
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.ease);
           } else {
-            print('sayfalar bitti');
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/login', (route) => false);
+            CacheManager.setBool('isFirst', false);
           }
         },
-        text: /*_pageController.page != null && _pageController.page! == 4
-            ? Strings.complete
-            :*/
-            Strings.next,
+        text: Strings.next,
       ),
       backgroundColor: currentTheme.scaffoldBackgroundColor,
       body: PageView(controller: _pageController, children: [
