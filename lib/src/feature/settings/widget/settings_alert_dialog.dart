@@ -50,7 +50,8 @@ class SettingsAlertDialog {
                   style: currentTheme.textTheme.titleLarge),
               onPressed: () {
                 authManager.signOut();
-                //  Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/login', (route) => false);
               },
             ),
           ],
