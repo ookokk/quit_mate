@@ -14,7 +14,7 @@ class CustomPercentIndicator extends StatelessWidget {
       animateFromLastPercent: true,
       progressColor: Colors.blue,
       animation: false,
-      lineHeight: 4,
+      lineHeight: 3,
     );
   }
 }

@@ -24,7 +24,6 @@ class StartDateTimePicker extends ConsumerWidget {
       final formattedDate = DateFormat('dd.MM.yyyy').format(picked);
       ref.read(selectedDateProvider.notifier).state = formattedDate;
       soberUser.setSoberStartDate(picked);
-      print(soberUser.soberStartDate);
     }
 
     return Column(

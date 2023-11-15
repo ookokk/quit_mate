@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class CustomNumberPickerWeekly extends ConsumerStatefulWidget {
   const CustomNumberPickerWeekly({
@@ -21,6 +22,8 @@ class WeightPickerState extends ConsumerState<CustomNumberPickerWeekly> {
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
     final numberOfDays = ref.watch(weeklyFrequencyProvider.notifier).state;
+    final SoberUser soberUser = SoberUser();
+
     return SizedBox(
       height: DeviceSize.kHeight(context) * 0.4,
       child: Row(
@@ -39,6 +42,7 @@ class WeightPickerState extends ConsumerState<CustomNumberPickerWeekly> {
             onChanged: (value) {
               setState(() {
                 ref.read(weeklyFrequencyProvider.notifier).state = value;
+                soberUser.setWeeklyUse(value);
               });
             },
             itemHeight: 50,

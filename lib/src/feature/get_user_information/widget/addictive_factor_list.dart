@@ -39,7 +39,6 @@ class _AddictiveFactorListState extends ConsumerState<AddictiveFactorList> {
               setState(() {
                 selectedAddictiveFactor = item;
                 soberUser.setAddictiveFactor(item);
-                print(soberUser.addictiveFactor);
               });
             },
           );

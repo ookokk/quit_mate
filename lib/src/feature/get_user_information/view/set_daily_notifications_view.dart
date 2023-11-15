@@ -92,7 +92,7 @@ class SetDailyNotificationsView extends ConsumerWidget {
             Text(
               Strings.youWillReceive,
               style: currentTheme.textTheme.titleSmall,
-            )
+            ),
           ],
         ),
       ),
