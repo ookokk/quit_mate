@@ -21,6 +21,15 @@ class StartDateTimePicker extends ConsumerWidget {
 
       final formattedDate = DateFormat('dd.MM.yyyy').format(picked);
       ref.read(selectedDateProvider.notifier).state = formattedDate;
+      /*     final SoberUser user = SoberUser(
+          userName: "",
+          addictiveFactor: "",
+          soberStartDate: picked,
+          weeklyUse: 0,
+          dailyUseOnDays: 0,
+          pledgeTime: const TimeOfDay(minute: 0, hour: 0),
+          reviewTime: const TimeOfDay(minute: 0, hour: 0));
+      await userRepository.saveUser(authManager.userId, MockUser().mockUser.);*/
     }
 
     return Column(

@@ -5,12 +5,15 @@ import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/get_user_information/widget/custom_percent_indicator.dart';
 import 'package:quit_mate/src/feature/get_user_information/widget/sober_start_date_row.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class SoberStartDateView extends ConsumerWidget {
   SoberStartDateView({
     Key? key,
   }) : super(key: key);
   DateTime? selectedDate = DateTime.now();
+  final SoberUser mySoberUser = SoberUser();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);

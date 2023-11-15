@@ -18,7 +18,6 @@ class _SoberStartDateRowState extends ConsumerState<SoberStartDateRow> {
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
     final selectedDate = ref.watch(selectedDateProvider);
-
     return Card(
       color: currentTheme.hoverColor,
       child: Row(
