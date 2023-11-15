@@ -19,7 +19,7 @@ class CustomPledgeTimePicker extends ConsumerWidget {
                 child: child!);
           },
           context: context,
-          initialTime: pledgeTime ?? TimeOfDay.now(),
+          initialTime: pledgeTime ?? const TimeOfDay(hour: 08, minute: 00),
         );
 
         if (selectedTime != null) {
@@ -37,4 +37,5 @@ class CustomPledgeTimePicker extends ConsumerWidget {
   }
 }
 
-final pledgeTimeProvider = StateProvider<TimeOfDay?>((ref) => TimeOfDay.now());
+final pledgeTimeProvider =
+    StateProvider<TimeOfDay?>((ref) => const TimeOfDay(hour: 08, minute: 00));

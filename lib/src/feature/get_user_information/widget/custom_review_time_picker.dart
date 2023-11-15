@@ -19,7 +19,7 @@ class CustomReviewTimePicker extends ConsumerWidget {
                 child: child!);
           },
           context: context,
-          initialTime: reviewTime ?? TimeOfDay.now(),
+          initialTime: reviewTime ?? const TimeOfDay(hour: 21, minute: 00),
         );
 
         if (selectedTime != null) {
@@ -37,4 +37,5 @@ class CustomReviewTimePicker extends ConsumerWidget {
   }
 }
 
-final reviewTimeProvider = StateProvider<TimeOfDay?>((ref) => TimeOfDay.now());
+final reviewTimeProvider =
+    StateProvider<TimeOfDay?>((ref) => const TimeOfDay(hour: 21, minute: 00));
