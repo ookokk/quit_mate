@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
+import 'package:quit_mate/src/feature/home/widget/home_app_bar.dart';
 import 'package:quit_mate/src/feature/progress/view/sober_chart.dart';
-import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
 import 'package:quit_mate/src/product/widget/custom_nav_bar.dart';
 
 class HomeView extends ConsumerStatefulWidget {
@@ -40,7 +40,7 @@ class HomeViewState extends ConsumerState<HomeView> {
     final currentTheme = ref.watch(themeProvider);
     return SafeArea(
       child: Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: const HomeAppBar(),
         resizeToAvoidBottomInset: false,
         backgroundColor: currentTheme.scaffoldBackgroundColor,
         body: PageView(
