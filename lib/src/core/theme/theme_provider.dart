@@ -91,7 +91,7 @@ class ThemeProvider extends StateNotifier<ThemeData> {
     datePickerTheme: const DatePickerThemeData(
       backgroundColor: Color(0xff3e484d),
     ),
-    hoverColor: const Color(0xff3e484d),
+    hoverColor: const Color(0xff5d7cbd),
     scaffoldBackgroundColor: Colors.black26,
     disabledColor: const Color(0xff0c3e88),
     cardColor: const Color(0xff5dad67),

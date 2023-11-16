@@ -10,6 +10,7 @@ import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class SoberChart extends ConsumerStatefulWidget {
   final UserRepository userRepository = UserRepository();
+
   SoberChart({Key? key}) : super(key: key);
   @override
   ConsumerState<SoberChart> createState() => _SoberChartState();
@@ -49,7 +50,8 @@ class _SoberChartState extends ConsumerState<SoberChart>
             children: [
               Text(
                 Strings.iHaveBeen,
-                style: currentTheme.textTheme.bodyMedium,
+                style: currentTheme.textTheme.bodyMedium
+                    ?.copyWith(color: Colors.white),
               ),
               const SizedBox(
                 height: 8,
@@ -79,9 +81,9 @@ class _SoberChartState extends ConsumerState<SoberChart>
                     borderData: FlBorderData(show: false),
                     barGroups: [
                       buildBarChartGroupData(
-                          0, 0, currentYear, currentTheme, Colors.deepPurple),
+                          0, 0, currentYear, currentTheme, Colors.green),
                       buildBarChartGroupData(
-                          1, 0, currentMonth, currentTheme, Colors.green),
+                          1, 0, currentMonth, currentTheme, Colors.deepPurple),
                       buildBarChartGroupData(
                           2, 0, currentDay, currentTheme, Colors.red),
                       buildBarChartGroupData(
@@ -89,7 +91,7 @@ class _SoberChartState extends ConsumerState<SoberChart>
                       buildBarChartGroupData(
                           4, 0, currentMinute, currentTheme, Colors.green),
                       buildBarChartGroupData(
-                          5, 0, currentSecond, currentTheme, Colors.yellow),
+                          5, 0, currentSecond, currentTheme, Colors.red),
                     ],
                   ),
                 ),
@@ -134,7 +136,8 @@ class _SoberChartState extends ConsumerState<SoberChart>
               ];
               return Text(
                 titles[value.toInt()],
-                style: currentTheme.textTheme.titleSmall,
+                style: currentTheme.textTheme.titleSmall
+                    ?.copyWith(color: Colors.white),
               );
             }));
   }
@@ -157,7 +160,8 @@ class _SoberChartState extends ConsumerState<SoberChart>
 
               return Text(
                 titles[value.toInt()].toString(),
-                style: currentTheme.textTheme.titleSmall,
+                style: currentTheme.textTheme.titleSmall
+                    ?.copyWith(color: Colors.white),
               );
             }));
   }

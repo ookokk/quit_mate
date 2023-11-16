@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_chart.dart';
+import 'package:quit_mate/src/feature/navigation/features/progress/widget/sober_start_date_view.dart';
+import 'package:quit_mate/src/feature/navigation/features/progress/widget/streak_view.dart';
+import 'package:quit_mate/src/feature/navigation/features/progress/widget/years_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SoberPageView extends ConsumerWidget {
@@ -23,9 +26,9 @@ class SoberPageView extends ConsumerWidget {
               controller: _pageController,
               children: [
                 SoberChart(),
-                Container(
-                  color: Colors.red,
-                )
+                YearsView(),
+                StreakView(),
+                SoberStartDateView()
               ],
             ),
           ),
