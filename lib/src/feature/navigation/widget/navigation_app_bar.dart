@@ -16,6 +16,7 @@ class NavigationAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
     return AppBar(
+      foregroundColor: currentTheme.hoverColor,
       centerTitle: true,
       title: Text(
         title ?? "",
@@ -48,7 +49,7 @@ class NavigationAppBar extends ConsumerWidget implements PreferredSizeWidget {
               )),
         )
       ],
-      backgroundColor: currentTheme.scaffoldBackgroundColor,
+      backgroundColor: currentTheme.hoverColor,
     );
   }
 }

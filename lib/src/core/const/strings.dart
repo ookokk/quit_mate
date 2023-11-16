@@ -43,6 +43,9 @@ class Strings {
   static const String hour = "Hour";
   static const String minute = "Minute";
   static const String second = "Second";
+  static const String iHaveBeen = "I have been free for";
+  static const String mySoberStreak = "My sober streak is";
+  static const String mySoberStartDate = "My sober start date";
   static const String thereWasAnError =
       "There was an error loading the graphic";
 

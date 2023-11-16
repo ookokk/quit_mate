@@ -21,7 +21,7 @@ class _SoberChartState extends ConsumerState<SoberChart>
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
     return Container(
-      color: currentTheme.scaffoldBackgroundColor,
+      color: currentTheme.hoverColor,
       height: DeviceSize.kHeight(context) * 0.4,
       child: StreamBuilder<Map<String, double>>(
         stream: dataStreamController.stream,
@@ -47,6 +47,13 @@ class _SoberChartState extends ConsumerState<SoberChart>
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Text(
+                Strings.iHaveBeen,
+                style: currentTheme.textTheme.bodyMedium,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
               SizedBox(
                 width: DeviceSize.kWidth(context),
                 height: DeviceSize.kHeight(context) * 0.35,
@@ -71,12 +78,18 @@ class _SoberChartState extends ConsumerState<SoberChart>
                     ),
                     borderData: FlBorderData(show: false),
                     barGroups: [
-                      buildBarChartGroupData(0, 0, currentYear, currentTheme),
-                      buildBarChartGroupData(1, 0, currentMonth, currentTheme),
-                      buildBarChartGroupData(2, 0, currentDay, currentTheme),
-                      buildBarChartGroupData(3, 0, currentHour, currentTheme),
-                      buildBarChartGroupData(4, 0, currentMinute, currentTheme),
-                      buildBarChartGroupData(5, 0, currentSecond, currentTheme),
+                      buildBarChartGroupData(
+                          0, 0, currentYear, currentTheme, Colors.deepPurple),
+                      buildBarChartGroupData(
+                          1, 0, currentMonth, currentTheme, Colors.green),
+                      buildBarChartGroupData(
+                          2, 0, currentDay, currentTheme, Colors.red),
+                      buildBarChartGroupData(
+                          3, 0, currentHour, currentTheme, Colors.deepPurple),
+                      buildBarChartGroupData(
+                          4, 0, currentMinute, currentTheme, Colors.green),
+                      buildBarChartGroupData(
+                          5, 0, currentSecond, currentTheme, Colors.yellow),
                     ],
                   ),
                 ),
@@ -93,10 +106,11 @@ class _SoberChartState extends ConsumerState<SoberChart>
     double fromY,
     double toY,
     ThemeData currentTheme,
+    Color color,
   ) {
     return BarChartGroupData(x: x, barRods: [
       BarChartRodData(
-          color: currentTheme.primaryColor,
+          color: color,
           fromY: fromY,
           toY: toY,
           width: 35,

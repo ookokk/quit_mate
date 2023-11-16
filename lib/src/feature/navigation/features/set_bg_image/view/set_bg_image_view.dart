@@ -8,7 +8,7 @@ import 'package:quit_mate/src/feature/navigation/features/set_bg_image/model/bg_
 import 'package:quit_mate/src/feature/navigation/features/set_bg_image/widget/set_bg_image_btn.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-final class SetBGImageView extends ConsumerWidget {
+class SetBGImageView extends ConsumerWidget {
   SetBGImageView({
     Key? key,
   }) : super(key: key);

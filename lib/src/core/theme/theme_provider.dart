@@ -43,14 +43,14 @@ class ThemeProvider extends StateNotifier<ThemeData> {
     datePickerTheme: const DatePickerThemeData(
       backgroundColor: Colors.white,
     ),
-    hoverColor: const Color(0xffDDF2FD),
+    hoverColor: const Color(0xff5d7cbd),
     cardColor: const Color(0xff5dad67),
     shadowColor: const Color(0xffcfdcec),
     splashColor: const Color(0xffF39F5A),
     dialogBackgroundColor: const Color(0xffe8576a),
     canvasColor: const Color(0xfff0f0f0),
     primaryColor: const Color(0xff2371b0),
-    disabledColor: const Color(0xff6499E9),
+    disabledColor: const Color(0xff0c3e88),
     textTheme: TextTheme(
       displayLarge:
           CustomTextTheme.instance!.headline57.copyWith(color: Colors.black),
@@ -92,8 +92,8 @@ class ThemeProvider extends StateNotifier<ThemeData> {
       backgroundColor: Color(0xff3e484d),
     ),
     hoverColor: const Color(0xff3e484d),
-    scaffoldBackgroundColor: Colors.black45,
-    disabledColor: const Color(0xff6499E9),
+    scaffoldBackgroundColor: Colors.black26,
+    disabledColor: const Color(0xff0c3e88),
     cardColor: const Color(0xff5dad67),
     shadowColor: const Color(0xff343942),
     primaryColor: const Color(0xff5d5d5d),

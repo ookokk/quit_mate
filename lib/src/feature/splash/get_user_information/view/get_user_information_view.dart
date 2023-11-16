@@ -8,6 +8,8 @@ import 'package:quit_mate/src/feature/splash/get_user_information/view/set_daily
 import 'package:quit_mate/src/feature/splash/get_user_information/view/sober_start_date_view.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/view/weekly_frequency_of_use_view.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/widget/next_button.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
+import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
 
 import 'daily_use_on_days_view.dart';
@@ -20,6 +22,8 @@ class GetUserInformationView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final userRepository = UserRepository();
+    final SoberUser soberUser = SoberUser();
     final currentTheme = ref.watch(themeProvider);
     return SafeArea(
         child: Scaffold(
@@ -35,6 +39,7 @@ class GetUserInformationView extends ConsumerWidget {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/login', (route) => false);
             CacheManager.setBool('isFirst', false);
+            userRepository.saveUser('user123', soberUser);
           }
         },
         text: Strings.next,

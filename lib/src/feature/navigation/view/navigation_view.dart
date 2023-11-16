@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/history/view/history_view.dart';
@@ -17,18 +18,25 @@ class NavigationView extends ConsumerStatefulWidget {
 
 class NavigationViewState extends ConsumerState<NavigationView> {
   int selectedIndex = 0;
-  late PageController pageController;
+  late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
-    pageController = PageController();
+    _pageController = PageController();
+    // Disable page swiping
+    _pageController.addListener(() {
+      if (_pageController.position.userScrollDirection !=
+          ScrollDirection.idle) {
+        _pageController.position.jumpTo(_pageController.page!.roundToDouble());
+      }
+    });
   }
 
   void onItemTapped(int index) {
     setState(() {
       selectedIndex = index;
-      pageController.animateToPage(
+      _pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -45,12 +53,7 @@ class NavigationViewState extends ConsumerState<NavigationView> {
         resizeToAvoidBottomInset: false,
         backgroundColor: currentTheme.scaffoldBackgroundColor,
         body: PageView(
-          controller: pageController,
-          onPageChanged: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
+          controller: _pageController,
           children: const [HomeView(), HistoryView()],
         ),
         bottomNavigationBar: CustomNavBar(
@@ -63,7 +66,7 @@ class NavigationViewState extends ConsumerState<NavigationView> {
 
   @override
   void dispose() {
-    pageController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 }
