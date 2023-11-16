@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/navigation/features/history/view/history_view.dart';
-import 'package:quit_mate/src/feature/navigation/features/home/view/home_view.dart';
-import 'package:quit_mate/src/feature/navigation/widget/navigation_app_bar.dart';
 import 'package:quit_mate/src/product/widget/custom_nav_bar.dart';
 
-class NavigationView extends ConsumerStatefulWidget {
-  const NavigationView({
+class HistoryView extends ConsumerStatefulWidget {
+  const HistoryView({
     Key? key,
   }) : super(key: key);
 
   @override
-  NavigationViewState createState() => NavigationViewState();
+  HistoryViewState createState() => HistoryViewState();
 }
 
-class NavigationViewState extends ConsumerState<NavigationView> {
+class HistoryViewState extends ConsumerState<HistoryView> {
   int selectedIndex = 0;
   late PageController pageController;
 
@@ -41,8 +38,6 @@ class NavigationViewState extends ConsumerState<NavigationView> {
     final currentTheme = ref.watch(themeProvider);
     return SafeArea(
       child: Scaffold(
-        appBar: const NavigationAppBar(),
-        resizeToAvoidBottomInset: false,
         backgroundColor: currentTheme.scaffoldBackgroundColor,
         body: PageView(
           controller: pageController,
@@ -51,7 +46,7 @@ class NavigationViewState extends ConsumerState<NavigationView> {
               selectedIndex = index;
             });
           },
-          children: const [HomeView(), HistoryView()],
+          children: const [],
         ),
         bottomNavigationBar: CustomNavBar(
           selectedIndex: selectedIndex,

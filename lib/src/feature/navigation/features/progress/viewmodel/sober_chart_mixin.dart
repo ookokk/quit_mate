@@ -22,13 +22,19 @@ mixin SoberChartMixin on ConsumerState<SoberChart> {
     getUserInformation();
   }
 
+  @override
+  void dispose() {
+    dataStreamController.close();
+    super.dispose();
+  }
+
   void getUserInformation() {
     // final String? currentUserId = authManager.getCurrentUserId();
     widget.userRepository.getUser('user123').then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
         void updateData() {
-          if (soberStartDate != null) {
+          if (soberStartDate != null && mounted) {
             DateTime now = DateTime.now();
             Duration duration = now.difference(soberStartDate!);
             int days = duration.inDays;
@@ -81,11 +87,5 @@ mixin SoberChartMixin on ConsumerState<SoberChart> {
 
   int calculateYears(Duration duration) {
     return (duration.inDays ~/ 365);
-  }
-
-  @override
-  void dispose() {
-    dataStreamController.close();
-    super.dispose();
   }
 }

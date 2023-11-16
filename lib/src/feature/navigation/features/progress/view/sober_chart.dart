@@ -12,11 +12,11 @@ class SoberChart extends ConsumerStatefulWidget {
   final UserRepository userRepository = UserRepository();
   SoberChart({Key? key}) : super(key: key);
   @override
-  ConsumerState<SoberChart> createState() => _HomeContainerState();
+  ConsumerState<SoberChart> createState() => _SoberChartState();
 }
 
-class _HomeContainerState extends ConsumerState<SoberChart>
-    with SoberChartMixin {
+class _SoberChartState extends ConsumerState<SoberChart>
+    with SoberChartMixin, WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);

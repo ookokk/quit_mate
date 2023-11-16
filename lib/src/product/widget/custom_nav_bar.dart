@@ -29,7 +29,7 @@ class CustomNavBar extends ConsumerWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.search,
+            Icons.calendar_month,
             color: currentTheme.indicatorColor,
           ),
           label: '',
