@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/routes.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/splash/view/splash_view.dart';
 import 'src/core/init/init_app.dart';
+import 'src/feature/splash/splash/view/splash_view.dart';
 
 void main() {
   InitApp().initApp();

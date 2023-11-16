@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:quit_mate/src/feature/affirmation/model/get_random_affirmation.dart';
+import 'package:quit_mate/src/feature/navigation/features/affirmation/model/get_random_affirmation.dart';
 
 void main() {
   // All tests passed!

@@ -111,7 +111,7 @@ class LoginView extends ConsumerWidget {
             });
           } else {
             Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
-                context, '/home', (route) => false));
+                context, '/navigation', (route) => false));
           }
         } else {
           Future.microtask(() {
