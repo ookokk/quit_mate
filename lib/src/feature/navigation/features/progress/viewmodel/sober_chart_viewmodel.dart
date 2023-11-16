@@ -1,10 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'dart:async';
+import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
-import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_chart.dart';
+final soberChartProvider = ChangeNotifierProvider<SoberChartViewModel>((ref) {
+  final viewModel = SoberChartViewModel();
+  viewModel.getUserInformation();
+  return viewModel;
+});
 
-mixin SoberChartMixin on ConsumerState<SoberChart> {
+class SoberChartViewModel extends ChangeNotifier {
   double currentSecond = 0;
   double currentMinute = 0;
   double currentHour = 0.0;
@@ -12,29 +18,18 @@ mixin SoberChartMixin on ConsumerState<SoberChart> {
   double currentMonth = 0.0;
   double currentYear = 0.0;
   DateTime? soberStartDate;
-  final authManager = AuthManager();
+  final UserRepository userRepository = UserRepository();
+  final AuthManager authManager = AuthManager();
   final StreamController<Map<String, double>> dataStreamController =
       StreamController<Map<String, double>>();
 
-  @override
-  void initState() {
-    super.initState();
-    getUserInformation();
-  }
-
-  @override
-  void dispose() {
-    dataStreamController.close();
-    super.dispose();
-  }
-
   void getUserInformation() {
     // final String? currentUserId = authManager.getCurrentUserId();
-    widget.userRepository.getUser('user123').then((user) {
+    userRepository.getUser('user123').then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
         void updateData() {
-          if (soberStartDate != null && mounted) {
+          if (soberStartDate != null) {
             DateTime now = DateTime.now();
             Duration duration = now.difference(soberStartDate!);
             int days = duration.inDays;
@@ -47,14 +42,12 @@ mixin SoberChartMixin on ConsumerState<SoberChart> {
             if (days > 30) days = 30;
             if (hours > 24) hours = 24;
 
-            setState(() {
-              currentDay = days.toDouble();
-              currentHour = hours.toDouble();
-              currentMinute = minutes.toDouble();
-              currentSecond = seconds.toDouble();
-              currentMonth = months.toDouble();
-              currentYear = years.toDouble();
-            });
+            currentDay = days.toDouble();
+            currentHour = hours.toDouble();
+            currentMinute = minutes.toDouble();
+            currentSecond = seconds.toDouble();
+            currentMonth = months.toDouble();
+            currentYear = years.toDouble();
 
             dataStreamController.sink.add({
               'year': currentYear,
@@ -64,6 +57,8 @@ mixin SoberChartMixin on ConsumerState<SoberChart> {
               'minute': currentMinute,
               'second': currentSecond,
             });
+
+            notifyListeners();
           }
         }
 

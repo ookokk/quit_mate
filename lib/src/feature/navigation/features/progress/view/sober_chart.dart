@@ -5,27 +5,27 @@ import 'package:quit_mate/src/core/const/material/project_radius.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_mixin.dart';
-import 'package:quit_mate/src/product/user/repository/user_repository.dart';
+import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
 
 class SoberChart extends ConsumerStatefulWidget {
-  final UserRepository userRepository = UserRepository();
-
-  SoberChart({Key? key}) : super(key: key);
+  const SoberChart({Key? key}) : super(key: key);
   @override
   ConsumerState<SoberChart> createState() => _SoberChartState();
 }
 
-class _SoberChartState extends ConsumerState<SoberChart>
-    with SoberChartMixin, WidgetsBindingObserver {
+class _SoberChartState extends ConsumerState<SoberChart> {
+  double currentYear = 0;
+  double currentMonth = 0;
+
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
+    final soberChartViewModel = ref.watch(soberChartProvider);
     return Container(
       color: currentTheme.hoverColor,
       height: DeviceSize.kHeight(context) * 0.4,
       child: StreamBuilder<Map<String, double>>(
-        stream: dataStreamController.stream,
+        stream: soberChartViewModel.dataStreamController.stream,
         builder: (context, snapshot) {
           final data = snapshot.data;
           if (data == null) {
@@ -45,6 +45,8 @@ class _SoberChartState extends ConsumerState<SoberChart>
           final currentMinute = data['minute'] ?? 0.0;
           final currentHour = data['hour'] ?? 0.0;
           final currentDay = data['day'] ?? 0.0;
+          final currentMonth = data['month'] ?? 0.0;
+          final currentYear = data['year'] ?? 0.0;
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
