@@ -72,9 +72,13 @@ class SoberChartViewModel extends ChangeNotifier {
     });
   }
 
-  int calculateDaysDifference(DateTime startDate, DateTime endDate) {
-    final difference = endDate.difference(startDate);
-    return difference.inDays;
+  int calculateTotalDaysSober() {
+    if (soberStartDate != null) {
+      DateTime now = DateTime.now();
+      Duration duration = now.difference(soberStartDate!);
+      return duration.inDays;
+    }
+    return 0;
   }
 
   int calculateMonths(Duration duration) {
@@ -83,11 +87,5 @@ class SoberChartViewModel extends ChangeNotifier {
 
   int calculateYears(Duration duration) {
     return (duration.inDays ~/ 365);
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
   }
 }

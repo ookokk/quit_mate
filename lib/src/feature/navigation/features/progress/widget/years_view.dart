@@ -22,7 +22,7 @@ class YearsView extends ConsumerWidget {
           children: [
             Positioned.fill(
                 child: Lottie.asset('assets/animations/congrats.json',
-                    animate: false)),
+                    animate: true)),
             Align(
               alignment: Alignment.topCenter,
               child: Text(
@@ -31,45 +31,59 @@ class YearsView extends ConsumerWidget {
                     ?.copyWith(color: Colors.white),
               ),
             ),
-            Align(
+            NumberCircleAvatar(
+              soberDifferenceNumber: year,
+              currentTheme: currentTheme,
               alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 18),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                        radius: 35, child: Text(year.toInt().toString())),
-                    Text(
-                      Strings.year,
-                      style: currentTheme.textTheme.headlineSmall
-                          ?.copyWith(color: Colors.white),
-                    )
-                  ],
-                ),
-              ),
+              underText: Strings.year,
             ),
-            Align(
+            NumberCircleAvatar(
+              soberDifferenceNumber: month,
+              currentTheme: currentTheme,
               alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 18),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 35,
-                      child: Text(month.toInt().toString()),
-                    ),
-                    Text(
-                      Strings.month,
-                      style: currentTheme.textTheme.headlineSmall
-                          ?.copyWith(color: Colors.white),
-                    )
-                  ],
-                ),
-              ),
-            )
+              underText: Strings.month,
+            ),
           ],
         ));
+  }
+}
+
+class NumberCircleAvatar extends StatelessWidget {
+  const NumberCircleAvatar({
+    super.key,
+    required this.soberDifferenceNumber,
+    required this.currentTheme,
+    required this.alignment,
+    required this.underText,
+  });
+  final AlignmentGeometry alignment;
+  final double soberDifferenceNumber;
+  final ThemeData currentTheme;
+  final String underText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: alignment,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 18),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+                backgroundColor: Colors.deepPurple.shade900,
+                radius: 35,
+                child: Text(soberDifferenceNumber.toInt().toString(),
+                    style: currentTheme.textTheme.headlineSmall
+                        ?.copyWith(color: Colors.white))),
+            Text(
+              underText,
+              style: currentTheme.textTheme.headlineSmall
+                  ?.copyWith(color: Colors.white),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

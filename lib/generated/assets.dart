@@ -3,12 +3,15 @@ class Assets {
   Assets._();
 
   static const String animationsCircular = 'assets/animations/circular.json';
+  static const String animationsCongrats = 'assets/animations/congrats.json';
   static const String animationsForest = 'assets/animations/forest.json';
   static const String animationsHearth = 'assets/animations/hearth.json';
+  static const String animationsSettings = 'assets/animations/settings.json';
   static const String fontsPoppinsLight = 'assets/fonts/Poppins-Light.ttf';
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
   static const String imagesApp = 'assets/images/app.png';
+  static const String imagesAppBar = 'assets/images/app_bar.png';
   static const String imagesAppBig = 'assets/images/app_big.png';
   static const String imagesAppNoName = 'assets/images/app_no_name.png';
   static const String imagesBgGet = 'assets/images/bg_get.jpg';
@@ -22,6 +25,9 @@ class Assets {
   static const String imagesWp7 = 'assets/images/wp7.jpg';
   static const String imagesWp8 = 'assets/images/wp8.jpg';
   static const String imagesWp9 = 'assets/images/wp9.jpg';
+  static const String scriptLocalizationScript =
+      'assets/script/localization_script.txt';
+  static const String svgAppbar = 'assets/svg/appbar.svg';
   static const String svgBack = 'assets/svg/back.svg';
   static const String svgBg = 'assets/svg/bg.svg';
   static const String svgGetStarted1 = 'assets/svg/get_started1.svg';

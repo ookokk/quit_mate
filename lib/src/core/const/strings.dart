@@ -40,6 +40,7 @@ class Strings {
   static const String year = "Year";
   static const String month = "Month";
   static const String day = "Day";
+  static const String days = "Days";
   static const String hour = "Hour";
   static const String minute = "Minute";
   static const String second = "Second";
