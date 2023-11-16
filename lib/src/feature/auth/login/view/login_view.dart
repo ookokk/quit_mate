@@ -109,10 +109,19 @@ class LoginView extends ConsumerWidget {
                 user,
               );
             });
+          } else {
+            Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
+                context, '/home', (route) => false));
           }
         } else {
-          print('başarılı giriş');
-          //navigate edilecek
+          Future.microtask(() {
+            AuthAlertDialog().showAuthAlertDialog(
+              context,
+              ref,
+              Strings.error,
+              Strings.anUnexpectedError,
+            );
+          });
         }
       },
     );
