@@ -26,8 +26,8 @@ class SoberPageView extends ConsumerWidget {
               controller: _pageController,
               children: const [
                 SoberChart(),
-                YearsView(),
                 StreakView(),
+                YearsView(),
                 SoberStartDateView()
               ],
             ),
