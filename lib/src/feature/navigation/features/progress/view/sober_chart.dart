@@ -1,24 +1,22 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/material/project_radius.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
 
-class SoberChart extends ConsumerStatefulWidget {
-  const SoberChart({Key? key}) : super(key: key);
-  @override
-  ConsumerState<SoberChart> createState() => _SoberChartState();
-}
+class SoberChart extends ConsumerWidget {
+  const SoberChart({
+    Key? key,
+  }) : super(key: key);
 
-class _SoberChartState extends ConsumerState<SoberChart> {
-  double currentYear = 0;
-  double currentMonth = 0;
+  final double currentYear = 0;
+  final double currentMonth = 0;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
     final soberChartViewModel = ref.watch(soberChartProvider);
     return Container(
