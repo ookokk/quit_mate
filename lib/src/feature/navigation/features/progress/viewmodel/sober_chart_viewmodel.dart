@@ -25,6 +25,7 @@ class SoberChartViewModel extends ChangeNotifier {
 
   void getUserInformation() {
     // final String? currentUserId = authManager.getCurrentUserId();
+    print('getuser calisti');
     userRepository.getUser('user123').then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;

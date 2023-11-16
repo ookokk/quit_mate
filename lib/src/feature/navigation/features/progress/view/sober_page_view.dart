@@ -24,7 +24,7 @@ class SoberPageView extends ConsumerWidget {
             height: DeviceSize.kHeight(context) * 0.45,
             child: PageView(
               controller: _pageController,
-              children: [
+              children: const [
                 SoberChart(),
                 YearsView(),
                 StreakView(),
