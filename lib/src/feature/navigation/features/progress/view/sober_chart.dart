@@ -8,12 +8,11 @@ import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
 
 class SoberChart extends ConsumerWidget {
+  final double currentYear = 0;
+  final double currentMonth = 0;
   const SoberChart({
     Key? key,
   }) : super(key: key);
-
-  final double currentYear = 0;
-  final double currentMonth = 0;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -157,7 +156,6 @@ class SoberChart extends ConsumerWidget {
                 currentMinute.toInt(),
                 currentSecond.toInt(),
               ];
-
               return Text(
                 titles[value.toInt()].toString(),
                 style: currentTheme.textTheme.titleSmall

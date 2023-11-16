@@ -21,7 +21,7 @@ class SoberChartViewModel extends ChangeNotifier {
   final UserRepository userRepository = UserRepository();
   final AuthManager authManager = AuthManager();
   final StreamController<Map<String, double>> dataStreamController =
-      StreamController<Map<String, double>>();
+      StreamController<Map<String, double>>.broadcast();
 
   void getUserInformation() {
     // final String? currentUserId = authManager.getCurrentUserId();
@@ -82,5 +82,11 @@ class SoberChartViewModel extends ChangeNotifier {
 
   int calculateYears(Duration duration) {
     return (duration.inDays ~/ 365);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 }
