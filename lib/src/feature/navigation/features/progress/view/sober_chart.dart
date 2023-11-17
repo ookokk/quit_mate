@@ -20,7 +20,7 @@ class SoberChart extends ConsumerWidget {
     final soberChartViewModel = ref.watch(soberChartProvider);
     return Container(
       color: currentTheme.hoverColor,
-      height: DeviceSize.kHeight(context) * 0.4,
+      height: DeviceSize.kHeight(context) * 0.35,
       child: StreamBuilder<Map<String, double>>(
         stream: soberChartViewModel.dataStreamController.stream,
         builder: (context, snapshot) {

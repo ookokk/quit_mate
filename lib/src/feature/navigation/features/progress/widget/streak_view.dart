@@ -18,21 +18,19 @@ class StreakView extends ConsumerWidget {
       color: currentTheme.hoverColor,
       child: Column(
         children: [
-          Text(Strings.mySoberStreak,
-              style: currentTheme.textTheme.bodyMedium
-                  ?.copyWith(color: Colors.white)),
-          const SizedBox(
-            height: 48,
+          Expanded(
+            child: Text(Strings.mySoberStreak,
+                style: currentTheme.textTheme.bodyMedium
+                    ?.copyWith(color: Colors.white)),
           ),
-          Text(totalDaysSober.toString(),
-              style: currentTheme.textTheme.displayLarge
-                  ?.copyWith(color: Colors.white)),
-          const SizedBox(
-            height: 28,
-          ),
-          Text(Strings.days,
-              style: currentTheme.textTheme.bodyLarge
-                  ?.copyWith(color: Colors.white)),
+          Expanded(
+              child: Text(totalDaysSober.toString(),
+                  style: currentTheme.textTheme.displayLarge
+                      ?.copyWith(color: Colors.white))),
+          Expanded(
+              child: Text(Strings.days,
+                  style: currentTheme.textTheme.bodyLarge
+                      ?.copyWith(color: Colors.white))),
         ],
       ),
     );

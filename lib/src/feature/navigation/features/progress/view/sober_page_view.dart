@@ -16,35 +16,36 @@ class SoberPageView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
-    return Container(
-      color: currentTheme.hoverColor,
-      child: Column(
-        children: [
-          SizedBox(
-            height: DeviceSize.kHeight(context) * 0.45,
-            child: PageView(
-              controller: _pageController,
-              children: const [
-                SoberChart(),
-                StreakView(),
-                YearsView(),
-                SoberStartPageView()
-              ],
+    return SizedBox(
+      height: DeviceSize.kHeight(context) * 0.48,
+      child: Container(
+        color: currentTheme.hoverColor,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 15,
+              child: PageView(
+                controller: _pageController,
+                children: const [
+                  SoberChart(),
+                  StreakView(),
+                  YearsView(),
+                  SoberStartPageView()
+                ],
+              ),
             ),
-          ),
-          SmoothPageIndicator(
-            controller: _pageController,
-            count: 4,
-            effect: const SlideEffect(
-                activeDotColor: Colors.yellow,
-                paintStyle: PaintingStyle.stroke,
-                dotHeight: 8,
-                dotWidth: 8),
-          ),
-          const SizedBox(
-            height: 8,
-          )
-        ],
+            Expanded(
+                child: SmoothPageIndicator(
+              controller: _pageController,
+              count: 4,
+              effect: const SlideEffect(
+                  activeDotColor: Colors.yellow,
+                  paintStyle: PaintingStyle.stroke,
+                  dotHeight: 8,
+                  dotWidth: 8),
+            )),
+          ],
+        ),
       ),
     );
   }

@@ -22,69 +22,80 @@ class SoberStartPageView extends ConsumerWidget {
       color: currentTheme.hoverColor,
       child: Column(
         children: [
-          Text(
+          Expanded(
+              child: Text(
             Strings.mySoberStartDate,
             style: currentTheme.textTheme.bodyMedium
                 ?.copyWith(color: Colors.white),
-          ),
-          const SizedBox(
-            height: 48,
-          ),
-          Text(
-            formattedStartDate,
-            style: currentTheme.textTheme.headlineLarge?.copyWith(
-                color: Colors.white,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 58,
-          ),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Column(
+          )),
+          Expanded(
+              flex: 2,
+              child: Text(
+                formattedStartDate,
+                style: currentTheme.textTheme.headlineLarge?.copyWith(
+                    color: Colors.white,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold),
+              )),
+          Expanded(
+            flex: 2,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                    onPressed: () {
-                      SettingsAlertDialog().showSettingsAlertDialog(
+                Expanded(
+                  child: buildButtonAndTextColumn(
+                      context, ref, soberUser, currentTheme, () {
+                    SettingsAlertDialog().showSettingsAlertDialog(
+                      context,
+                      ref,
+                      () {
+                        soberUser.setSoberStartDate(DateTime.now());
+                      },
+                      MaterialStateProperty.all<Color>(Colors.transparent),
+                      "",
+                      "${Strings.areYouSureReset}\n${Strings.doNotFeel}",
+                      Strings.yes,
+                    );
+                  }, Icons.replay_circle_filled_sharp, Strings.reset),
+                ),
+                Expanded(
+                    child: buildButtonAndTextColumn(
                         context,
                         ref,
-                        () {
-                          soberUser.setSoberStartDate(DateTime.now());
-                        },
-                        MaterialStateProperty.all<Color>(Colors.transparent),
-                        "",
-                        "${Strings.areYouSureReset}\n${Strings.doNotFeel}",
-                        Strings.yes,
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.replay_circle_filled_sharp,
-                      color: Colors.white,
-                    )),
-                Text(Strings.reset,
-                    style: currentTheme.textTheme.bodyMedium
-                        ?.copyWith(color: Colors.white))
+                        soberUser,
+                        currentTheme,
+                        () {},
+                        Icons.settings_sharp,
+                        Strings.settings)),
               ],
             ),
-            const SizedBox(
-              width: 28,
-            ),
-            Column(
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.settings_sharp,
-                      color: Colors.white,
-                    )),
-                Text(Strings.settings,
-                    style: currentTheme.textTheme.bodyMedium
-                        ?.copyWith(color: Colors.white))
-              ],
-            ),
-          ]),
+          ),
         ],
       ),
+    );
+  }
+
+  Column buildButtonAndTextColumn(
+    BuildContext context,
+    WidgetRef ref,
+    SoberUser soberUser,
+    ThemeData currentTheme,
+    VoidCallback onTap,
+    IconData iconData,
+    String text,
+  ) {
+    return Column(
+      children: [
+        IconButton(
+            onPressed: onTap,
+            icon: Icon(
+              iconData,
+              color: Colors.white,
+            )),
+        Text(text,
+            style: currentTheme.textTheme.bodyMedium
+                ?.copyWith(color: Colors.white))
+      ],
     );
   }
 
@@ -93,7 +104,7 @@ class SoberStartPageView extends ConsumerWidget {
       final day = date.day;
       final month = _getMonthName(date.month);
       final year = date.year;
-      return '$day $month $year';
+      return '$day $month, $year';
     }
     return 'N/A';
   }

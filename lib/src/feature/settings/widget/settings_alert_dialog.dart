@@ -11,7 +11,7 @@ class SettingsAlertDialog {
     MaterialStateProperty<Color> btnBGColor,
     String? title,
     String body,
-    String text,
+    String btnText,
   ) {
     final currentTheme = ref.watch(themeProvider);
 
@@ -39,7 +39,7 @@ class SettingsAlertDialog {
                 backgroundColor: btnBGColor,
               ),
               onPressed: onTap,
-              child: Text(text, style: currentTheme.textTheme.titleLarge),
+              child: Text(btnText, style: currentTheme.textTheme.titleLarge),
             ),
             const SizedBox(
               width: 8,
