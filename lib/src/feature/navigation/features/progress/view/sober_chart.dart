@@ -68,8 +68,7 @@ class SoberChart extends ConsumerWidget {
                       show: false,
                     ),
                     titlesData: FlTitlesData(
-                      topTitles: buildTopData(currentDay, currentHour,
-                          currentMinute, currentSecond, currentTheme),
+                      topTitles: buildTopData(data, currentTheme),
                       leftTitles: const AxisTitles(drawBelowEverything: false),
                       rightTitles: const AxisTitles(
                         drawBelowEverything: false,
@@ -96,6 +95,30 @@ class SoberChart extends ConsumerWidget {
                 ),
               ),
             ],
+          );
+        },
+      ),
+    );
+  }
+
+  AxisTitles buildTopData(Map<String, double> data, ThemeData currentTheme) {
+    return AxisTitles(
+      sideTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 40,
+        getTitlesWidget: (value, meta) {
+          final titles = [
+            data['year']?.toInt() ?? 0,
+            data['month']?.toInt() ?? 0,
+            data['day']?.toInt() ?? 0,
+            data['hour']?.toInt() ?? 0,
+            data['minute']?.toInt() ?? 0,
+            data['second']?.toInt() ?? 0,
+          ];
+          return Text(
+            titles[value.toInt()].toString(),
+            style: currentTheme.textTheme.titleSmall
+                ?.copyWith(color: Colors.white),
           );
         },
       ),
@@ -135,29 +158,6 @@ class SoberChart extends ConsumerWidget {
               ];
               return Text(
                 titles[value.toInt()],
-                style: currentTheme.textTheme.titleSmall
-                    ?.copyWith(color: Colors.white),
-              );
-            }));
-  }
-
-  AxisTitles buildTopData(double currentDay, double currentHour,
-      double currentMinute, double currentSecond, ThemeData currentTheme) {
-    return AxisTitles(
-        sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 40,
-            getTitlesWidget: (value, meta) {
-              final titles = [
-                currentYear.toInt(),
-                currentMonth.toInt(),
-                currentDay.toInt(),
-                currentHour.toInt(),
-                currentMinute.toInt(),
-                currentSecond.toInt(),
-              ];
-              return Text(
-                titles[value.toInt()].toString(),
                 style: currentTheme.textTheme.titleSmall
                     ?.copyWith(color: Colors.white),
               );

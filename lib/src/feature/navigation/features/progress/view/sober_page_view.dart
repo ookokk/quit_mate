@@ -35,14 +35,17 @@ class SoberPageView extends ConsumerWidget {
               ),
             ),
             Expanded(
-                child: SmoothPageIndicator(
-              controller: _pageController,
-              count: 4,
-              effect: const SlideEffect(
-                  activeDotColor: Colors.yellow,
-                  paintStyle: PaintingStyle.stroke,
-                  dotHeight: 8,
-                  dotWidth: 8),
+                child: SizedBox(
+              height: DeviceSize.kHeight(context) * 0.01,
+              child: SmoothPageIndicator(
+                controller: _pageController,
+                count: 4,
+                effect: const SlideEffect(
+                    activeDotColor: Colors.yellow,
+                    paintStyle: PaintingStyle.stroke,
+                    dotHeight: 8,
+                    dotWidth: 8),
+              ),
             )),
           ],
         ),
