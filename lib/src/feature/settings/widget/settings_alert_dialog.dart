@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 
 class SettingsAlertDialog {
   Future<void> showSettingsAlertDialog(
     BuildContext context,
     WidgetRef ref,
+    VoidCallback onTap,
+    MaterialStateProperty<Color> btnBGColor,
+    String? title,
+    String body,
+    String text,
   ) {
     final currentTheme = ref.watch(themeProvider);
-    final authManager = AuthManager();
+
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -18,40 +22,33 @@ class SettingsAlertDialog {
         return AlertDialog(
           backgroundColor: currentTheme.scaffoldBackgroundColor,
           title: Text(
-            Strings.warning,
+            title ?? "",
             style: currentTheme.textTheme.titleLarge
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(Strings.areYouSure,
-                    style: currentTheme.textTheme.titleMedium),
+                Text(body, style: currentTheme.textTheme.titleSmall),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text(Strings.cancel,
-                  style: currentTheme.textTheme.titleLarge?.copyWith()),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+              style: ButtonStyle(
+                backgroundColor: btnBGColor,
+              ),
+              onPressed: onTap,
+              child: Text(text, style: currentTheme.textTheme.titleLarge),
             ),
             const SizedBox(
               width: 8,
             ),
             TextButton(
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.red.shade400),
-              ),
-              child: Text(Strings.signOut,
-                  style: currentTheme.textTheme.titleLarge),
+              child: Text(Strings.cancel,
+                  style: currentTheme.textTheme.titleLarge?.copyWith()),
               onPressed: () {
-                authManager.signOut();
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/login', (route) => false);
+                Navigator.of(context).pop();
               },
             ),
           ],

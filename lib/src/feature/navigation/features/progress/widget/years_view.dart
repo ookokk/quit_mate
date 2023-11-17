@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class YearsView extends ConsumerWidget {
   const YearsView({
@@ -16,6 +17,8 @@ class YearsView extends ConsumerWidget {
     final soberProvider = ref.watch(soberChartProvider);
     final double month = soberProvider.currentMonth;
     final double year = soberProvider.currentYear;
+    final SoberUser user = SoberUser();
+    final String? addictiveFactor = user.addictiveFactor;
     return Container(
         color: currentTheme.hoverColor,
         child: Stack(
@@ -26,7 +29,7 @@ class YearsView extends ConsumerWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Text(
-                Strings.iHaveBeen,
+                '${Strings.iHaveBeen}  ${addictiveFactor ?? ''}',
                 style: currentTheme.textTheme.bodyMedium
                     ?.copyWith(color: Colors.white),
               ),

@@ -41,7 +41,14 @@ class Strings {
   static const String month = "Month";
   static const String day = "Day";
   static const String days = "Days";
+  static const String reset = "Reset";
+  static const String settings = "Settings";
   static const String hour = "Hour";
+  static const String yes = "Yes";
+  static const String areYouSureReset =
+      "Are you sure you want to reset your start date to today?";
+  static const String doNotFeel =
+      "Do not feel ashamed to reset! You should be proud that you are trying.";
   static const String minute = "Minute";
   static const String second = "Second";
   static const String iHaveBeen = "I have been free for";
@@ -57,7 +64,7 @@ class Strings {
   //settings
   static const String account = "Account";
   static const String warning = "Warning";
-  static const String areYouSure = "Are you sure you want to log out ?";
+  static const String areYouSureLogout = "Are you sure you want to log out ?";
   static const String signOut = "Sign out";
   static const String language = "Language";
   static const String darkTheme = "Dark theme";

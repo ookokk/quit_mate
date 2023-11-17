@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
+import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
-class SoberStartDateView extends ConsumerWidget {
-  const SoberStartDateView({
+class SoberStartPageView extends ConsumerWidget {
+  const SoberStartPageView({
     Key? key,
   }) : super(key: key);
 
@@ -13,6 +15,7 @@ class SoberStartDateView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
     final viewModel = ref.read(soberChartProvider);
+    final SoberUser soberUser = SoberUser();
     final soberStartDate = viewModel.soberStartDate;
     final formattedStartDate = _formatDate(soberStartDate);
     return Container(
@@ -34,6 +37,52 @@ class SoberStartDateView extends ConsumerWidget {
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeight.bold),
           ),
+          const SizedBox(
+            height: 58,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Column(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      SettingsAlertDialog().showSettingsAlertDialog(
+                        context,
+                        ref,
+                        () {
+                          soberUser.setSoberStartDate(DateTime.now());
+                        },
+                        MaterialStateProperty.all<Color>(Colors.transparent),
+                        "",
+                        "${Strings.areYouSureReset}\n${Strings.doNotFeel}",
+                        Strings.yes,
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.replay_circle_filled_sharp,
+                      color: Colors.white,
+                    )),
+                Text(Strings.reset,
+                    style: currentTheme.textTheme.bodyMedium
+                        ?.copyWith(color: Colors.white))
+              ],
+            ),
+            const SizedBox(
+              width: 28,
+            ),
+            Column(
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.settings_sharp,
+                      color: Colors.white,
+                    )),
+                Text(Strings.settings,
+                    style: currentTheme.textTheme.bodyMedium
+                        ?.copyWith(color: Colors.white))
+              ],
+            ),
+          ]),
         ],
       ),
     );

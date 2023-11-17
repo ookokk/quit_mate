@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
+import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/settings/widget/language_bottom_sheet.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_category_row.dart';
@@ -23,7 +24,7 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
-
+    final authManager = AuthManager();
     return SafeArea(
         child: Scaffold(
             backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -51,8 +52,20 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                           iconData: Icons.account_circle),
                       SettingsListTile(
                           onTap: () {
-                            SettingsAlertDialog()
-                                .showSettingsAlertDialog(context, ref);
+                            SettingsAlertDialog().showSettingsAlertDialog(
+                              context,
+                              ref,
+                              () {
+                                authManager.signOut();
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context, '/login', (route) => false);
+                              },
+                              MaterialStateProperty.all<Color>(
+                                  Colors.red.shade400),
+                              Strings.warning,
+                              Strings.areYouSureLogout,
+                              Strings.signOut,
+                            );
                           },
                           text: Strings.signOut,
                           trailingChild: IconButton(
