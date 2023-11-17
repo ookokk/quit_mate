@@ -17,7 +17,7 @@ class SoberStartPageView extends ConsumerWidget {
     final viewModel = ref.read(soberChartProvider);
     final SoberUser soberUser = SoberUser();
     final soberStartDate = viewModel.soberStartDate;
-    final formattedStartDate = _formatDate(soberStartDate);
+    final formattedStartDate = formatDate(soberStartDate);
     return Container(
       color: currentTheme.hoverColor,
       child: Column(
@@ -99,17 +99,17 @@ class SoberStartPageView extends ConsumerWidget {
     );
   }
 
-  String _formatDate(DateTime? date) {
+  String formatDate(DateTime? date) {
     if (date != null) {
       final day = date.day;
-      final month = _getMonthName(date.month);
+      final month = getMonthName(date.month);
       final year = date.year;
       return '$day $month, $year';
     }
     return 'N/A';
   }
 
-  String _getMonthName(int month) {
+  String getMonthName(int month) {
     switch (month) {
       case 1:
         return 'January';

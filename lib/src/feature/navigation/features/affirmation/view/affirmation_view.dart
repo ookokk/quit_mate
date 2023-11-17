@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/generated/assets.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/navigation/features/affirmation/viewmodel/affirmation_mixin.dart';
+import 'package:quit_mate/src/feature/navigation/features/affirmation/viewmodel/affirmation_notifier.dart';
+import 'package:quit_mate/src/feature/navigation/features/progress/widget/sober_start_page_view.dart';
 
 class AffirmationView extends ConsumerStatefulWidget {
   const AffirmationView({
@@ -14,11 +14,12 @@ class AffirmationView extends ConsumerStatefulWidget {
   AffirmationViewState createState() => AffirmationViewState();
 }
 
-class AffirmationViewState extends ConsumerState<AffirmationView>
-    with AffirmationMixin {
+class AffirmationViewState extends ConsumerState<AffirmationView> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
+    final affirmationNotifier = ref.watch(affirmationProvider);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -26,20 +27,35 @@ class AffirmationViewState extends ConsumerState<AffirmationView>
           alignment: Alignment.center,
           children: [
             Image.asset(
-              bgImagePath ?? Assets.imagesWp10,
+              affirmationNotifier.bgImagePath,
               fit: BoxFit.cover,
               height: DeviceSize.kHeight(context),
               width: DeviceSize.kWidth(context),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 100, right: 15, left: 15),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  const SoberStartPageView().formatDate(DateTime.now()),
+                  style: currentTheme.textTheme.titleLarge?.copyWith(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black87,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 100, right: 15, left: 15),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Text(
-                  dailyAffirmation,
-                  style: currentTheme.textTheme.headlineSmall?.copyWith(
+                  affirmationNotifier.dailyAffirmation,
+                  style: currentTheme.textTheme.titleLarge?.copyWith(
                     fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w500,
                     color: Colors.black87,
                   ),
                   textAlign: TextAlign.center,

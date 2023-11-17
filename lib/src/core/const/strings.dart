@@ -25,6 +25,9 @@ class Strings {
   //user info
   static const String whatAreYou = "What are you getting sober from?";
   static const String complete = "Complete";
+  static const String home = "Home";
+  static const String motivation = "Motivation";
+  static const String community = "Community";
   static const String whenWas = "When was your sober start date?";
   static const String howMany = "How many days per week did you drink?";
   static const String howManyTimesEach =
@@ -59,6 +62,7 @@ class Strings {
 
   //bg image
   static const String setBGImage = "Set Background Image";
+  static const String changeBGImage = "Change background image";
   static const String bgImageUpdated = "Background image has been updated.";
   static const String okay = "Okay";
   //settings

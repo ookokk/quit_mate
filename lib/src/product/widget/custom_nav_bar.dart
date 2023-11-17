@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class CustomNavBar extends ConsumerWidget {
@@ -19,27 +20,31 @@ class CustomNavBar extends ConsumerWidget {
       backgroundColor: currentTheme.scaffoldBackgroundColor,
       currentIndex: selectedIndex,
       onTap: onItemTapped,
+      elevation: 2,
+      selectedFontSize: 18,
+      selectedLabelStyle: currentTheme.textTheme.bodySmall,
+      unselectedLabelStyle: currentTheme.textTheme.bodySmall,
       items: [
         BottomNavigationBarItem(
           icon: Icon(
             Icons.home,
             color: currentTheme.indicatorColor,
           ),
-          label: '',
+          label: Strings.home,
+        ),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            'assets/images/support.png',
+            height: 27,
+          ),
+          label: Strings.motivation,
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.calendar_month,
+            Icons.people,
             color: currentTheme.indicatorColor,
           ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.person,
-            color: currentTheme.indicatorColor,
-          ),
-          label: '',
+          label: Strings.community,
         ),
       ],
     );

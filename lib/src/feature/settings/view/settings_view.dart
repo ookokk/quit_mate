@@ -95,6 +95,12 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                       const SettingsListTile(
                           text: Strings.darkTheme,
                           trailingChild: ThemeSwitch()),
+                      SettingsListTile(
+                          text: Strings.changeBGImage,
+                          trailingChild: Icon(
+                            Icons.arrow_forward_ios,
+                            color: currentTheme.indicatorColor,
+                          )),
                       const SettingsCategoryRow(
                           headerText: Strings.privacy,
                           iconData: Icons.privacy_tip_outlined),

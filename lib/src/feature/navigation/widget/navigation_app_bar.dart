@@ -44,7 +44,7 @@ class NavigationAppBar extends ConsumerWidget implements PreferredSizeWidget {
                 Navigator.pushNamed(context, '/settings');
               },
               icon: Icon(
-                Icons.person_sharp,
+                Icons.settings,
                 color: currentTheme.indicatorColor,
               )),
         )
