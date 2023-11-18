@@ -27,7 +27,7 @@ class CustomNavBar extends ConsumerWidget {
       items: [
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home,
+            Icons.home_filled,
             color: currentTheme.indicatorColor,
           ),
           label: Strings.home,
@@ -41,10 +41,10 @@ class CustomNavBar extends ConsumerWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.people,
+            Icons.support,
             color: currentTheme.indicatorColor,
           ),
-          label: Strings.community,
+          label: Strings.support,
         ),
       ],
     );

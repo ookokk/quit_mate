@@ -7,9 +7,7 @@ class SetBGImageNotifier extends ChangeNotifier {
   final sharedBGManager = SPBackgroundImage();
   String _bgImagePath = Assets.imagesWp8;
   String get bgImagePath => _bgImagePath;
-
   SetBGImageNotifier();
-
   Future<void> initialize() async {
     await initBackgroundImage();
   }

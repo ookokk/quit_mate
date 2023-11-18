@@ -28,6 +28,7 @@ class Strings {
   static const String home = "Home";
   static const String motivation = "Motivation";
   static const String community = "Community";
+  static const String support = "Support";
   static const String whenWas = "When was your sober start date?";
   static const String howMany = "How many days per week did you drink?";
   static const String howManyTimesEach =
@@ -65,6 +66,8 @@ class Strings {
   static const String changeBGImage = "Change background image";
   static const String bgImageUpdated = "Background image has been updated.";
   static const String okay = "Okay";
+  static const String onlineTherapy = "Online Therapy";
+  static const String alumni = "Alumni";
   //settings
   static const String account = "Account";
   static const String warning = "Warning";
