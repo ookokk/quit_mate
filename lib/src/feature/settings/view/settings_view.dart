@@ -93,16 +93,15 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                             color: currentTheme.indicatorColor,
                           )),
                       SettingsListTile(
-                          text: Strings.changeBGImage,
-                          trailingChild: IconButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/setBG');
-                            },
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: currentTheme.indicatorColor,
-                            ),
-                          )),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/setBG');
+                        },
+                        text: Strings.changeBGImage,
+                        trailingChild: Icon(
+                          Icons.arrow_forward_ios,
+                          color: currentTheme.indicatorColor,
+                        ),
+                      ),
                       const SettingsListTile(
                           text: Strings.darkTheme,
                           trailingChild: ThemeSwitch()),

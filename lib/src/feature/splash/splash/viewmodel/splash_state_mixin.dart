@@ -17,7 +17,7 @@ mixin SplashStateMixin on ConsumerState<SplashView> {
     final User? currentUser = _auth.currentUser;
     final bool isFirstTime = await CacheManager.getBool('isFirst') ?? true;
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 0), () {
       if (isFirstTime) {
         Navigator.pushReplacementNamed(context, '/getStarted');
       } else if (currentUser == null) {

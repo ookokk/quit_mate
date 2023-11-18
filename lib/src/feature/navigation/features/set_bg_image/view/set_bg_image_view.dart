@@ -5,12 +5,9 @@ import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/set_bg_image/model/bg_images_list.dart';
+import 'package:quit_mate/src/feature/navigation/features/set_bg_image/viewmodel/bg_image_notifier.dart';
 import 'package:quit_mate/src/feature/navigation/features/set_bg_image/widget/set_bg_image_btn.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-final selectedBackgroundImageProvider = StateProvider<String>((ref) {
-  throw UnimplementedError(); // Replace this with actual logic to retrieve the selected background image
-});
 
 class SetBGImageView extends ConsumerWidget {
   SetBGImageView({
@@ -23,7 +20,7 @@ class SetBGImageView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
     final sharedBGManager = SPBackgroundImage();
-
+    final bgProvider = ref.watch(bgImageProvider);
     return SafeArea(
       child: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -71,13 +68,11 @@ class SetBGImageView extends ConsumerWidget {
         ),
         floatingActionButton: SetBGImageBtn(
           text: Strings.setBGImage,
-          onTap: () {
+          onTap: () async {
             final int currentIndex = _pageController.page?.round() ?? 0;
             final selectedImage = bgImagesList.backgroundImages[currentIndex];
             sharedBGManager.setNewBackgroundImage(selectedImage);
-            ref.read(selectedBackgroundImageProvider.notifier).state =
-                selectedImage;
-
+            bgProvider.updateImagePath(selectedImage);
             final snackBar = SnackBar(
               backgroundColor: Colors.black,
               content: Text(

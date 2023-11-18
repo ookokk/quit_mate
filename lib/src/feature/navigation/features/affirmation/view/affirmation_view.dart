@@ -4,6 +4,7 @@ import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/affirmation/viewmodel/affirmation_notifier.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/sober_start_page_view.dart';
+import 'package:quit_mate/src/feature/navigation/features/set_bg_image/viewmodel/bg_image_notifier.dart';
 
 class AffirmationView extends ConsumerStatefulWidget {
   const AffirmationView({
@@ -18,8 +19,8 @@ class AffirmationViewState extends ConsumerState<AffirmationView> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
+    final bgProvider = ref.watch(bgImageProvider);
     final affirmationNotifier = ref.watch(affirmationProvider);
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -27,7 +28,7 @@ class AffirmationViewState extends ConsumerState<AffirmationView> {
           alignment: Alignment.center,
           children: [
             Image.asset(
-              affirmationNotifier.bgImagePath,
+              bgProvider.bgImagePath,
               fit: BoxFit.cover,
               height: DeviceSize.kHeight(context),
               width: DeviceSize.kWidth(context),
