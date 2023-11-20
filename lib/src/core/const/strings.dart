@@ -7,6 +7,8 @@ class Strings {
   static const String firstOfAll = "First of all, congrats!";
   static const String takeTheFirst =
       "Take the first step to get started and start your transformation journey now!";
+  //community
+  static const String welcomeBack = 'Welcome Back!';
   //register
   static const String register = "Register";
   static const String already = "Already have an account?";

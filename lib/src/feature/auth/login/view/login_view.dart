@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quit_mate/generated/assets.dart';
+import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/auth/viewmodel/password_visibility_notifier.dart';
 import 'package:quit_mate/src/feature/auth/widget/auth_alert_dialog.dart';
-import 'package:quit_mate/src/feature/auth/widget/auth_elevated_button.dart';
+import 'package:quit_mate/src/feature/auth/widget/auth_button.dart';
 import 'package:quit_mate/src/feature/auth/widget/custom_text_field.dart';
 import 'package:quit_mate/src/feature/auth/widget/navigate_register_or_login_row.dart';
 
@@ -23,6 +24,7 @@ class LoginView extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     final authManager = AuthManager();
     final passwordVisibility = ref.watch(passwordVisibilityProvider);
+    final cacheManager = CacheManager();
     return SafeArea(
       child: Scaffold(
         backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -89,9 +91,9 @@ class LoginView extends ConsumerWidget {
     );
   }
 
-  AuthElevatedButton buildAuthElevatedButton(
+  AuthButton buildAuthElevatedButton(
       AuthManager authManager, BuildContext context, WidgetRef ref) {
-    return AuthElevatedButton(
+    return AuthButton(
       text: Strings.login,
       onTap: () async {
         String? user = await authManager.signInWithEmailAndPassword(
@@ -110,8 +112,12 @@ class LoginView extends ConsumerWidget {
               );
             });
           } else {
-            Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
-                context, '/navigation', (route) => false));
+            print(user);
+            /*  Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
+                context, '/navigation', (route) => false));*/
+            await CacheManager.setString('token', user);
+            final String? cacheToken = await CacheManager.getString('token');
+            print('cache token : ${cacheToken}');
           }
         } else {
           Future.microtask(() {

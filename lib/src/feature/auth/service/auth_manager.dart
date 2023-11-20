@@ -4,6 +4,7 @@ class AuthManager {
   String userId = "";
   final FirebaseAuth _auth = FirebaseAuth.instance;
   String? token;
+
   Future<String?> signInWithEmailAndPassword(
       String email, String password) async {
     final UserCredential userCredential =

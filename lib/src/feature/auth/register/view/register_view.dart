@@ -9,7 +9,7 @@ import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/auth/viewmodel/password_visibility_notifier.dart';
 import 'package:quit_mate/src/feature/auth/widget/auth_alert_dialog.dart';
-import 'package:quit_mate/src/feature/auth/widget/auth_elevated_button.dart';
+import 'package:quit_mate/src/feature/auth/widget/auth_button.dart';
 import 'package:quit_mate/src/feature/auth/widget/custom_text_field.dart';
 import 'package:quit_mate/src/feature/auth/widget/navigate_register_or_login_row.dart';
 import 'package:quit_mate/src/product/user/repository/user_repository.dart';
@@ -23,7 +23,6 @@ class RegisterView extends ConsumerWidget {
   final TextEditingController pwAgainCnt = TextEditingController();
   final TextEditingController usernameCnt = TextEditingController();
   final userRepository = UserRepository();
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
@@ -105,9 +104,9 @@ class RegisterView extends ConsumerWidget {
     );
   }
 
-  AuthElevatedButton buildAuthElevatedButton(
+  AuthButton buildAuthElevatedButton(
       BuildContext context, WidgetRef ref, AuthManager authManager) {
-    return AuthElevatedButton(
+    return AuthButton(
       text: Strings.register,
       onTap: () async {
         try {

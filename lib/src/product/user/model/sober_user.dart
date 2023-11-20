@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class SoberUser {
   String? userId;
   String? userName;
+  String? email;
   String? addictiveFactor;
   DateTime? soberStartDate;
   int? weeklyUse;
@@ -21,6 +22,7 @@ class SoberUser {
     _instance.addictiveFactor = json['addictiveFactor'] ?? '';
     _instance.soberStartDate = DateTime.parse(json['soberStartDate'] ?? '');
     _instance.userName = json['userName'] ?? '';
+    _instance.email = json['email'] ?? '';
     _instance.weeklyUse = json['weeklyUse'] ?? 0;
     _instance.dailyUseOnDays = json['dailyUseOnDays'] ?? 0;
     _instance.pledgeTime = _parseTime(json['pledgeTime']);
@@ -28,19 +30,11 @@ class SoberUser {
     return _instance;
   }
 
-  static TimeOfDay _parseTime(Map<String, dynamic>? timeData) {
-    if (timeData == null) return const TimeOfDay(hour: 0, minute: 0);
-
-    final int hour = timeData['hour'] ?? 0;
-    final int minute = timeData['minute'] ?? 0;
-
-    return TimeOfDay(hour: hour, minute: minute);
-  }
-
   Map<String, dynamic> toJson() {
     return {
       'userId': userId,
       'userName': userName,
+      'email': email,
       'addictiveFactor': addictiveFactor,
       'soberStartDate': soberStartDate?.toIso8601String(),
       'weeklyUse': weeklyUse,
@@ -56,12 +50,25 @@ class SoberUser {
     };
   }
 
+  static TimeOfDay _parseTime(Map<String, dynamic>? timeData) {
+    if (timeData == null) return const TimeOfDay(hour: 0, minute: 0);
+
+    final int hour = timeData['hour'] ?? 0;
+    final int minute = timeData['minute'] ?? 0;
+
+    return TimeOfDay(hour: hour, minute: minute);
+  }
+
   void setUserId(String userId) {
     this.userId = userId;
   }
 
   void setUserName(String userName) {
     this.userName = userName;
+  }
+
+  void setEmail(String email) {
+    this.email = email;
   }
 
   void setAddictiveFactor(String addictiveFactor) {

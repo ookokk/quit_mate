@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // Eğer kullanıcı kimliğini Firebase Authentication kullanıyorsanız ekleyin
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quit_mate/src/feature/navigation/features/community/model/tweet.dart';
 
 class TweetRepository {

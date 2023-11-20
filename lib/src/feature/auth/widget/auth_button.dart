@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
-final class AuthElevatedButton extends ConsumerWidget {
+final class AuthButton extends ConsumerWidget {
   final VoidCallback? onTap;
   final String text;
   final Color? color;
   final TextStyle? textStyle;
   final Color? borderColor;
 
-  const AuthElevatedButton({
+  const AuthButton({
     Key? key,
     this.textStyle,
     this.borderColor,
