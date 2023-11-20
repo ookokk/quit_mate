@@ -24,7 +24,6 @@ class LoginView extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     final authManager = AuthManager();
     final passwordVisibility = ref.watch(passwordVisibilityProvider);
-    final cacheManager = CacheManager();
     return SafeArea(
       child: Scaffold(
         backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -112,12 +111,9 @@ class LoginView extends ConsumerWidget {
               );
             });
           } else {
-            print(user);
-            /*  Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
-                context, '/navigation', (route) => false));*/
+            Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
+                context, '/navigation', (route) => false));
             await CacheManager.setString('token', user);
-            final String? cacheToken = await CacheManager.getString('token');
-            print('cache token : ${cacheToken}');
           }
         } else {
           Future.microtask(() {
