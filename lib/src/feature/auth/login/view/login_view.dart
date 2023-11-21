@@ -82,19 +82,6 @@ class LoginView extends ConsumerWidget {
                     height: 18,
                   ),
                   buildAuthButton(authManager, context, ref),
-                  TextButton(
-                    onPressed: () {
-                      authManager.setCurrentUserId();
-                      print(authManager.userId);
-                      final SoberUser user = SoberUser();
-                      print(user.userId);
-                    },
-                    child: Text(
-                      'PRESS',
-                      style: currentTheme.textTheme.displayLarge
-                          ?.copyWith(color: Colors.white),
-                    ),
-                  )
                 ],
               ),
             )
@@ -125,8 +112,14 @@ class LoginView extends ConsumerWidget {
               );
             });
           } else {
-            Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
-                context, '/navigation', (route) => false));
+            final factor = SoberUser().addictiveFactor;
+            if (factor == null) {
+              Future.microtask(
+                  () => Navigator.pushReplacementNamed(context, '/getStarted'));
+            } else {
+              Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
+                  context, '/navigation', (route) => false));
+            }
             await CacheManager.setString('token', user);
             authManager.setCurrentUserId();
           }

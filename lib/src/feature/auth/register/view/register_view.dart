@@ -12,6 +12,7 @@ import 'package:quit_mate/src/feature/auth/widget/auth_alert_dialog.dart';
 import 'package:quit_mate/src/feature/auth/widget/auth_button.dart';
 import 'package:quit_mate/src/feature/auth/widget/custom_text_field.dart';
 import 'package:quit_mate/src/feature/auth/widget/navigate_register_or_login_row.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class RegisterView extends ConsumerWidget {
@@ -28,6 +29,8 @@ class RegisterView extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     final authManager = AuthManager();
     final passwordVisibility = ref.watch(passwordVisibilityProvider);
+    final SoberUser soberUser = SoberUser();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -94,7 +97,7 @@ class RegisterView extends ConsumerWidget {
                   const SizedBox(
                     height: 48,
                   ),
-                  buildAuthElevatedButton(context, ref, authManager),
+                  buildAuthElevatedButton(context, ref, authManager, soberUser),
                 ],
               ),
             )
@@ -104,8 +107,8 @@ class RegisterView extends ConsumerWidget {
     );
   }
 
-  AuthButton buildAuthElevatedButton(
-      BuildContext context, WidgetRef ref, AuthManager authManager) {
+  AuthButton buildAuthElevatedButton(BuildContext context, WidgetRef ref,
+      AuthManager authManager, SoberUser soberUser) {
     return AuthButton(
       text: Strings.register,
       onTap: () async {
@@ -120,9 +123,7 @@ class RegisterView extends ConsumerWidget {
             pwCnt.text,
           );
           if (user != null) {
-            final String? currentUserId = authManager.getCurrentUserId();
-            userRepository.saveUserName(
-                currentUserId ?? "", usernameCnt.text.trim());
+            soberUser.userName = usernameCnt.text;
             Future.microtask(() => AuthAlertDialog().showAuthAlertDialog(
                 context, ref, Strings.success, Strings.userCreated));
           }

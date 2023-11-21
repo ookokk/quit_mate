@@ -6,6 +6,8 @@ import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_ch
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/sober_start_page_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/streak_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/years_view.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
+import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SoberPageView extends ConsumerWidget {
@@ -35,18 +37,42 @@ class SoberPageView extends ConsumerWidget {
               ),
             ),
             Expanded(
-                child: SizedBox(
-              height: DeviceSize.kHeight(context) * 0.01,
-              child: SmoothPageIndicator(
-                controller: _pageController,
-                count: 4,
-                effect: const SlideEffect(
-                    activeDotColor: Colors.yellow,
-                    paintStyle: PaintingStyle.stroke,
-                    dotHeight: 8,
-                    dotWidth: 8),
+              child: SizedBox(
+                height: DeviceSize.kHeight(context) * 0.01,
+                child: SmoothPageIndicator(
+                  controller: _pageController,
+                  count: 4,
+                  effect: const SlideEffect(
+                      activeDotColor: Colors.yellow,
+                      paintStyle: PaintingStyle.stroke,
+                      dotHeight: 8,
+                      dotWidth: 8),
+                ),
               ),
-            )),
+            ),
+            TextButton(
+                onPressed: () {
+                  final SoberUser soberUser = SoberUser();
+                  print(soberUser.userId);
+                  print(soberUser.userName);
+                  print(soberUser.addictiveFactor);
+                  print(soberUser.soberStartDate);
+                  print(soberUser.weeklyUse);
+                  print(soberUser.userName);
+                },
+                child: Text('SAD')),
+            TextButton(
+                onPressed: () async {
+                  final SoberUser user = SoberUser();
+                  final UserRepository userRepository = UserRepository();
+                  final ahmet = await userRepository.getUser();
+
+                  print(ahmet);
+                },
+                child: Text(
+                  'oskl',
+                  style: currentTheme.textTheme.displayLarge,
+                ))
           ],
         ),
       ),

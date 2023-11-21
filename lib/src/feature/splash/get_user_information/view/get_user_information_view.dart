@@ -39,7 +39,7 @@ class GetUserInformationView extends ConsumerWidget {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/login', (route) => false);
             CacheManager.setBool('isFirst', false);
-            userRepository.saveUser('user123', soberUser);
+            userRepository.saveUser(soberUser);
           }
         },
         text: Strings.next,

@@ -25,7 +25,7 @@ class CacheManager {
     await prefs.setBool(key, value);
   }
 
-  static Future<bool?> getBool(String key, {bool defaultValue = false}) async {
+  static Future<bool?> getBool(String key, {bool defaultValue = true}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool(key) ?? defaultValue;
   }

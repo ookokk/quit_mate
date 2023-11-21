@@ -41,8 +41,7 @@ class UserAvatarRow extends ConsumerWidget {
                       ),
                       TextButton(
                           onPressed: () async {
-                            final user =
-                                await userRepository.getUser('user123');
+                            final user = await userRepository.getUser();
                             if (user != null) {
                               print(user.userName);
                             } else {
