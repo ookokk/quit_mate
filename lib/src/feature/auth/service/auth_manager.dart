@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class AuthManager {
   String userId = "";
   final FirebaseAuth _auth = FirebaseAuth.instance;
   String? token;
+  final SoberUser soberUser = SoberUser();
 
-  Future<String?> signInWithEmailAndPassword(
+  Future<String?> signIn(
       String email, String password) async {
     final UserCredential userCredential =
         await _auth.signInWithEmailAndPassword(
@@ -18,7 +20,7 @@ class AuthManager {
     return token;
   }
 
-  Future<User?> registerWithEmailAndPassword(
+  Future<User?> register(
       String email, String password) async {
     final UserCredential userCredential =
         await _auth.createUserWithEmailAndPassword(
@@ -40,5 +42,6 @@ class AuthManager {
 
   void setCurrentUserId() {
     userId = _auth.currentUser!.uid;
+    soberUser.userId = _auth.currentUser!.uid;
   }
 }

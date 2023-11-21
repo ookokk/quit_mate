@@ -12,6 +12,7 @@ import 'package:quit_mate/src/feature/auth/widget/auth_alert_dialog.dart';
 import 'package:quit_mate/src/feature/auth/widget/auth_button.dart';
 import 'package:quit_mate/src/feature/auth/widget/custom_text_field.dart';
 import 'package:quit_mate/src/feature/auth/widget/navigate_register_or_login_row.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class LoginView extends ConsumerWidget {
   LoginView({
@@ -80,7 +81,20 @@ class LoginView extends ConsumerWidget {
                   const SizedBox(
                     height: 18,
                   ),
-                  buildAuthElevatedButton(authManager, context, ref),
+                  buildAuthButton(authManager, context, ref),
+                  TextButton(
+                    onPressed: () {
+                      authManager.setCurrentUserId();
+                      print(authManager.userId);
+                      final SoberUser user = SoberUser();
+                      print(user.userId);
+                    },
+                    child: Text(
+                      'PRESS',
+                      style: currentTheme.textTheme.displayLarge
+                          ?.copyWith(color: Colors.white),
+                    ),
+                  )
                 ],
               ),
             )
@@ -90,12 +104,12 @@ class LoginView extends ConsumerWidget {
     );
   }
 
-  AuthButton buildAuthElevatedButton(
+  AuthButton buildAuthButton(
       AuthManager authManager, BuildContext context, WidgetRef ref) {
     return AuthButton(
       text: Strings.login,
       onTap: () async {
-        String? user = await authManager.signInWithEmailAndPassword(
+        String? user = await authManager.signIn(
           emailController.text.trim(),
           passwordController.text.trim(),
         );
@@ -114,6 +128,7 @@ class LoginView extends ConsumerWidget {
             Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
                 context, '/navigation', (route) => false));
             await CacheManager.setString('token', user);
+            authManager.setCurrentUserId();
           }
         } else {
           Future.microtask(() {

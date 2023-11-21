@@ -115,7 +115,7 @@ class RegisterView extends ConsumerWidget {
                 context, ref, Strings.error, Strings.pwDoNotMatch);
             return;
           }
-          User? user = await authManager.registerWithEmailAndPassword(
+          User? user = await authManager.register(
             emailCnt.text,
             pwCnt.text,
           );
