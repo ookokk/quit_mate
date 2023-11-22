@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -88,12 +87,14 @@ class LoginView extends ConsumerWidget {
                     onPressed: () async {
                       // final SoberUser soberUser = SoberUser();
                       final UserRepository userRepository = UserRepository();
-                      final SoberUser? soberUser =
-                          await userRepository.getUser("bOf555vXKllaUNNPKNyQ");
+                      final SoberUser? soberUser = await userRepository
+                          .getUser("5Fid5OFUgDU3vPTFoObdCb2suv72");
                       print(soberUser?.userId);
                       print(soberUser?.addictiveFactor);
                       print(soberUser?.email);
                       print(soberUser?.userName);
+                      /*    final String? soberMuser = await userRepository
+                          .getUser(soberUser!.userId);*/
                     },
                     child: Text('osman'),
                   )
@@ -106,6 +107,7 @@ class LoginView extends ConsumerWidget {
     );
   }
 
+// bu butonda alert dialoglar çalışmıyor
   AuthButton buildAuthButton(
       AuthManager authManager, BuildContext context, WidgetRef ref) {
     return AuthButton(
