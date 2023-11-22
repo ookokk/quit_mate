@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
+import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_chart.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/sober_start_page_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/streak_view.dart';
@@ -18,6 +19,7 @@ class SoberPageView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
+    final AuthManager authManager = AuthManager();
     return SizedBox(
       height: DeviceSize.kHeight(context) * 0.48,
       child: Container(
@@ -51,27 +53,26 @@ class SoberPageView extends ConsumerWidget {
               ),
             ),
             TextButton(
-                onPressed: () {
-                  final SoberUser soberUser = SoberUser();
-                  print(soberUser.userId);
-                  print(soberUser.userName);
-                  print(soberUser.addictiveFactor);
-                  print(soberUser.soberStartDate);
-                  print(soberUser.weeklyUse);
-                  print(soberUser.userName);
-                },
-                child: Text('SAD')),
-            TextButton(
                 onPressed: () async {
                   final SoberUser user = SoberUser();
+                  //   print(user.addictiveFactor);
+                  print(user.soberStartDate);
+                  print(user.userName);
+                  print(user.dailyUseOnDays);
                   final UserRepository userRepository = UserRepository();
-                  final ahmet = await userRepository.getUser();
+                  final String? currentUserId = authManager.getCurrentUserId();
+                  //  final String mamed = await authManager.;
+                  print(currentUserId);
+                  //  final ahmet = await userRepository.getUser(currentUserId!);
 
-                  print(ahmet);
+                  await userRepository.saveUser(user);
+
+                  //  print(ahmet?.userId);
                 },
                 child: Text(
                   'oskl',
-                  style: currentTheme.textTheme.displayLarge,
+                  style: currentTheme.textTheme.headlineLarge
+                      ?.copyWith(color: Colors.white),
                 ))
           ],
         ),

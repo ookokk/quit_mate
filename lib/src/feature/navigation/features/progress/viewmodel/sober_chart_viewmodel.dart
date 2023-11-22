@@ -24,8 +24,8 @@ class SoberChartViewModel extends ChangeNotifier {
       StreamController<Map<String, double>>.broadcast();
 
   void getUserInformation() {
-    // final String? currentUserId = authManager.getCurrentUserId();
-    userRepository.getUser().then((user) {
+    final String? currentUserId = authManager.getCurrentUserId();
+    userRepository.getUser(currentUserId!).then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
         void updateData() {

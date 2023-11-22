@@ -20,7 +20,13 @@ class SoberUser {
   factory SoberUser.fromJson(Map<String, dynamic> json) {
     _instance.userId = json['userId'] ?? '';
     _instance.addictiveFactor = json['addictiveFactor'] ?? '';
-    _instance.soberStartDate = DateTime.parse(json['soberStartDate'] ?? '');
+
+    final soberStartDateString = json['soberStartDate'];
+    _instance.soberStartDate =
+        soberStartDateString != null && soberStartDateString.isNotEmpty
+            ? DateTime.tryParse(soberStartDateString) ?? DateTime.now()
+            : DateTime.now();
+
     _instance.userName = json['userName'] ?? '';
     _instance.email = json['email'] ?? '';
     _instance.weeklyUse = json['weeklyUse'] ?? 0;

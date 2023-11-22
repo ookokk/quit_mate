@@ -22,12 +22,12 @@ class CacheManager {
 
   static Future<void> setBool(String key, bool value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(key, value);
+    prefs.setBool(key, value);
   }
 
-  static Future<bool?> getBool(String key, {bool defaultValue = true}) async {
+  static Future<void> getBool(String key, {bool defaultValue = true}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(key) ?? defaultValue;
+    prefs.getBool(key);
   }
 
   static Future<void> removeBool(String key) async {

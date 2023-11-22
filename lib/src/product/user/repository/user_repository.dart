@@ -11,7 +11,7 @@ class UserRepository {
     await _userCollection.doc(userId).set(user.toJson());
   }
 
-  Future<SoberUser?> getUser() async {
+  Future<SoberUser?> getUser(String userId) async {
     DocumentSnapshot snapshot = await _userCollection.doc(userId).get();
     if (snapshot.exists) {
       final Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;

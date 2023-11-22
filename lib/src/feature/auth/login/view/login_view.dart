@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,6 +14,7 @@ import 'package:quit_mate/src/feature/auth/widget/auth_button.dart';
 import 'package:quit_mate/src/feature/auth/widget/custom_text_field.dart';
 import 'package:quit_mate/src/feature/auth/widget/navigate_register_or_login_row.dart';
 import 'package:quit_mate/src/product/user/model/sober_user.dart';
+import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class LoginView extends ConsumerWidget {
   LoginView({
@@ -82,6 +84,19 @@ class LoginView extends ConsumerWidget {
                     height: 18,
                   ),
                   buildAuthButton(authManager, context, ref),
+                  TextButton(
+                    onPressed: () async {
+                      // final SoberUser soberUser = SoberUser();
+                      final UserRepository userRepository = UserRepository();
+                      final SoberUser? soberUser =
+                          await userRepository.getUser("bOf555vXKllaUNNPKNyQ");
+                      print(soberUser?.userId);
+                      print(soberUser?.addictiveFactor);
+                      print(soberUser?.email);
+                      print(soberUser?.userName);
+                    },
+                    child: Text('osman'),
+                  )
                 ],
               ),
             )

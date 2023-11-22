@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/affirmation/view/affirmation_view.dart';
-import 'package:quit_mate/src/feature/navigation/features/community/view/tweet_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/home/view/home_view.dart';
 import 'package:quit_mate/src/feature/navigation/widget/navigation_app_bar.dart';
 import 'package:quit_mate/src/product/widget/custom_nav_bar.dart';
@@ -47,7 +46,7 @@ class NavigationViewState extends ConsumerState<NavigationView> {
         backgroundColor: currentTheme.scaffoldBackgroundColor,
         body: PageView(
           controller: _pageController,
-          children: const [HomeView(), AffirmationView(), TweetView()],
+          children: const [HomeView(), AffirmationView()],
         ),
         bottomNavigationBar: CustomNavBar(
           selectedIndex: selectedIndex,
