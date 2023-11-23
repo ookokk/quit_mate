@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quit_mate/src/product/user/model/sober_user.dart';
-import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class AuthManager {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -40,6 +39,5 @@ class AuthManager {
 
   void setCurrentUserId() {
     soberUser.userId = _auth.currentUser!.uid;
-    UserRepository().userId = _auth.currentUser!.uid;
   }
 }

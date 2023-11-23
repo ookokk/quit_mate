@@ -117,6 +117,7 @@ class LoginView extends ConsumerWidget {
           emailController.text.trim(),
           passwordController.text.trim(),
         );
+        print('firebase token : ${user}');
         if (user != null) {
           if (user.toLowerCase().contains("error") ||
               user.toLowerCase().contains("invalid")) {
