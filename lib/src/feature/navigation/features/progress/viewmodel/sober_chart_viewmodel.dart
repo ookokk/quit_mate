@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'dart:async';
 import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
@@ -19,13 +18,11 @@ class SoberChartViewModel extends ChangeNotifier {
   double currentYear = 0.0;
   DateTime? soberStartDate;
   final UserRepository userRepository = UserRepository();
-  final AuthManager authManager = AuthManager();
   final StreamController<Map<String, double>> dataStreamController =
       StreamController<Map<String, double>>.broadcast();
 
   void getUserInformation() {
-    final String? currentUserId = authManager.getCurrentUserId();
-    userRepository.getUser('user123').then((user) {
+    userRepository.getUser().then((user) {
       if (user != null) {
         soberStartDate = user.soberStartDate;
         void updateData() {

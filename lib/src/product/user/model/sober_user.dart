@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SoberUser {
+class SoberUser{
   String? userId;
   String? userName;
   String? email;

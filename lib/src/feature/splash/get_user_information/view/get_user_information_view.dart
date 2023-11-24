@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/view/addictive_factor_view.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/view/set_daily_notifications_view.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/view/sober_start_date_view.dart';
@@ -26,7 +25,6 @@ class GetUserInformationView extends ConsumerWidget {
     final userRepository = UserRepository();
     final SoberUser soberUser = SoberUser();
     final currentTheme = ref.watch(themeProvider);
-    final authManager = AuthManager();
     return SafeArea(
         child: Scaffold(
       appBar: const CustomAppBar(),
@@ -37,7 +35,6 @@ class GetUserInformationView extends ConsumerWidget {
             _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.ease);
-            authManager.setCurrentUserId();
           } else {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/navigation', (route) => false);

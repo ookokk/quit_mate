@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quit_mate/src/feature/auth/login/view/login_view.dart';
-import 'package:quit_mate/src/feature/auth/register/view/register_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/affirmation/view/affirmation_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/set_bg_image/view/set_bg_image_view.dart';
 import 'package:quit_mate/src/feature/navigation/view/navigation_view.dart';
@@ -31,8 +29,6 @@ class Routes {
     splash: (context) => const SplashView(),
     navigation: (context) => const NavigationView(),
     getStarted: (context) => const GetStartedView(),
-    login: (context) => LoginView(),
-    register: (context) => RegisterView(),
     setBG: (context) => SetBGImageView(),
     affirmation: (context) => const AffirmationView(),
     settings: (context) => const SettingsView(),

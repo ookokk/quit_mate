@@ -24,31 +24,33 @@ class GetStartedView extends ConsumerWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: currentTheme.scaffoldBackgroundColor,
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 24,
-            ),
-            Text(
-              Strings.firstOfAll,
-              style: currentTheme.textTheme.headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Text(
-              Strings.takeTheFirst,
-              style: currentTheme.textTheme.titleSmall
-                  ?.copyWith(fontWeight: FontWeight.w300),
-              textAlign: TextAlign.center,
-            ),
-            SvgPicture.asset(
-              'assets/svg/get_started3.svg',
-              height: DeviceSize.kHeight(context) * 0.6,
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 24,
+              ),
+              Text(
+                Strings.firstOfAll,
+                style: currentTheme.textTheme.headlineMedium
+                    ?.copyWith(fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Text(
+                Strings.takeTheFirst,
+                style: currentTheme.textTheme.titleSmall
+                    ?.copyWith(fontWeight: FontWeight.w300),
+                textAlign: TextAlign.center,
+              ),
+              SvgPicture.asset(
+                'assets/svg/get_started3.svg',
+                height: DeviceSize.kHeight(context) * 0.6,
+              ),
+            ],
+          ),
         ),
       ),
     ));

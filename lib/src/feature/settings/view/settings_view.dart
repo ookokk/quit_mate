@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/auth/service/auth_manager.dart';
 import 'package:quit_mate/src/feature/settings/widget/language_bottom_sheet.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_category_row.dart';
@@ -24,7 +23,6 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
-    final authManager = AuthManager();
     return SafeArea(
         child: Scaffold(
             backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -56,7 +54,6 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                               context,
                               ref,
                               () {
-                                authManager.signOut();
                                 Navigator.pushNamedAndRemoveUntil(
                                     context, '/login', (route) => false);
                               },
