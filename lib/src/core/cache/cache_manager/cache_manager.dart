@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CacheManager {
   //Theme key = "theme"
   //Is first key = "isFirst"
-  //Token key = "token"
+  //Token key = "userId"
   static Future<void> setString(String key, String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(key, value);
@@ -25,9 +25,9 @@ class CacheManager {
     prefs.setBool(key, value);
   }
 
-  static Future<void> getBool(String key, {bool defaultValue = true}) async {
+  static Future<bool> getBool(String key, {bool defaultValue = true}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.getBool(key);
+    return prefs.getBool(key) ?? defaultValue;
   }
 
   static Future<void> removeBool(String key) async {

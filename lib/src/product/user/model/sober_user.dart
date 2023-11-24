@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-class SoberUser{
+import 'package:flutter/material.dart';
+import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
+
+class SoberUser {
   String? userId;
-  String? userName;
-  String? email;
   String? addictiveFactor;
   DateTime? soberStartDate;
   int? weeklyUse;
@@ -27,20 +28,25 @@ class SoberUser{
             ? DateTime.tryParse(soberStartDateString) ?? DateTime.now()
             : DateTime.now();
 
-    _instance.userName = json['userName'] ?? '';
-    _instance.email = json['email'] ?? '';
     _instance.weeklyUse = json['weeklyUse'] ?? 0;
     _instance.dailyUseOnDays = json['dailyUseOnDays'] ?? 0;
     _instance.pledgeTime = _parseTime(json['pledgeTime']);
     _instance.reviewTime = _parseTime(json['reviewTime']);
     return _instance;
   }
+  String generateRandomUserId() {
+    const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    final random = Random();
+    final currentUserId = List.generate(
+        10, (index) => characters[random.nextInt(characters.length)]).join();
+    userId = currentUserId;
+    CacheManager.setString('userId', currentUserId);
+    return currentUserId;
+  }
 
   Map<String, dynamic> toJson() {
     return {
       'userId': userId,
-      'userName': userName,
-      'email': email,
       'addictiveFactor': addictiveFactor,
       'soberStartDate': soberStartDate?.toIso8601String(),
       'weeklyUse': weeklyUse,
@@ -67,14 +73,6 @@ class SoberUser{
 
   void setUserId(String userId) {
     this.userId = userId;
-  }
-
-  void setUserName(String userName) {
-    this.userName = userName;
-  }
-
-  void setEmail(String email) {
-    this.email = email;
   }
 
   void setAddictiveFactor(String addictiveFactor) {

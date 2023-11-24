@@ -6,6 +6,7 @@ import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_ch
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/sober_start_page_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/streak_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/widget/years_view.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SoberPageView extends ConsumerWidget {
@@ -13,6 +14,8 @@ class SoberPageView extends ConsumerWidget {
     Key? key,
   }) : super(key: key);
   final PageController _pageController = PageController();
+  final SoberUser soberUser = SoberUser();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
@@ -49,7 +52,10 @@ class SoberPageView extends ConsumerWidget {
               ),
             ),
             TextButton(
-                onPressed: () async {},
+                onPressed: () async {
+                  soberUser.generateRandomUserId();
+                  print(soberUser.userId);
+                },
                 child: Text(
                   'oskl',
                   style: currentTheme.textTheme.headlineLarge
