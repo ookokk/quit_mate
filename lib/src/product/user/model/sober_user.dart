@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 

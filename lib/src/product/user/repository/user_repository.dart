@@ -9,20 +9,17 @@ class UserRepository {
       FirebaseFirestore.instance.collection('users');
   String userId = "";
 
-  UserRepository() {
-    _initializeUserId();
-  }
-
-  Future<void> _initializeUserId() async {
+  Future<void> getUserId() async {
     userId = await CacheManager.getString('userId') ?? '';
   }
 
-  Future<void> saveUser(SoberUser user) async {
-    await _userCollection.doc(userId).set(user.toJson());
+  Future<void> saveUser(SoberUser user, String userID) async {
+    await _userCollection.doc(userID).set(user.toJson());
   }
 
   Future<SoberUser?> getUser() async {
-    DocumentSnapshot snapshot = await _userCollection.doc("hbupumeeuk").get();
+    await getUserId();
+    DocumentSnapshot snapshot = await _userCollection.doc(userId).get();
     if (snapshot.exists) {
       final Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
       return SoberUser.fromJson(data);

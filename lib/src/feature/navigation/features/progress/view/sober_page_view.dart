@@ -52,10 +52,7 @@ class SoberPageView extends ConsumerWidget {
               ),
             ),
             TextButton(
-                onPressed: () async {
-                  soberUser.generateRandomUserId();
-                  print(soberUser.userId);
-                },
+                onPressed: () async {},
                 child: Text(
                   'oskl',
                   style: currentTheme.textTheme.headlineLarge

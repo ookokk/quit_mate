@@ -30,7 +30,7 @@ class GetUserInformationView extends ConsumerWidget {
       appBar: const CustomAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: NextButton(
-        onTap: () {
+        onTap: () async {
           if (_pageController.page != 4) {
             _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
@@ -39,7 +39,9 @@ class GetUserInformationView extends ConsumerWidget {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/navigation', (route) => false);
             CacheManager.setBool('isFirst', false);
-            userRepository.saveUser(soberUser);
+            String? currentID = await CacheManager.getString('userId');
+
+            userRepository.saveUser(soberUser, currentID ?? "");
           }
         },
         text: Strings.next,
