@@ -23,7 +23,6 @@ class GetStartedView extends ConsumerWidget {
         onTap: () {
           Navigator.pushReplacementNamed(context, '/getUserInfo');
           soberUser.generateRandomUserId();
-          print(soberUser.userId);
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

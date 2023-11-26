@@ -51,13 +51,6 @@ class SoberPageView extends ConsumerWidget {
                 ),
               ),
             ),
-            TextButton(
-                onPressed: () async {},
-                child: Text(
-                  'oskl',
-                  style: currentTheme.textTheme.headlineLarge
-                      ?.copyWith(color: Colors.white),
-                ))
           ],
         ),
       ),
