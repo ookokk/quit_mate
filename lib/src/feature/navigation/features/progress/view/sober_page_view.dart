@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_chart.dart';
@@ -25,6 +26,15 @@ class SoberPageView extends ConsumerWidget {
         color: currentTheme.hoverColor,
         child: Column(
           children: [
+            TextButton(
+                onPressed: () async {
+                  final bool ahmet = await CacheManager.getBool('isFirst');
+                  print(ahmet);
+                },
+                child: Text(
+                  'press',
+                  style: currentTheme.textTheme.titleMedium,
+                )),
             Expanded(
               flex: 15,
               child: PageView(

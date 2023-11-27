@@ -36,12 +36,12 @@ class GetUserInformationView extends ConsumerWidget {
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.ease);
           } else {
-            Navigator.pushNamedAndRemoveUntil(
-                context, '/navigation', (route) => false);
+            /* Navigator.pushNamedAndRemoveUntil(
+                context, '/navigation', (route) => false);*/
             CacheManager.setBool('isFirst', false);
             String? currentID = await CacheManager.getString('userId');
 
-            userRepository.saveUser(soberUser, currentID ?? "");
+            //  userRepository.saveUser(soberUser, currentID ?? "");
           }
         },
         text: Strings.next,
