@@ -1,4 +1,5 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:flutter/material.dart';
 
 class NotificationService {
   static final NotificationService _notificationService =
@@ -8,20 +9,34 @@ class NotificationService {
     return _notificationService;
   }
   NotificationService._internal();
+  Future setNotification(int? hour, int? minute) async {
+    AwesomeNotifications().initialize("", [
+      NotificationChannel(
+          channelKey: 'pledge',
+          channelName: 'Pledge',
+          channelDescription: 'Daily Pledge Time',
+          defaultColor: const Color(0xFF9D50DD),
+          ledColor: Colors.white),
+    ]);
 
-  Future<void> initAwesomeNotification() async {
-    AwesomeNotifications().initialize(
-      'resource://drawable/ic_applogo',
-      [
-        NotificationChannel(
-          channelKey: 'main_channel',
-          channelName: 'main_channel',
-          channelDescription: 'main_channel notifications',
-          enableLights: true,
-          importance: NotificationImportance.Max,
-        )
-      ],
-    );
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        AwesomeNotifications().requestPermissionToSendNotifications();
+      }
+    });
+
+    AwesomeNotifications().createNotification(
+        schedule: NotificationCalendar(
+          repeats: true,
+          hour: hour ?? DateTime.now().hour,
+          minute: minute ?? DateTime.now().minute,
+        ),
+        content: NotificationContent(
+            showWhen: false,
+            id: 10,
+            channelKey: 'pledge',
+            title: 'Pledge Time',
+            body: 'Good Morning'));
   }
 
   Future<void> requestPermission() async {
@@ -30,35 +45,5 @@ class NotificationService {
         AwesomeNotifications().requestPermissionToSendNotifications();
       }
     });
-  }
-
-  Future<void> showNotification(
-      int id, String channelKey, String title, String body) async {
-    AwesomeNotifications().createNotification(
-      content: NotificationContent(
-        id: id,
-        channelKey: channelKey,
-        title: title,
-        body: body,
-      ),
-    );
-  }
-
-  Future<void> showScheduledNotification(int id, String channelKey,
-      String title, String body, int interval) async {
-    String localTZ = await AwesomeNotifications().getLocalTimeZoneIdentifier();
-
-    AwesomeNotifications().createNotification(
-        content: NotificationContent(
-          id: id,
-          channelKey: channelKey,
-          title: title,
-          body: body,
-        ),
-        schedule: NotificationInterval(
-          interval: interval,
-          timeZone: localTZ,
-          repeats: false,
-        ));
   }
 }
