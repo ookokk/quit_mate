@@ -1,9 +1,8 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/notification/model/my_notification.dart';
-import 'package:quit_mate/src/feature/notification/model/notification_service.dart';
 
 class CustomPledgeTimePicker extends ConsumerWidget {
   const CustomPledgeTimePicker({super.key});
@@ -12,50 +11,63 @@ class CustomPledgeTimePicker extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pledgeTime = ref.watch(pledgeTimeProvider);
     final currentTheme = ref.watch(themeProvider);
-    return InkWell(
-      onTap: () async {
-        final selectedTime = await showTimePicker(
-          builder: (BuildContext context, Widget? child) {
-            return Theme(
-              data: ThemeData(primaryColor: currentTheme.primaryColor),
-              child: child!,
-            );
-          },
-          context: context,
-          initialTime: pledgeTime ?? const TimeOfDay(hour: 8, minute: 0),
-        );
+    Future ringAlarm() async {
+      AwesomeNotifications().initialize("", [
+        NotificationChannel(
+            channelKey: 'basic_channel',
+            channelName: 'Basic notifications',
+            channelDescription: 'Notification channel for basic tests',
+            defaultColor: const Color(0xFF9D50DD),
+            ledColor: Colors.white)
+      ]);
 
-        if (selectedTime != null) {
-          ref.read(pledgeTimeProvider.notifier).state = selectedTime;
-          final notificationService = NotificationService();
-          final myNotification = MyNotification(
-            title: "Notification Title",
-            message: "Notification Message",
-          );
-          final now = DateTime.now();
-          final scheduledTime = DateTime(
-            now.year,
-            now.month,
-            now.day,
-            selectedTime.hour,
-            selectedTime.minute,
-          );
-
-          await notificationService.scheduleNewNotification(
-            pushNotification: myNotification,
-            notificationId: 1,
-            interval: 1,
-            scheduledTime: scheduledTime,
-          );
+      AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+        if (!isAllowed) {
+          AwesomeNotifications().requestPermissionToSendNotifications();
         }
-      },
-      child: Text(
-        pledgeTime != null
-            ? '${pledgeTime.hour}:${pledgeTime.minute.toString().padLeft(2, '0')}'
-            : "kFourthSelectTime".tr(),
-        style: currentTheme.textTheme.titleLarge
-            ?.copyWith(fontWeight: FontWeight.w400),
-      ),
+      });
+
+      AwesomeNotifications().createNotification(
+          content: NotificationContent(
+              id: 10,
+              channelKey: 'basic_channel',
+              title: 'Simple Notification',
+              body: 'Simple body'));
+    }
+
+    return Column(
+      children: [
+        IconButton(
+            onPressed: () {
+              ringAlarm();
+            },
+            icon: Icon(Icons.traffic)),
+        InkWell(
+          onTap: () async {
+            final selectedTime = await showTimePicker(
+              builder: (BuildContext context, Widget? child) {
+                return Theme(
+                  data: ThemeData(primaryColor: currentTheme.primaryColor),
+                  child: child!,
+                );
+              },
+              context: context,
+              initialTime: pledgeTime ?? const TimeOfDay(hour: 8, minute: 0),
+            );
+
+            if (selectedTime != null) {
+              ref.read(pledgeTimeProvider.notifier).state = selectedTime;
+            }
+          },
+          child: Text(
+            pledgeTime != null
+                ? '${pledgeTime.hour}:${pledgeTime.minute.toString().padLeft(2, '0')}'
+                : "kFourthSelectTime".tr(),
+            style: currentTheme.textTheme.titleLarge
+                ?.copyWith(fontWeight: FontWeight.w400),
+          ),
+        ),
+      ],
     );
   }
 }
