@@ -10,7 +10,7 @@ class NotificationService {
   }
   NotificationService._internal();
   Future setNotification(int? hour, int? minute) async {
-    AwesomeNotifications().initialize("", [
+    AwesomeNotifications().initialize('resource://drawable/logo', [
       NotificationChannel(
           channelKey: 'pledge',
           channelName: 'Pledge',
@@ -28,6 +28,7 @@ class NotificationService {
     AwesomeNotifications().createNotification(
         schedule: NotificationCalendar(
           repeats: true,
+          allowWhileIdle: true,
           hour: hour ?? DateTime.now().hour,
           minute: minute ?? DateTime.now().minute,
         ),
