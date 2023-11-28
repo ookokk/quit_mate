@@ -33,7 +33,7 @@ class NotificationService {
         ),
         content: NotificationContent(
             showWhen: false,
-            id: 10,
+            id: 1,
             channelKey: 'pledge',
             title: 'Pledge Time',
             body: 'Good Morning'));

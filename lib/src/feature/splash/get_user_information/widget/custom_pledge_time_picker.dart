@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
@@ -16,11 +15,12 @@ class CustomPledgeTimePicker extends ConsumerWidget {
         Expanded(
             child: IconButton(
                 onPressed: () {
-                  NotificationService()
-                      .setNotification(pledgeTime?.hour, pledgeTime?.minute);
-                  print(pledgeTime);
+                  final hour = pledgeTime.hour;
+                  final minute = pledgeTime.minute;
+                  NotificationService().setNotification(hour, minute);
+                  print("Notification set for $hour:$minute");
                 },
-                icon: Icon(Icons.traffic))),
+                icon: const Icon(Icons.traffic))),
         Expanded(
           child: InkWell(
             onTap: () async {
@@ -32,7 +32,7 @@ class CustomPledgeTimePicker extends ConsumerWidget {
                   );
                 },
                 context: context,
-                initialTime: pledgeTime ?? const TimeOfDay(hour: 8, minute: 0),
+                initialTime: pledgeTime,
               );
 
               if (selectedTime != null) {
@@ -40,9 +40,7 @@ class CustomPledgeTimePicker extends ConsumerWidget {
               }
             },
             child: Text(
-              pledgeTime != null
-                  ? '${pledgeTime.hour}:${pledgeTime.minute.toString().padLeft(2, '0')}'
-                  : "kFourthSelectTime".tr(),
+              '${pledgeTime.hour}:${pledgeTime.minute.toString().padLeft(2, '0')}',
               style: currentTheme.textTheme.titleLarge
                   ?.copyWith(fontWeight: FontWeight.w400),
             ),
@@ -54,4 +52,4 @@ class CustomPledgeTimePicker extends ConsumerWidget {
 }
 
 final pledgeTimeProvider =
-    StateProvider<TimeOfDay?>((ref) => const TimeOfDay(hour: 08, minute: 00));
+    StateProvider<TimeOfDay>((ref) => const TimeOfDay(hour: 08, minute: 00));
