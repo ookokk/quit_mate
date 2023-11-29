@@ -25,6 +25,8 @@ class Strings {
   static const String cancel = "Cancel";
   static const String anUnexpectedError = "An unexpected error occurred.";
   //user info
+  static const String goodMorning = 'Good Morning!';
+  static const String goodNight = 'Good Night';
   static const String whatAreYou = "What are you getting sober from?";
   static const String complete = "Complete";
   static const String home = "Home";

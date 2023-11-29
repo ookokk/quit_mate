@@ -9,12 +9,14 @@ class NotificationService {
     return _notificationService;
   }
   NotificationService._internal();
-  Future setNotification(int? hour, int? minute) async {
+
+  Future setNotification(
+      int? hour, int? minute, String title, String description) async {
     AwesomeNotifications().initialize('resource://drawable/logo', [
       NotificationChannel(
-          channelKey: 'pledge',
-          channelName: 'Pledge',
-          channelDescription: 'Daily Pledge Time',
+          channelKey: 'base',
+          channelName: 'Base',
+          channelDescription: 'Daily Pledge-Review Time',
           defaultColor: const Color(0xFF9D50DD),
           ledColor: Colors.white),
     ]);
@@ -36,8 +38,8 @@ class NotificationService {
             showWhen: false,
             id: 1,
             channelKey: 'pledge',
-            title: 'Pledge Time',
-            body: 'Good Morning'));
+            title: title,
+            body: description));
   }
 
   Future<void> requestPermission() async {

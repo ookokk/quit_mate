@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/notification/model/notification_service.dart';
 
@@ -17,8 +18,10 @@ class CustomPledgeTimePicker extends ConsumerWidget {
                 onPressed: () {
                   final hour = pledgeTime.hour;
                   final minute = pledgeTime.minute;
-                  NotificationService().setNotification(hour, minute);
-                  print("Notification set for $hour:$minute");
+                  NotificationService().setNotification(
+                      hour, minute, Strings.goodMorning, Strings.pledge);
+
+                  print(pledgeTime);
                 },
                 icon: const Icon(Icons.traffic))),
         Expanded(
