@@ -45,20 +45,23 @@ class SetDailyNotificationsView extends ConsumerWidget {
               width: DeviceSize.kWidth(context) * 0.9,
               height: DeviceSize.kHeight(context) * 0.06,
               child: Card(
-                color: currentTheme.canvasColor,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Text(
-                        Strings.pledge,
-                        style: currentTheme.textTheme.titleMedium,
+                color: currentTheme.scaffoldBackgroundColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Text(
+                          Strings.pledge,
+                          style: currentTheme.textTheme.titleMedium,
+                        ),
                       ),
-                    ),
-                    const Expanded(
-                      child: CustomPledgeTimePicker(),
-                    )
-                  ],
+                      const Expanded(
+                        child: CustomPledgeTimePicker(),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -69,20 +72,23 @@ class SetDailyNotificationsView extends ConsumerWidget {
               width: DeviceSize.kWidth(context) * 0.9,
               height: DeviceSize.kHeight(context) * 0.06,
               child: Card(
-                color: currentTheme.canvasColor,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Text(
-                        Strings.review,
-                        style: currentTheme.textTheme.titleMedium,
+                color: currentTheme.scaffoldBackgroundColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Text(
+                          Strings.review,
+                          style: currentTheme.textTheme.titleMedium,
+                        ),
                       ),
-                    ),
-                    const Expanded(
-                      child: CustomReviewTimePicker(),
-                    )
-                  ],
+                      const Expanded(
+                        child: CustomReviewTimePicker(),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

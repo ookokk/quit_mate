@@ -11,45 +11,33 @@ class CustomPledgeTimePicker extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pledgeTime = ref.watch(pledgeTimeProvider);
     final currentTheme = ref.watch(themeProvider);
-    return Column(
-      children: [
-        Expanded(
-            child: IconButton(
-                onPressed: () {
-                  final hour = pledgeTime.hour;
-                  final minute = pledgeTime.minute;
-                  NotificationService().setNotification(
-                      hour, minute, Strings.goodMorning, Strings.pledge);
+    return InkWell(
+      onTap: () async {
+        final selectedTime = await showTimePicker(
+          builder: (BuildContext context, Widget? child) {
+            return Theme(
+              data: ThemeData(primaryColor: currentTheme.primaryColor),
+              child: child!,
+            );
+          },
+          context: context,
+          initialTime: pledgeTime,
+        );
 
-                  print(pledgeTime);
-                },
-                icon: const Icon(Icons.traffic))),
-        Expanded(
-          child: InkWell(
-            onTap: () async {
-              final selectedTime = await showTimePicker(
-                builder: (BuildContext context, Widget? child) {
-                  return Theme(
-                    data: ThemeData(primaryColor: currentTheme.primaryColor),
-                    child: child!,
-                  );
-                },
-                context: context,
-                initialTime: pledgeTime,
-              );
-
-              if (selectedTime != null) {
-                ref.read(pledgeTimeProvider.notifier).state = selectedTime;
-              }
-            },
-            child: Text(
-              '${pledgeTime.hour}:${pledgeTime.minute.toString().padLeft(2, '0')}',
-              style: currentTheme.textTheme.titleLarge
-                  ?.copyWith(fontWeight: FontWeight.w400),
-            ),
-          ),
-        ),
-      ],
+        if (selectedTime != null) {
+          ref.read(pledgeTimeProvider.notifier).state = selectedTime;
+          final hour = pledgeTime.hour;
+          final minute = pledgeTime.minute;
+          NotificationService().setNotification(
+              hour, minute, Strings.goodMorning, Strings.pledge);
+          print(pledgeTime);
+        }
+      },
+      child: Text(
+        '${pledgeTime.hour}:${pledgeTime.minute.toString().padLeft(2, '0')}',
+        style: currentTheme.textTheme.titleLarge
+            ?.copyWith(fontWeight: FontWeight.w400),
+      ),
     );
   }
 }

@@ -1,7 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
+import 'package:quit_mate/src/feature/notification/model/notification_service.dart';
 
 class CustomReviewTimePicker extends ConsumerWidget {
   const CustomReviewTimePicker({super.key});
@@ -19,17 +20,20 @@ class CustomReviewTimePicker extends ConsumerWidget {
                 child: child!);
           },
           context: context,
-          initialTime: reviewTime ?? const TimeOfDay(hour: 21, minute: 00),
+          initialTime: reviewTime,
         );
 
         if (selectedTime != null) {
           ref.read(reviewTimeProvider.notifier).state = selectedTime;
+          final hour = reviewTime.hour;
+          final minute = reviewTime.minute;
+          NotificationService()
+              .setNotification(hour, minute, Strings.goodNight, Strings.review);
+          print(reviewTime);
         }
       },
       child: Text(
-        reviewTime != null
-            ? '${reviewTime.hour}:${reviewTime.minute.toString().padLeft(2, '0')}'
-            : "kFourthSelectTime".tr(),
+        '${reviewTime.hour}:${reviewTime.minute.toString().padLeft(2, '0')}',
         style: currentTheme.textTheme.titleLarge
             ?.copyWith(fontWeight: FontWeight.w400),
       ),
@@ -38,4 +42,4 @@ class CustomReviewTimePicker extends ConsumerWidget {
 }
 
 final reviewTimeProvider =
-    StateProvider<TimeOfDay?>((ref) => const TimeOfDay(hour: 21, minute: 00));
+    StateProvider<TimeOfDay>((ref) => const TimeOfDay(hour: 21, minute: 00));

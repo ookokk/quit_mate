@@ -1,9 +1,11 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:quit_mate/generated/assets.dart';
 
 class NotificationService {
   static final NotificationService _notificationService =
       NotificationService._internal();
+  String imagePath = "";
 
   factory NotificationService() {
     return _notificationService;
@@ -29,12 +31,12 @@ class NotificationService {
 
     AwesomeNotifications().createNotification(
         schedule: NotificationCalendar(
-          repeats: true,
           allowWhileIdle: true,
           hour: hour ?? DateTime.now().hour,
           minute: minute ?? DateTime.now().minute,
         ),
         content: NotificationContent(
+            wakeUpScreen: true,
             showWhen: false,
             id: 1,
             channelKey: 'pledge',
