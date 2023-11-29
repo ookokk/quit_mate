@@ -86,7 +86,8 @@ class Strings {
   static const String privacy = "Privacy";
   static const String privacyPolicy = "Privacy policy";
   static const String notifications = "Notifications";
-  static const String muteNotify = "Mute notifications";
+  static const String editNotify = "Edit notifications";
+  static const String muteNotifications = "Mute all notifications";
   //privacy
   static const String tPrivacy = "Privacy Policy";
   static const String bLastUpdated = "Last updated: 12/11/2023";

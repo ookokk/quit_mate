@@ -30,7 +30,6 @@ class CustomPledgeTimePicker extends ConsumerWidget {
           final minute = pledgeTime.minute;
           NotificationService().setNotification(
               hour, minute, Strings.goodMorning, Strings.pledge);
-          print(pledgeTime);
         }
       },
       child: Text(

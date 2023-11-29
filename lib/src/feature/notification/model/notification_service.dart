@@ -1,11 +1,9 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:quit_mate/generated/assets.dart';
 
 class NotificationService {
   static final NotificationService _notificationService =
       NotificationService._internal();
-  String imagePath = "";
 
   factory NotificationService() {
     return _notificationService;
@@ -50,5 +48,9 @@ class NotificationService {
         AwesomeNotifications().requestPermissionToSendNotifications();
       }
     });
+  }
+
+  Future<void> cancelNotifications() async {
+    AwesomeNotifications().cancelAll();
   }
 }

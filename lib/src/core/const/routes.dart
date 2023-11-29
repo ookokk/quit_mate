@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quit_mate/src/feature/navigation/features/affirmation/view/affirmation_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/set_bg_image/view/set_bg_image_view.dart';
 import 'package:quit_mate/src/feature/navigation/view/navigation_view.dart';
+import 'package:quit_mate/src/feature/notification/view/edit_notifications_view.dart';
 import 'package:quit_mate/src/feature/settings/feature/privacy/view/privacy_view.dart';
 import 'package:quit_mate/src/feature/settings/view/settings_view.dart';
 import 'package:quit_mate/src/feature/splash/get_started/view/get_started_view.dart';
@@ -16,7 +17,6 @@ class Routes {
   //AUTH
   static const String login = '/login';
   static const String register = '/register';
-
   //HOME
   static const String navigation = '/navigation';
   static const String setBG = '/setBG';
@@ -24,6 +24,7 @@ class Routes {
   static const String settings = '/settings';
   //settings
   static const String privacy = '/privacy';
+  static const String editNtf = '/editNotification';
 
   static final Map<String, WidgetBuilder> routes = {
     splash: (context) => const SplashView(),
@@ -34,5 +35,6 @@ class Routes {
     settings: (context) => const SettingsView(),
     privacy: (context) => const PrivacyView(),
     getUserInfo: (context) => GetUserInformationView(),
+    editNtf: (context) => const EditNotificationsView(),
   };
 }

@@ -131,7 +131,10 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                           headerText: Strings.notifications,
                           iconData: Icons.notifications),
                       SettingsListTile(
-                          text: Strings.muteNotify,
+                          onTap: () {
+                            Navigator.pushNamed(context, '/editNotification');
+                          },
+                          text: Strings.editNotify,
                           trailingChild: Icon(
                             Icons.arrow_forward_ios,
                             color: currentTheme.indicatorColor,

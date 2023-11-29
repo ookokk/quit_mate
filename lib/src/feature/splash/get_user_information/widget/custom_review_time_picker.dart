@@ -29,7 +29,6 @@ class CustomReviewTimePicker extends ConsumerWidget {
           final minute = reviewTime.minute;
           NotificationService()
               .setNotification(hour, minute, Strings.goodNight, Strings.review);
-          print(reviewTime);
         }
       },
       child: Text(
