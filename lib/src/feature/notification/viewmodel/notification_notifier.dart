@@ -4,7 +4,7 @@ import 'package:quit_mate/src/feature/notification/model/notification_service.da
 
 class NotificationController {
   final NotificationService _notificationService = NotificationService();
-  bool _notificationsEnabled = true;
+  bool _notificationsEnabled = false;
 
   bool get notificationsEnabled => _notificationsEnabled;
 
@@ -12,7 +12,8 @@ class NotificationController {
     if (enable) {
       _notificationService.cancelNotifications();
     } else {
-      Navigator.pushNamed(context, '/editNotification');
+      //Navigator.pushNamed(context, '/editNotification');
+      _notificationService.requestPermission();
     }
     _notificationsEnabled = enable;
   }
