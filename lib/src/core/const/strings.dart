@@ -38,6 +38,7 @@ class Strings {
   static const String howManyTimesEach =
       "On days you drank, how many drinks did you have?";
   static const String next = "Next";
+  static const String lastMilestone = "Last Milestone ";
   static const String confirmYourDaily =
       "Confirm your daily pledge and review times";
   static const String pledge = "Daily Pledge";
