@@ -3,7 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/notification/viewmodel/notification_notifier.dart';
+import 'package:quit_mate/src/feature/notification/model/notification_service.dart';
+import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/widget/custom_pledge_time_picker.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/widget/custom_review_time_picker.dart';
 import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
@@ -16,7 +17,7 @@ class EditNotificationsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
-    final controller = ref.watch(notificationControllerProvider);
+    final ntfService = NotificationService();
     return SafeArea(
         child: Scaffold(
       appBar: const CustomAppBar(),
@@ -67,7 +68,8 @@ class EditNotificationsView extends ConsumerWidget {
               width: DeviceSize.kWidth(context) * 0.9,
               height: DeviceSize.kHeight(context) * 0.06,
               child: Card(
-                color: currentTheme.cardColor,
+                elevation: 3,
+                color: currentTheme.scaffoldBackgroundColor,
                 child: Padding(
                   padding: const EdgeInsets.all(6.0),
                   child: Row(
@@ -80,13 +82,22 @@ class EditNotificationsView extends ConsumerWidget {
                         ),
                       ),
                       Expanded(
-                        child: Switch(
-                          value: controller.notificationsEnabled,
-                          onChanged: (bool value) {
-                            controller.toggleNotification(value, context);
+                          child: IconButton(
+                        onPressed: () {
+                          SettingsAlertDialog().showSettingsAlertDialog(
+                              context, ref, () {
+                            ntfService.cancelNotifications();
                           },
+                              MaterialStateProperty.all(Colors.red.shade200),
+                              Strings.warning,
+                              Strings.areYouSureTurnOff,
+                              Strings.yes);
+                        },
+                        icon: Icon(
+                          Icons.notifications_off_outlined,
+                          color: currentTheme.indicatorColor,
                         ),
-                      )
+                      ))
                     ],
                   ),
                 ),

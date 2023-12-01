@@ -74,6 +74,8 @@ class Strings {
   static const String alumni = "Alumni";
   //settings
   static const String account = "Account";
+  static const String areYouSureTurnOff =
+      "Are you sure you want to turn off notifications?";
   static const String warning = "Warning";
   static const String areYouSureLogout = "Are you sure you want to log out ?";
   static const String signOut = "Sign out";
