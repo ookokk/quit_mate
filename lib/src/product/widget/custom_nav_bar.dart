@@ -41,10 +41,10 @@ class CustomNavBar extends ConsumerWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.support,
+            Icons.settings_outlined,
             color: currentTheme.indicatorColor,
           ),
-          label: Strings.support,
+          label: Strings.settings,
         ),
       ],
     );

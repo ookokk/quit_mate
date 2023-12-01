@@ -48,7 +48,7 @@ class ThemeProvider extends StateNotifier<ThemeData> {
     shadowColor: const Color(0xffcfdcec),
     splashColor: const Color(0xffF39F5A),
     dialogBackgroundColor: const Color(0xffe8576a),
-    canvasColor: const Color(0xffd0fd00),
+    canvasColor: const Color(0xff5628b9),
     primaryColor: const Color(0xff2371b0),
     disabledColor: const Color(0xff0c3e88),
     textTheme: TextTheme(
@@ -98,7 +98,7 @@ class ThemeProvider extends StateNotifier<ThemeData> {
     shadowColor: const Color(0xff343942),
     primaryColor: const Color(0xff5d5d5d),
     splashColor: const Color(0xff204354),
-    canvasColor: const Color(0xffd0fd00),
+    canvasColor: const Color(0xff5628b9),
     dialogBackgroundColor: const Color(0xff557ec2),
     brightness: Brightness.dark,
     textTheme: TextTheme(

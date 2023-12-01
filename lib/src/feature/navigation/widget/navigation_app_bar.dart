@@ -26,28 +26,9 @@ class NavigationAppBar extends ConsumerWidget implements PreferredSizeWidget {
       elevation: 0,
       actions: [
         Expanded(
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.menu_rounded,
-              color: currentTheme.indicatorColor,
-            ),
-          ),
-        ),
-        Expanded(
           flex: 6,
           child: SvgPicture.asset('assets/svg/appbar.svg'),
         ),
-        Expanded(
-          child: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/settings');
-              },
-              icon: Icon(
-                Icons.settings,
-                color: currentTheme.indicatorColor,
-              )),
-        )
       ],
       backgroundColor: currentTheme.hoverColor,
     );

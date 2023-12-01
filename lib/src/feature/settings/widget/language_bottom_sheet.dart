@@ -17,7 +17,7 @@ class LanguageBottomSheet extends ConsumerWidget {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                  color: currentTheme.shadowColor,
+                  color: currentTheme.canvasColor,
                   blurRadius: 5,
                   offset: const Offset(0, 3))
             ],
@@ -80,13 +80,14 @@ class LanguageBottomSheet extends ConsumerWidget {
   ListTile buildListTile(ThemeData currentTheme, BuildContext context,
       String listTileText, VoidCallback listTileOnTap) {
     return ListTile(
-      leading: Icon(
+      leading: const Icon(
         Icons.language,
-        color: currentTheme.indicatorColor,
+        color: Colors.white,
       ),
       title: Text(
         listTileText,
-        style: currentTheme.textTheme.titleMedium,
+        style:
+            currentTheme.textTheme.titleMedium?.copyWith(color: Colors.white),
       ),
       onTap: listTileOnTap,
     );

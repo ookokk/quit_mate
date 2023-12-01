@@ -25,12 +25,6 @@ class SoberPageView extends ConsumerWidget {
         color: currentTheme.hoverColor,
         child: Column(
           children: [
-            TextButton(
-                onPressed: () async {},
-                child: Text(
-                  'press',
-                  style: currentTheme.textTheme.titleMedium,
-                )),
             Expanded(
               flex: 15,
               child: PageView(
