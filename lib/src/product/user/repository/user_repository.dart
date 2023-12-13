@@ -26,4 +26,8 @@ class UserRepository {
     }
     return null;
   }
+
+  Future<void> deleteUser(String userID) async {
+    await _userCollection.doc(userID).delete();
+  }
 }

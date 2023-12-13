@@ -1,9 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheManager {
-  //Theme key = "theme"
-  //Is first key = "isFirst"
-  //Token key = "userId"
+  //Theme key = "theme" == string
+  //Is first key = "isFirst" == bool
+  //Token key = "userId" == string
   static Future<void> setString(String key, String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(key, value);

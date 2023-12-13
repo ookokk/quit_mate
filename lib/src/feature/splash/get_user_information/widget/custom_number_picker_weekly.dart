@@ -46,7 +46,7 @@ class WeightPickerState extends ConsumerState<CustomNumberPickerWeekly> {
               });
             },
             itemHeight: 50,
-            axis: Axis.horizontal,
+            axis: Axis.vertical,
           ),
         ],
       ),

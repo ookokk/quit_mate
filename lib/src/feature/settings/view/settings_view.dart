@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lottie/lottie.dart';
+import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
@@ -9,6 +9,7 @@ import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart
 import 'package:quit_mate/src/feature/settings/widget/settings_category_row.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_list_tile.dart';
 import 'package:quit_mate/src/feature/settings/widget/theme_switch.dart';
+import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class SettingsView extends ConsumerStatefulWidget {
   const SettingsView({
@@ -23,24 +24,13 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = ref.watch(themeProvider);
+    final userRepository = UserRepository();
     return SafeArea(
         child: Scaffold(
             backgroundColor: currentTheme.scaffoldBackgroundColor,
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: DeviceSize.kHeight(context) * 0.1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Lottie.asset(
-                          'assets/animations/settings.json',
-                          animate: false,
-                        )
-                      ],
-                    ),
-                  ),
                   Container(
                     margin: const EdgeInsets.all(8),
                     height: DeviceSize.kHeight(context) * 0.8,
@@ -48,30 +38,8 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                       const SettingsCategoryRow(
                           headerText: Strings.account,
                           iconData: Icons.account_circle),
-                      SettingsListTile(
-                          onTap: () {
-                            SettingsAlertDialog().showSettingsAlertDialog(
-                              context,
-                              ref,
-                              () {
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, '/login', (route) => false);
-                              },
-                              MaterialStateProperty.all<Color>(
-                                  Colors.red.shade400),
-                              Strings.warning,
-                              Strings.areYouSureLogout,
-                              Strings.signOut,
-                            );
-                          },
-                          text: Strings.signOut,
-                          trailingChild: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.logout,
-                              color: currentTheme.indicatorColor,
-                            ),
-                          )),
+                      buildDeleteAccountTile(
+                          context, userRepository, currentTheme),
                       const SettingsCategoryRow(
                           headerText: Strings.about,
                           iconData: Icons.dashboard_customize_outlined),
@@ -121,12 +89,6 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                             Icons.arrow_forward_ios,
                             color: currentTheme.indicatorColor,
                           )),
-                      SettingsListTile(
-                          text: Strings.sendUs,
-                          trailingChild: Icon(
-                            Icons.arrow_forward_ios,
-                            color: currentTheme.indicatorColor,
-                          )),
                       const SettingsCategoryRow(
                           headerText: Strings.notifications,
                           iconData: Icons.notifications),
@@ -144,5 +106,28 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                 ],
               ),
             )));
+  }
+
+  SettingsListTile buildDeleteAccountTile(BuildContext context,
+      UserRepository userRepository, ThemeData currentTheme) {
+    return SettingsListTile(
+        onTap: () {
+          SettingsAlertDialog().showSettingsAlertDialog(context, ref, () async {
+            String? currentID = await CacheManager.getString('userId');
+            userRepository.deleteUser(currentID ?? "");
+            await CacheManager.setBool('isFirst', true);
+            Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
+                context, '/getStarted', (route) => false));
+          }, MaterialStateProperty.all(Colors.red), Strings.warning,
+              Strings.areYouSureDeleteAccount, Strings.delete);
+        },
+        text: Strings.deleteAccount,
+        trailingChild: IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.delete_forever,
+            color: currentTheme.indicatorColor,
+          ),
+        ));
   }
 }

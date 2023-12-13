@@ -75,6 +75,10 @@ class Strings {
   static const String alumni = "Alumni";
   //settings
   static const String account = "Account";
+  static const String deleteAccount = "Delete my account";
+  static const String delete = "Delete";
+  static const String areYouSureDeleteAccount =
+      "Are you sure you want to delete your account?";
   static const String areYouSureTurnOff =
       "Are you sure you want to turn off notifications?";
   static const String warning = "Warning";
