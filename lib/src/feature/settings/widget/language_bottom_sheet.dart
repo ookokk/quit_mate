@@ -34,10 +34,6 @@ class LanguageBottomSheet extends ConsumerWidget {
                 context.setLocale(const Locale('tr', 'TR'));
                 Navigator.pop(context);
               }),
-              buildListTile(currentTheme, context, "Nederland", () {
-                context.setLocale(const Locale('nl', 'NL'));
-                Navigator.pop(context);
-              }),
               buildListTile(currentTheme, context, "Arabic", () {
                 context.setLocale(const Locale('ar', 'SA'));
                 Navigator.pop(context);
@@ -56,10 +52,6 @@ class LanguageBottomSheet extends ConsumerWidget {
               }),
               buildListTile(currentTheme, context, "Japanese", () {
                 context.setLocale(const Locale('ja', 'JP'));
-                Navigator.pop(context);
-              }),
-              buildListTile(currentTheme, context, "Portuguese", () {
-                context.setLocale(const Locale('pt', 'BR'));
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "Chinese", () {

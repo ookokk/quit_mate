@@ -10,7 +10,7 @@ import 'src/core/init/init_app.dart';
 
 void main() {
   InitApp().initApp();
-  // EasyLocalization.logger.enableBuildModes = [];
+  EasyLocalization.logger.enableBuildModes = [];
   runApp(EasyLocalization(
       supportedLocales: LanguageManager.instance.supportedLocales,
       path: 'assets/translations',
