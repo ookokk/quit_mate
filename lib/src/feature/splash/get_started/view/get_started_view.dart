@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/splash/get_started/widget/get_started_button.dart';
 import 'package:quit_mate/src/product/user/model/sober_user.dart';
@@ -19,7 +19,7 @@ class GetStartedView extends ConsumerWidget {
     return SafeArea(
         child: Scaffold(
       floatingActionButton: GetStartedButton(
-        text: Strings.getStarted,
+        text: "getStarted".tr(),
         onTap: () {
           Navigator.pushReplacementNamed(context, '/getUserInfo');
           soberUser.generateRandomUserId();
@@ -35,7 +35,7 @@ class GetStartedView extends ConsumerWidget {
                 height: 24,
               ),
               Text(
-                Strings.firstOfAll,
+                "firstOfAll".tr(),
                 style: currentTheme.textTheme.headlineMedium
                     ?.copyWith(fontWeight: FontWeight.w500),
               ),
@@ -43,7 +43,7 @@ class GetStartedView extends ConsumerWidget {
                 height: 24,
               ),
               Text(
-                Strings.takeTheFirst,
+                "takeTheFirst".tr(),
                 style: currentTheme.textTheme.titleSmall
                     ?.copyWith(fontWeight: FontWeight.w300),
                 textAlign: TextAlign.center,

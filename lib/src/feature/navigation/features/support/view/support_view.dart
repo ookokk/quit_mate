@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class SupportView extends ConsumerWidget {
@@ -24,7 +24,7 @@ class SupportView extends ConsumerWidget {
           child: Column(
             children: [
               Text(
-                Strings.onlineTherapy,
+                "onlineTherapy".tr(),
                 style: currentTheme.textTheme.titleMedium
                     ?.copyWith(color: Colors.white),
                 textAlign: TextAlign.start,
@@ -45,7 +45,7 @@ class SupportView extends ConsumerWidget {
           child: Column(
             children: [
               Text(
-                Strings.alumni,
+                "alumni".tr(),
                 style: currentTheme.textTheme.titleMedium
                     ?.copyWith(color: Colors.white),
                 textAlign: TextAlign.start,

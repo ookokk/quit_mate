@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class SettingsAlertDialog {
@@ -45,7 +45,7 @@ class SettingsAlertDialog {
               width: 8,
             ),
             TextButton(
-              child: Text(Strings.cancel,
+              child: Text("cancel".tr(),
                   style: currentTheme.textTheme.titleLarge?.copyWith()),
               onPressed: () {
                 Navigator.of(context).pop();

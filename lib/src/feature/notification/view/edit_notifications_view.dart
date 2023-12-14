@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/notification/model/notification_service.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
@@ -32,7 +32,7 @@ class EditNotificationsView extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                Strings.confirmYourDaily,
+                "confirmYourDaily".tr(),
                 style: currentTheme.textTheme.titleMedium
                     ?.copyWith(fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,
@@ -43,7 +43,7 @@ class EditNotificationsView extends ConsumerWidget {
             ),
             TimePickerRow(
               currentTheme: currentTheme,
-              text: Strings.pledge,
+              text: "pledge".tr(),
               child: const CustomPledgeTimePicker(),
             ),
             const SizedBox(
@@ -51,14 +51,14 @@ class EditNotificationsView extends ConsumerWidget {
             ),
             TimePickerRow(
               currentTheme: currentTheme,
-              text: Strings.review,
+              text: "review".tr(),
               child: const CustomReviewTimePicker(),
             ),
             const SizedBox(
               height: 28,
             ),
             Text(
-              Strings.youWillReceive,
+              "youWillReceive".tr(),
               style: currentTheme.textTheme.titleSmall,
             ),
             const SizedBox(
@@ -77,7 +77,7 @@ class EditNotificationsView extends ConsumerWidget {
                       Expanded(
                         flex: 3,
                         child: Text(
-                          Strings.muteNotifications,
+                          "muteNotifications".tr(),
                           style: currentTheme.textTheme.titleMedium,
                         ),
                       ),
@@ -89,9 +89,9 @@ class EditNotificationsView extends ConsumerWidget {
                             ntfService.cancelNotifications();
                           },
                               MaterialStateProperty.all(Colors.red.shade200),
-                              Strings.warning,
-                              Strings.areYouSureTurnOff,
-                              Strings.yes);
+                              "warning".tr(),
+                              "areYouSureTurnOff".tr(),
+                              "yes".tr());
                         },
                         icon: Icon(
                           Icons.notifications_off_outlined,

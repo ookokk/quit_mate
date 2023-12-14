@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/view/addictive_factor_view.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/view/set_daily_notifications_view.dart';
@@ -43,7 +43,7 @@ class GetUserInformationView extends ConsumerWidget {
             userRepository.saveUser(soberUser, currentID ?? "");
           }
         },
-        text: Strings.next,
+        text: "next".tr(),
       ),
       backgroundColor: currentTheme.scaffoldBackgroundColor,
       body: PageView(controller: _pageController, children: [

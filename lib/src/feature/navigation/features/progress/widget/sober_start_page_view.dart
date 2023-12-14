@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
@@ -24,7 +24,7 @@ class SoberStartPageView extends ConsumerWidget {
         children: [
           Expanded(
               child: Text(
-            Strings.mySoberStartDate,
+            "mySoberStartDate".tr(),
             style: currentTheme.textTheme.bodyMedium
                 ?.copyWith(color: Colors.white),
           )),
@@ -53,10 +53,10 @@ class SoberStartPageView extends ConsumerWidget {
                       },
                       MaterialStateProperty.all<Color>(Colors.transparent),
                       "",
-                      "${Strings.areYouSureReset}\n${Strings.doNotFeel}",
-                      Strings.yes,
+                      "${"areYouSureReset".tr()}\n${"doNotFeel".tr()}",
+                      "yes".tr(),
                     );
-                  }, Icons.replay_circle_filled_sharp, Strings.reset),
+                  }, Icons.replay_circle_filled_sharp, "reset".tr()),
                 ),
                 Expanded(
                     child: buildButtonAndTextColumn(
@@ -66,7 +66,7 @@ class SoberStartPageView extends ConsumerWidget {
                         currentTheme,
                         () {},
                         Icons.settings_sharp,
-                        Strings.settings)),
+                        "settings".tr())),
               ],
             ),
           ),

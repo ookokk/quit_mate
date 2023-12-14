@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/const/material/project_radius.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
 
@@ -48,7 +48,7 @@ class SoberChart extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                Strings.iHaveBeen,
+                "iHaveBeen".tr(),
                 style: currentTheme.textTheme.bodyMedium
                     ?.copyWith(color: Colors.white),
               ),
@@ -149,12 +149,12 @@ class SoberChart extends ConsumerWidget {
             reservedSize: 40,
             getTitlesWidget: (double value, TitleMeta meta) {
               final titles = [
-                Strings.year,
-                Strings.month,
-                Strings.day,
-                Strings.hour,
-                Strings.minute,
-                Strings.second,
+                "year".tr(),
+                "month".tr(),
+                "day".tr(),
+                "hour".tr(),
+                "minute".tr(),
+                "second".tr(),
               ];
               return Text(
                 titles[value.toInt()],

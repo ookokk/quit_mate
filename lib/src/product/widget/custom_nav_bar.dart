@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class CustomNavBar extends ConsumerWidget {
@@ -27,24 +27,24 @@ class CustomNavBar extends ConsumerWidget {
       items: [
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home_filled,
+            Icons.home,
             color: currentTheme.indicatorColor,
           ),
-          label: Strings.home,
+          label: "home".tr(),
         ),
         BottomNavigationBarItem(
           icon: Image.asset(
             'assets/images/support.png',
             height: 27,
           ),
-          label: Strings.motivation,
+          label: "motivation".tr(),
         ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.settings_outlined,
             color: currentTheme.indicatorColor,
           ),
-          label: Strings.settings,
+          label: "settings".tr(),
         ),
       ],
     );

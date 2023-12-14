@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/notification/model/notification_service.dart';
 
@@ -28,8 +28,8 @@ class CustomPledgeTimePicker extends ConsumerWidget {
           ref.read(pledgeTimeProvider.notifier).state = selectedTime;
           final hour = pledgeTime.hour;
           final minute = pledgeTime.minute;
-          NotificationService().setNotification(
-              hour, minute, Strings.goodMorning, Strings.pledge);
+          NotificationService()
+              .setNotification(hour, minute, "goodMorning".tr(), "pledge".tr());
         }
       },
       child: Text(

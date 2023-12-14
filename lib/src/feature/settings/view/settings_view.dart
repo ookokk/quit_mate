@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/settings/widget/language_bottom_sheet.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
@@ -35,13 +35,13 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                     margin: const EdgeInsets.all(8),
                     height: DeviceSize.kHeight(context) * 0.8,
                     child: ListView(children: [
-                      const SettingsCategoryRow(
-                          headerText: Strings.account,
+                      SettingsCategoryRow(
+                          headerText: "account".tr(),
                           iconData: Icons.account_circle),
                       buildDeleteAccountTile(
                           context, userRepository, currentTheme),
-                      const SettingsCategoryRow(
-                          headerText: Strings.about,
+                      SettingsCategoryRow(
+                          headerText: "about".tr(),
                           iconData: Icons.dashboard_customize_outlined),
                       SettingsListTile(
                           onTap: () {
@@ -52,7 +52,7 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                                   return const LanguageBottomSheet();
                                 });
                           },
-                          text: Strings.language,
+                          text: "language".tr(),
                           trailingChild: Icon(
                             Icons.arrow_forward_ios,
                             color: currentTheme.indicatorColor,
@@ -61,42 +61,42 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                         onTap: () {
                           Navigator.pushNamed(context, '/setBG');
                         },
-                        text: Strings.changeBGImage,
+                        text: "changeBGImage".tr(),
                         trailingChild: Icon(
                           Icons.arrow_forward_ios,
                           color: currentTheme.indicatorColor,
                         ),
                       ),
-                      const SettingsListTile(
-                          text: Strings.darkTheme,
-                          trailingChild: ThemeSwitch()),
-                      const SettingsCategoryRow(
-                          headerText: Strings.privacy,
+                      SettingsListTile(
+                          text: "darkTheme".tr(),
+                          trailingChild: const ThemeSwitch()),
+                      SettingsCategoryRow(
+                          headerText: "privacy".tr(),
                           iconData: Icons.privacy_tip_outlined),
                       SettingsListTile(
-                          text: Strings.privacyPolicy,
+                          text: "privacyPolicy".tr(),
                           onTap: () {
                             Navigator.pushNamed(context, '/privacy');
                           },
                           trailingChild: Icon(Icons.arrow_forward_ios,
                               color: currentTheme.indicatorColor)),
-                      const SettingsCategoryRow(
-                          headerText: Strings.feedback,
+                      SettingsCategoryRow(
+                          headerText: "feedback".tr(),
                           iconData: Icons.feedback_outlined),
                       SettingsListTile(
-                          text: Strings.rateThisApp,
+                          text: "rateThisApp".tr(),
                           trailingChild: Icon(
                             Icons.arrow_forward_ios,
                             color: currentTheme.indicatorColor,
                           )),
-                      const SettingsCategoryRow(
-                          headerText: Strings.notifications,
+                      SettingsCategoryRow(
+                          headerText: "notifications".tr(),
                           iconData: Icons.notifications),
                       SettingsListTile(
                           onTap: () {
                             Navigator.pushNamed(context, '/editNotification');
                           },
-                          text: Strings.editNotify,
+                          text: "editNotify".tr(),
                           trailingChild: Icon(
                             Icons.arrow_forward_ios,
                             color: currentTheme.indicatorColor,
@@ -118,10 +118,10 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
             await CacheManager.setBool('isFirst', true);
             Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
                 context, '/getStarted', (route) => false));
-          }, MaterialStateProperty.all(Colors.red), Strings.warning,
-              Strings.areYouSureDeleteAccount, Strings.delete);
+          }, MaterialStateProperty.all(Colors.red), "warning".tr(),
+              "areYouSureDeleteAccount".tr(), "delete".tr());
         },
-        text: Strings.deleteAccount,
+        text: "deleteAccount".tr(),
         trailingChild: IconButton(
           onPressed: () {},
           icon: Icon(

@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_page_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
@@ -31,7 +31,7 @@ class HomeView extends ConsumerWidget {
               child: Align(
                 alignment: AlignmentDirectional.centerStart,
                 child: Text(
-                  Strings.lastMilestone,
+                  "lastMilestone".tr(),
                   style: currentTheme.textTheme.titleMedium
                       ?.copyWith(fontWeight: FontWeight.w600),
                   textAlign: TextAlign.start,
@@ -45,7 +45,7 @@ class HomeView extends ConsumerWidget {
                 child: Column(
                   children: [
                     Text(
-                      "$totalDaysSober    ${Strings.days}",
+                      "$totalDaysSober    ${"days".tr()}",
                       style: currentTheme.textTheme.titleLarge
                           ?.copyWith(color: Colors.white),
                     ),

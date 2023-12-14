@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
 import 'package:quit_mate/src/product/user/model/sober_user.dart';
@@ -29,7 +29,7 @@ class YearsView extends ConsumerWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Text(
-                '${Strings.iHaveBeen}  ${addictiveFactor ?? ''}',
+                '${"iHaveBeen".tr()}  ${addictiveFactor ?? ''}',
                 style: currentTheme.textTheme.bodyMedium
                     ?.copyWith(color: Colors.white),
               ),
@@ -38,13 +38,13 @@ class YearsView extends ConsumerWidget {
               soberDifferenceNumber: year,
               currentTheme: currentTheme,
               alignment: Alignment.centerLeft,
-              underText: Strings.year,
+              underText: "year".tr(),
             ),
             NumberCircleAvatar(
               soberDifferenceNumber: month,
               currentTheme: currentTheme,
               alignment: Alignment.centerRight,
-              underText: Strings.month,
+              underText: "month".tr(),
             ),
           ],
         ));

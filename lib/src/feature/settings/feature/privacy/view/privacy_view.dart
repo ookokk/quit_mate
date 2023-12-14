@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/padding_insets.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
 
@@ -15,7 +15,7 @@ class PrivacyView extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     return SafeArea(
         child: Scaffold(
-      appBar: const CustomAppBar(title: Strings.tPrivacy),
+      appBar: CustomAppBar(title: "tPrivacy".tr()),
       backgroundColor: currentTheme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Padding(
@@ -26,68 +26,68 @@ class PrivacyView extends ConsumerWidget {
             children: [
               Text(
                 textAlign: TextAlign.start,
-                Strings.bLastUpdated,
+                "bLastUpdated".tr(),
                 style: currentTheme.textTheme.bodyMedium,
               ),
               const CustomSizedBox(),
               Text(
-                Strings.bYourSecurity,
+                "bYourSecurity".tr(),
                 style: currentTheme.textTheme.bodyMedium,
               ),
               const CustomSizedBox(),
               Text(
-                Strings.bWe,
+                "bWe".tr(),
                 style: currentTheme.textTheme.bodyMedium,
               ),
               const CustomSizedBox(),
               Text(
-                Strings.tYourPersonal,
+                "tYourPersonal".tr(),
                 style: currentTheme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600),
               ),
               const CustomSizedBox(),
-              Text(Strings.bYourIdentity,
+              Text("bYourIdentity".tr(),
                   style: currentTheme.textTheme.bodyMedium),
               const CustomSizedBox(),
               Text(
-                Strings.tPurpose,
+                "tPurpose".tr(),
                 style: currentTheme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600),
               ),
               const CustomSizedBox(),
-              Text(Strings.bYourPurpose,
+              Text("bYourPurpose".tr(),
                   style: currentTheme.textTheme.bodyMedium),
               const CustomSizedBox(),
               Text(
-                Strings.tToWhom,
+                "tToWhom".tr(),
                 style: currentTheme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(
                 height: 6,
               ),
-              Text(Strings.bToWhom, style: currentTheme.textTheme.bodyMedium),
+              Text("bToWhom".tr(), style: currentTheme.textTheme.bodyMedium),
               const CustomSizedBox(),
               Text(
-                Strings.tYourRights,
+                "tYourRights".tr(),
                 style: currentTheme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600),
               ),
               const CustomSizedBox(),
-              Text(Strings.bPursuant, style: currentTheme.textTheme.bodyMedium),
-              Text(Strings.bToLearnA, style: currentTheme.textTheme.bodyMedium),
-              Text(Strings.bToLearnB, style: currentTheme.textTheme.bodyMedium),
-              Text(Strings.bToLearnC, style: currentTheme.textTheme.bodyMedium),
-              Text(Strings.bToLearnD, style: currentTheme.textTheme.bodyMedium),
-              Text(Strings.bToLearnE, style: currentTheme.textTheme.bodyMedium),
+              Text("bPursuant".tr(), style: currentTheme.textTheme.bodyMedium),
+              Text("bToLearnA".tr(), style: currentTheme.textTheme.bodyMedium),
+              Text("bToLearnB".tr(), style: currentTheme.textTheme.bodyMedium),
+              Text("bToLearnC".tr(), style: currentTheme.textTheme.bodyMedium),
+              Text("bToLearnD".tr(), style: currentTheme.textTheme.bodyMedium),
+              Text("bToLearnE".tr(), style: currentTheme.textTheme.bodyMedium),
               const CustomSizedBox(),
               Text(
-                Strings.tContact,
+                "tContact".tr(),
                 style: currentTheme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600),
               ),
               const CustomSizedBox(),
-              Text(Strings.bInOrder, style: currentTheme.textTheme.bodyMedium),
+              Text("bInOrder".tr(), style: currentTheme.textTheme.bodyMedium),
             ],
           ),
         ),

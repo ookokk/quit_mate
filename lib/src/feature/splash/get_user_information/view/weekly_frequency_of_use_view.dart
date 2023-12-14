@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/widget/custom_number_picker_weekly.dart';
 import 'package:quit_mate/src/feature/splash/get_user_information/widget/custom_percent_indicator.dart';
@@ -30,7 +30,7 @@ class WeeklyFrequencyOfUseView extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                Strings.howMany,
+                "howMany".tr(),
                 style: currentTheme.textTheme.titleMedium
                     ?.copyWith(fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,

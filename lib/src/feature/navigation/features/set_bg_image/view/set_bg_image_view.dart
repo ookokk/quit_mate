@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/cache/sp_background_image/sp_background_image.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
-import 'package:quit_mate/src/core/const/strings.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/set_bg_image/model/bg_images_list.dart';
 import 'package:quit_mate/src/feature/navigation/features/set_bg_image/viewmodel/bg_image_notifier.dart';
@@ -67,7 +67,7 @@ class SetBGImageView extends ConsumerWidget {
           ),
         ),
         floatingActionButton: SetBGImageBtn(
-          text: Strings.setBGImage,
+          text: "setBGImage".tr(),
           onTap: () async {
             final int currentIndex = _pageController.page?.round() ?? 0;
             final selectedImage = bgImagesList.backgroundImages[currentIndex];
@@ -76,7 +76,7 @@ class SetBGImageView extends ConsumerWidget {
             final snackBar = SnackBar(
               backgroundColor: Colors.black,
               content: Text(
-                Strings.bgImageUpdated,
+                "bgImageUpdated".tr(),
                 style: currentTheme.textTheme.titleMedium
                     ?.copyWith(color: Colors.white),
               ),
