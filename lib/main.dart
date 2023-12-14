@@ -12,6 +12,7 @@ void main() {
   InitApp().initApp();
   EasyLocalization.logger.enableBuildModes = [];
   runApp(EasyLocalization(
+      startLocale: LanguageManager.instance.currentLocale,
       supportedLocales: LanguageManager.instance.supportedLocales,
       path: 'assets/translations',
       assetLoader: const CodegenLoader(),

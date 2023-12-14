@@ -36,11 +36,6 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                     height: DeviceSize.kHeight(context) * 0.8,
                     child: ListView(children: [
                       SettingsCategoryRow(
-                          headerText: "account".tr(),
-                          iconData: Icons.account_circle),
-                      buildDeleteAccountTile(
-                          context, userRepository, currentTheme),
-                      SettingsCategoryRow(
                           headerText: "about".tr(),
                           iconData: Icons.dashboard_customize_outlined),
                       SettingsListTile(
@@ -101,6 +96,11 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                             Icons.arrow_forward_ios,
                             color: currentTheme.indicatorColor,
                           )),
+                      SettingsCategoryRow(
+                          headerText: "account".tr(),
+                          iconData: Icons.account_circle),
+                      buildDeleteAccountTile(
+                          context, userRepository, currentTheme),
                     ]),
                   ),
                 ],
