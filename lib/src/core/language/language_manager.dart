@@ -11,11 +11,28 @@ class LanguageManager {
   }
 
   final Locale englishLocale = const Locale('en', 'US');
+  final Locale arabicLocale = const Locale('ar', 'SA');
+  final Locale germanLocale = const Locale('de', 'DE');
+  final Locale spainLocale = const Locale('es', 'ES');
+  final Locale frenchLocale = const Locale('fr', 'FR');
+  final Locale japaneseLocale = const Locale('ja', 'JP');
+  final Locale russianLocale = const Locale('ru', 'RU');
   final Locale turkishLocale = const Locale('tr', 'TR');
-  Locale _currentLocale = const Locale('tr', 'TR');
-  //ispanya çince mandarin chinese hindice
+  final Locale chineseLocale = const Locale('zh', 'CN');
 
-  List<Locale> get supportedLocales => [englishLocale, turkishLocale];
+  Locale _currentLocale = const Locale('tr', 'TR');
+
+  List<Locale> get supportedLocales => [
+        englishLocale,
+        arabicLocale,
+        germanLocale,
+        spainLocale,
+        frenchLocale,
+        japaneseLocale,
+        russianLocale,
+        turkishLocale,
+        chineseLocale
+      ];
 
   Locale get currentLocale => _currentLocale;
 

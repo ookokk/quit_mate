@@ -7,6 +7,8 @@ class Assets {
   static const String animationsForest = 'assets/animations/forest.json';
   static const String animationsHearth = 'assets/animations/hearth.json';
   static const String animationsSettings = 'assets/animations/settings.json';
+  static const String assetsLocalizationScript =
+      'assets/localization_script.txt';
   static const String fontsPoppinsLight = 'assets/fonts/Poppins-Light.ttf';
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
