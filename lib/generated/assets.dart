@@ -15,6 +15,7 @@ class Assets {
   static const String imagesAppBig = 'assets/images/app_big.png';
   static const String imagesAppNoName = 'assets/images/app_no_name.png';
   static const String imagesBgGet = 'assets/images/bg_get.jpg';
+  static const String imagesSupport = 'assets/images/support.png';
   static const String imagesWp1 = 'assets/images/wp1.jpg';
   static const String imagesWp10 = 'assets/images/wp10.jpg';
   static const String imagesWp2 = 'assets/images/wp2.jpg';
@@ -27,6 +28,7 @@ class Assets {
   static const String imagesWp9 = 'assets/images/wp9.jpg';
   static const String scriptLocalizationScript =
       'assets/script/localization_script.txt';
+  static const String svgAlumni = 'assets/svg/alumni.svg';
   static const String svgAppbar = 'assets/svg/appbar.svg';
   static const String svgBack = 'assets/svg/back.svg';
   static const String svgBg = 'assets/svg/bg.svg';
@@ -34,5 +36,8 @@ class Assets {
   static const String svgGetStarted2 = 'assets/svg/get_started2.svg';
   static const String svgGetStarted3 = 'assets/svg/get_started3.svg';
   static const String svgLogin = 'assets/svg/login.svg';
+  static const String svgOnline = 'assets/svg/online.svg';
   static const String svgRegister = 'assets/svg/register.svg';
+  static const String translationsEnUS = 'assets/translations/en_US.json';
+  static const String translationsTrTR = 'assets/translations/tr_TR.json';
 }

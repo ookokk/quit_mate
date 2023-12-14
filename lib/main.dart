@@ -1,13 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/routes.dart';
+import 'package:quit_mate/src/core/language/language_manager.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/splash/splash/view/splash_view.dart';
 import 'src/core/init/init_app.dart';
 
 void main() {
   InitApp().initApp();
-  runApp(const ProviderScope(child: MyApp()));
+  // EasyLocalization.logger.enableBuildModes = [];
+  runApp(EasyLocalization(
+      supportedLocales: LanguageManager.instance.supportedLocales,
+      path: 'assets/translations',
+      // assetLoader: const CodegenLoader(),
+      child: const ProviderScope(child: MyApp())));
 }
 
 class MyApp extends ConsumerWidget {
@@ -17,6 +24,9 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: currentTheme,
       routes: Routes.routes,
       debugShowCheckedModeBanner: false,
