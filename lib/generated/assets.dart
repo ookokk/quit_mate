@@ -38,6 +38,13 @@ class Assets {
   static const String svgLogin = 'assets/svg/login.svg';
   static const String svgOnline = 'assets/svg/online.svg';
   static const String svgRegister = 'assets/svg/register.svg';
+  static const String translationsArSA = 'assets/translations/ar_SA.json';
+  static const String translationsDeDE = 'assets/translations/de_DE.json';
   static const String translationsEnUS = 'assets/translations/en_US.json';
+  static const String translationsEsES = 'assets/translations/es_ES.json';
+  static const String translationsFrFR = 'assets/translations/fr_FR.json';
+  static const String translationsJaJP = 'assets/translations/ja_JP.json';
+  static const String translationsRuRU = 'assets/translations/ru_RU.json';
   static const String translationsTrTR = 'assets/translations/tr_TR.json';
+  static const String translationsZhCN = 'assets/translations/zh_CN.json';
 }

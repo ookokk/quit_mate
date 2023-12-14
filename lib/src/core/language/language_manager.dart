@@ -12,11 +12,10 @@ class LanguageManager {
 
   final Locale englishLocale = const Locale('en', 'US');
   final Locale turkishLocale = const Locale('tr', 'TR');
-  final Locale nederlandLocale = const Locale('nl', 'NL');
   Locale _currentLocale = const Locale('tr', 'TR');
+  //ispanya çince mandarin chinese hindice
 
-  List<Locale> get supportedLocales =>
-      [englishLocale, turkishLocale, nederlandLocale];
+  List<Locale> get supportedLocales => [englishLocale, turkishLocale];
 
   Locale get currentLocale => _currentLocale;
 
