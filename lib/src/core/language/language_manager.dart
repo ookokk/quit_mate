@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final languageManagerProvider = Provider<LanguageManager>((ref) {
+  return LanguageManager.instance;
+});
 
 class LanguageManager {
   LanguageManager._init();
@@ -20,7 +25,7 @@ class LanguageManager {
   final Locale turkishLocale = const Locale('tr', 'TR');
   final Locale chineseLocale = const Locale('zh', 'CN');
 
-  Locale _currentLocale = const Locale('tr', 'TR');
+  final Locale _currentLocale = const Locale('en', 'US');
 
   List<Locale> get supportedLocales => [
         englishLocale,
@@ -35,12 +40,4 @@ class LanguageManager {
       ];
 
   Locale get currentLocale => _currentLocale;
-
-  void setLocale(Locale newLocale) {
-    if (supportedLocales.contains(newLocale)) {
-      _currentLocale = newLocale;
-    } else {
-      _currentLocale = englishLocale;
-    }
-  }
 }

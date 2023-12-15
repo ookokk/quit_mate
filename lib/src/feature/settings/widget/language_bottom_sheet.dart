@@ -26,6 +26,11 @@ class LanguageBottomSheet extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    print(context.locale);
+                  },
+                  child: const Text('PRİNT')),
               buildListTile(currentTheme, context, "English", () {
                 context.setLocale(const Locale('en', 'US'));
                 Navigator.pop(context);
