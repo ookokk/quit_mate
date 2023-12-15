@@ -14,8 +14,6 @@ mixin SplashStateMixin on ConsumerState<SplashView> {
 
   void checkUserAndNavigate() async {
     final bool isFirst = await CacheManager.getBool('isFirst');
-    final String? lang = await CacheManager.getString('language');
-
     Future.delayed(const Duration(seconds: 0), () {
       if (isFirst) {
         Navigator.pushReplacementNamed(context, '/getStarted');

@@ -12,6 +12,6 @@ class InitApp {
     );
     await EasyLocalization.ensureInitialized();
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    //EasyLocalization.logger.enableBuildModes = [];
+    EasyLocalization.logger.enableBuildModes = [];
   }
 }
