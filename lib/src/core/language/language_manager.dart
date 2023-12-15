@@ -1,9 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-final languageManagerProvider = Provider<LanguageManager>((ref) {
-  return LanguageManager.instance;
-});
+import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
+import 'package:quit_mate/src/core/language/enums/locales.dart';
 
 class LanguageManager {
   LanguageManager._init();
@@ -15,29 +13,24 @@ class LanguageManager {
     return _instance!;
   }
 
-  final Locale englishLocale = const Locale('en', 'US');
-  final Locale arabicLocale = const Locale('ar', 'SA');
-  final Locale germanLocale = const Locale('de', 'DE');
-  final Locale spainLocale = const Locale('es', 'ES');
-  final Locale frenchLocale = const Locale('fr', 'FR');
-  final Locale japaneseLocale = const Locale('ja', 'JP');
-  final Locale russianLocale = const Locale('ru', 'RU');
-  final Locale turkishLocale = const Locale('tr', 'TR');
-  final Locale chineseLocale = const Locale('zh', 'CN');
-
-  final Locale _currentLocale = const Locale('en', 'US');
-
+  Locale _currentLocale = const Locale('en', 'US');
   List<Locale> get supportedLocales => [
-        englishLocale,
-        arabicLocale,
-        germanLocale,
-        spainLocale,
-        frenchLocale,
-        japaneseLocale,
-        russianLocale,
-        turkishLocale,
-        chineseLocale
+        Locales.en.locale,
+        Locales.ar.locale,
+        Locales.de.locale,
+        Locales.es.locale,
+        Locales.fr.locale,
+        Locales.ja.locale,
+        Locales.ru.locale,
+        Locales.tr.locale,
+        Locales.zh.locale,
       ];
 
   Locale get currentLocale => _currentLocale;
+
+  Future<void> updateLanguage(BuildContext context, Locales value) async {
+    await context.setLocale(value.locale);
+    _currentLocale = value.locale;
+    CacheManager.setString('language', 'tr');
+  }
 }

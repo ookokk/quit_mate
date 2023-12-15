@@ -10,7 +10,6 @@ import 'src/core/init/init_app.dart';
 
 void main() {
   InitApp().initApp();
-  // EasyLocalization.logger.enableBuildModes = [];
   runApp(EasyLocalization(
       startLocale: LanguageManager.instance.currentLocale,
       supportedLocales: LanguageManager.instance.supportedLocales,
@@ -29,7 +28,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
-      locale: context.locale,
+      locale: LanguageManager.instance.currentLocale,
       theme: currentTheme,
       routes: Routes.routes,
       debugShowCheckedModeBanner: false,
