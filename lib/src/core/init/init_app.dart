@@ -11,7 +11,7 @@ class InitApp {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     await EasyLocalization.ensureInitialized();
-    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    //await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     EasyLocalization.logger.enableBuildModes = [];
   }
 }
