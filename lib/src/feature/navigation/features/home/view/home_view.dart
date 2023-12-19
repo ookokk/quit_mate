@@ -8,8 +8,8 @@ import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sob
 
 class HomeView extends ConsumerWidget {
   const HomeView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

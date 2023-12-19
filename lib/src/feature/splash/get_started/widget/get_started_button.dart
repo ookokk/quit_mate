@@ -11,13 +11,13 @@ class GetStartedButton extends ConsumerWidget {
   final Color? borderColor;
 
   const GetStartedButton({
-    Key? key,
+    super.key,
     this.textStyle,
     this.borderColor,
     this.color,
     this.onTap,
     this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

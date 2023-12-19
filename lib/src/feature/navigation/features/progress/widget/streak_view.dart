@@ -6,8 +6,8 @@ import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sob
 
 class StreakView extends ConsumerWidget {
   const StreakView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

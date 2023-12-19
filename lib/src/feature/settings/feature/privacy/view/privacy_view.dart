@@ -7,8 +7,8 @@ import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
 
 class PrivacyView extends ConsumerWidget {
   const PrivacyView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

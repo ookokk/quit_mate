@@ -6,10 +6,10 @@ class SettingsCategoryRow extends ConsumerStatefulWidget {
   final String headerText;
   final IconData iconData;
   const SettingsCategoryRow({
-    Key? key,
+    super.key,
     required this.headerText,
     required this.iconData,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState createState() => _SettingsCategoryRowState();

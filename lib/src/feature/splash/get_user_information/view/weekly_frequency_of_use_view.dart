@@ -7,8 +7,8 @@ import 'package:quit_mate/src/feature/splash/get_user_information/widget/custom_
 
 class WeeklyFrequencyOfUseView extends ConsumerWidget {
   const WeeklyFrequencyOfUseView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

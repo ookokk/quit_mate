@@ -11,8 +11,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SetBGImageView extends ConsumerWidget {
   SetBGImageView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final BGImagesList bgImagesList = BGImagesList();
   final PageController _pageController = PageController();
 

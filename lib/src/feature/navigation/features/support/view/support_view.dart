@@ -7,8 +7,8 @@ import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class SupportView extends ConsumerWidget {
   const SupportView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -11,8 +11,8 @@ import 'package:quit_mate/src/product/widget/custom_app_bar.dart';
 
 class EditNotificationsView extends ConsumerWidget {
   const EditNotificationsView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

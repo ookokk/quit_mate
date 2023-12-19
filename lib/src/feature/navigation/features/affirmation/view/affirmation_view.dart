@@ -8,8 +8,8 @@ import 'package:quit_mate/src/feature/navigation/features/set_bg_image/viewmodel
 
 class AffirmationView extends ConsumerStatefulWidget {
   const AffirmationView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   AffirmationViewState createState() => AffirmationViewState();

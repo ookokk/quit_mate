@@ -9,8 +9,8 @@ import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class SoberStartDateView extends ConsumerWidget {
   SoberStartDateView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   DateTime? selectedDate = DateTime.now();
   final SoberUser mySoberUser = SoberUser();
 

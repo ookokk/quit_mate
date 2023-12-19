@@ -9,8 +9,8 @@ import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class GetStartedView extends ConsumerWidget {
   const GetStartedView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

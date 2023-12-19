@@ -7,10 +7,10 @@ import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class CustomNumberPickerDaily extends ConsumerStatefulWidget {
   const CustomNumberPickerDaily({
-    Key? key,
+    super.key,
     required this.minValue,
     required this.maxValue,
-  }) : super(key: key);
+  });
   final int minValue;
   final int maxValue;
   @override

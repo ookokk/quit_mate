@@ -16,8 +16,8 @@ import 'daily_use_on_days_view.dart';
 
 class GetUserInformationView extends ConsumerWidget {
   GetUserInformationView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final PageController _pageController = PageController(initialPage: 0);
 
   @override

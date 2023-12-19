@@ -4,8 +4,8 @@ import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class ThemeSwitch extends ConsumerStatefulWidget {
   const ThemeSwitch({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState createState() => _CustomSwitchState();

@@ -7,8 +7,8 @@ import 'package:quit_mate/src/feature/splash/splash/viewmodel/splash_state_mixin
 
 class SplashView extends ConsumerStatefulWidget {
   const SplashView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState createState() => SplashViewState();

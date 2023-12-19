@@ -8,8 +8,8 @@ import 'package:quit_mate/src/feature/splash/get_user_information/widget/custom_
 
 class AddictiveFactorView extends ConsumerWidget {
   const AddictiveFactorView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(themeProvider);

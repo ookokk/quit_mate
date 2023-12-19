@@ -7,8 +7,8 @@ import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class AddictiveFactorList extends ConsumerStatefulWidget {
   const AddictiveFactorList({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState createState() => _AddictiveFactorListState();

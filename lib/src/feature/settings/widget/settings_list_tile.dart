@@ -7,8 +7,7 @@ class SettingsListTile extends ConsumerStatefulWidget {
   final Widget trailingChild;
   final VoidCallback? onTap;
   const SettingsListTile(
-      {Key? key, required this.text, this.onTap, required this.trailingChild})
-      : super(key: key);
+      {super.key, required this.text, this.onTap, required this.trailingChild});
 
   @override
   ConsumerState createState() => _SettingsListTileState();

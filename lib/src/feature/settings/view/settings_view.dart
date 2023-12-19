@@ -13,8 +13,8 @@ import 'package:quit_mate/src/product/user/repository/user_repository.dart';
 
 class SettingsView extends ConsumerStatefulWidget {
   const SettingsView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState createState() => _ProfileSettingsViewState();

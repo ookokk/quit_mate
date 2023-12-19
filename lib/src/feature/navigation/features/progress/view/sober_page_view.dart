@@ -11,8 +11,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SoberPageView extends ConsumerWidget {
   SoberPageView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final PageController _pageController = PageController();
   final SoberUser soberUser = SoberUser();
 

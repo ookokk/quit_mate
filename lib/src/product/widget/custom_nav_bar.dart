@@ -8,10 +8,10 @@ class CustomNavBar extends ConsumerWidget {
   final int selectedIndex;
 
   const CustomNavBar({
-    Key? key,
+    super.key,
     required this.onItemTapped,
     required this.selectedIndex,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,9 +33,9 @@ class CustomNavBar extends ConsumerWidget {
           label: "home".tr(),
         ),
         BottomNavigationBarItem(
-          icon: Image.asset(
-            'assets/images/support.png',
-            height: 27,
+          icon: Icon(
+            Icons.support,
+            color: currentTheme.indicatorColor,
           ),
           label: "motivation".tr(),
         ),

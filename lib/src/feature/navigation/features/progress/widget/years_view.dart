@@ -8,8 +8,8 @@ import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class YearsView extends ConsumerWidget {
   const YearsView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

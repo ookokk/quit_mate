@@ -11,13 +11,13 @@ class SetBGImageBtn extends ConsumerWidget {
   final Color? borderColor;
 
   const SetBGImageBtn({
-    Key? key,
+    super.key,
     this.textStyle,
     this.borderColor,
     this.color,
     this.onTap,
     required this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

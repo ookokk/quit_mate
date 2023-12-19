@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class LanguageBottomSheet extends ConsumerWidget {
-  const LanguageBottomSheet({Key? key}) : super(key: key);
+  const LanguageBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,11 +26,6 @@ class LanguageBottomSheet extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              TextButton(
-                  onPressed: () {
-                    print(context.locale);
-                  },
-                  child: const Text('PRİNT')),
               buildListTile(currentTheme, context, "English", () {
                 context.setLocale(const Locale('en', 'US'));
                 Navigator.pop(context);

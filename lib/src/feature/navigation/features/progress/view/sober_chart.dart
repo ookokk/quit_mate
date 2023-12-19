@@ -11,8 +11,8 @@ class SoberChart extends ConsumerWidget {
   final double currentYear = 0;
   final double currentMonth = 0;
   const SoberChart({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -6,8 +6,8 @@ import 'package:quit_mate/src/feature/splash/get_user_information/widget/start_d
 
 class SoberStartDateRow extends ConsumerStatefulWidget {
   const SoberStartDateRow({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState createState() => _SoberStartDateRowState();

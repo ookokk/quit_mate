@@ -3,8 +3,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class CustomPercentIndicator extends StatelessWidget {
   final double percent;
-  const CustomPercentIndicator({Key? key, required this.percent})
-      : super(key: key);
+  const CustomPercentIndicator({super.key, required this.percent});
 
   @override
   Widget build(BuildContext context) {

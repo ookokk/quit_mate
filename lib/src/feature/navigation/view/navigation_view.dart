@@ -9,8 +9,8 @@ import 'package:quit_mate/src/product/widget/custom_nav_bar.dart';
 
 class NavigationView extends ConsumerStatefulWidget {
   const NavigationView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   NavigationViewState createState() => NavigationViewState();
