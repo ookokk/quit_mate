@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/google_ads/ad_container.dart';
+import 'package:quit_mate/src/core/language/language_manager.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_page_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
@@ -54,7 +55,15 @@ class HomeView extends ConsumerWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 120, child: AdContainer())
+            const SizedBox(
+              height: 30,
+            ),
+            TextButton(
+                onPressed: () {
+                  print(LanguageManager.instance.currentLocale);
+                },
+                child: Text('OSMAN')),
+            const SizedBox(height: 150, child: AdContainer())
           ],
         ),
       ),

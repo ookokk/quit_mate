@@ -73,7 +73,7 @@ class AdContainerState extends State<AdContainer> {
           return Align(
               child: SizedBox(
             width: _adWidth,
-            height: 120,
+            height: 150,
             child: AdWidget(
               ad: _inlineAdaptiveAd!,
             ),
