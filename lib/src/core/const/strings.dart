@@ -3,6 +3,7 @@ class Strings {
 
   //base
   static const String appName = "QuitMate";
+  static const String bannerID = "ca-app-pub-3940256099942544~3347511713";
   static const String getStarted = "Get Started";
   static const String firstOfAll = "First of all, congrats!";
   static const String takeTheFirst =

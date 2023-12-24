@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
+import 'package:quit_mate/src/core/google_ads/ad_container.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_page_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
@@ -17,7 +17,6 @@ class HomeView extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     final soberProvider = ref.watch(soberChartProvider);
     final totalDaysSober = soberProvider.calculateTotalDaysSober();
-    BannerAd? bannerAd;
     return SafeArea(
         child: Scaffold(
       backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -28,10 +27,6 @@ class HomeView extends ConsumerWidget {
             const SizedBox(
               height: 8,
             ),
-            /*  SizedBox(
-                height: bannerAd!.size.height.toDouble(),
-                width: bannerAd.size.width.toDouble(),
-                child: AdWidget(ad: bannerAd)),*/
             Padding(
               padding: const EdgeInsets.only(left: 12),
               child: Align(
@@ -59,6 +54,7 @@ class HomeView extends ConsumerWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 120, child: AdContainer())
           ],
         ),
       ),
