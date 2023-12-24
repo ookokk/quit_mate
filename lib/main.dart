@@ -35,3 +35,5 @@ class MyApp extends ConsumerWidget {
     );
   }
 }
+
+//gitignore düzenlemek lazım
