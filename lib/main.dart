@@ -38,3 +38,4 @@ class MyApp extends ConsumerWidget {
   }
 }
 //gitignore düzenlemek lazım
+// flutter build appbundle --build-name=0.0.1 --build-number=2
