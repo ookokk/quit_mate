@@ -24,7 +24,11 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
-
+def keyProperties = new Properties()
+def keyPropertiesFile = rootProject.file('key.properties')
+if(keyPropertiesFile.exists()){
+    keyProperties.load(new FileInputStream(keyPropertiesFile))
+}
 android {
     namespace "com.okok.quit_mate"
     compileSdkVersion 34
@@ -51,10 +55,17 @@ android {
         versionName flutterVersionName
         multiDexEnabled true
     }
-
+    signingConfigs{
+        release{
+            keyAlias keyProperties['keyAlias']
+            keyPassword keyProperties['keyPassword']
+            storeFile file(keyProperties['storeFile'])
+            storePassword keyProperties['storePassword']
+        }
+    }
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }
