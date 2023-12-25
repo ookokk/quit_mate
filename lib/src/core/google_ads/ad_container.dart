@@ -34,8 +34,8 @@ class AdContainerState extends State<AdContainer> {
         _adWidth.truncate());
 
     _inlineAdaptiveAd = AdManagerBannerAd(
-      adUnitId: 'ca-app-pub-3940256099942544/9214589741',
-      //adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+      //adUnitId: 'ca-app-pub-2971104999770163/4048926185',
+      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
       sizes: [size],
       request: const AdManagerAdRequest(),
       listener: AdManagerBannerAdListener(

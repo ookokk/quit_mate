@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quit_mate/src/core/language/enums/locales.dart';
+import 'package:quit_mate/src/core/language/language_manager.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 
 class LanguageBottomSheet extends ConsumerWidget {
@@ -27,40 +29,39 @@ class LanguageBottomSheet extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               buildListTile(currentTheme, context, "English", () {
-                context.setLocale(const Locale('en', 'US'));
+                LanguageManager.instance.updateLanguage(context, Locales.en);
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "Turkish", () {
-                context.setLocale(const Locale('tr', 'TR'));
+                LanguageManager.instance.updateLanguage(context, Locales.tr);
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "Arabic", () {
-                context.setLocale(const Locale('ar', 'SA'));
-
+                LanguageManager.instance.updateLanguage(context, Locales.ar);
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "German", () {
-                context.setLocale(const Locale('de', 'DE'));
+                LanguageManager.instance.updateLanguage(context, Locales.de);
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "Spanish", () {
-                context.setLocale(const Locale('es', 'ES'));
+                LanguageManager.instance.updateLanguage(context, Locales.es);
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "French", () {
-                context.setLocale(const Locale('fr', 'FR'));
+                LanguageManager.instance.updateLanguage(context, Locales.fr);
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "Japanese", () {
-                context.setLocale(const Locale('ja', 'JP'));
+                LanguageManager.instance.updateLanguage(context, Locales.ja);
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "Chinese", () {
-                context.setLocale(const Locale('zh', 'CN'));
+                LanguageManager.instance.updateLanguage(context, Locales.zh);
                 Navigator.pop(context);
               }),
               buildListTile(currentTheme, context, "Russian", () {
-                context.setLocale(const Locale('ru', 'RU'));
+                LanguageManager.instance.updateLanguage(context, Locales.ru);
                 Navigator.pop(context);
               }),
             ],
