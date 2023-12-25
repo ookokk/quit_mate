@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/cache/cache_manager/cache_manager.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
-import 'package:quit_mate/src/feature/settings/widget/language_bottom_sheet.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_alert_dialog.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_category_row.dart';
 import 'package:quit_mate/src/feature/settings/widget/settings_list_tile.dart';
@@ -38,20 +37,6 @@ class _ProfileSettingsViewState extends ConsumerState<SettingsView> {
                       SettingsCategoryRow(
                           headerText: "about".tr(),
                           iconData: Icons.dashboard_customize_outlined),
-                      SettingsListTile(
-                          onTap: () {
-                            showModalBottomSheet(
-                                backgroundColor: currentTheme.canvasColor,
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return const LanguageBottomSheet();
-                                });
-                          },
-                          text: "language".tr(),
-                          trailingChild: Icon(
-                            Icons.arrow_forward_ios,
-                            color: currentTheme.indicatorColor,
-                          )),
                       SettingsListTile(
                         onTap: () {
                           Navigator.pushNamed(context, '/setBG');
