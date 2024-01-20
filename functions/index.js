@@ -48,3 +48,15 @@ exports.deleteUser = functions.https.onRequest(async (req, res) => {
     return res.status(500).send('Internal Server Error');
   }
 });
+
+exports.checkInactiveUsers = functions.pubsub.schedule('every 24 hours').timeZone('UTC').onRun(async (context) => {
+  const thresholdTimestamp = ;
+  const usersRef = admin.firestore().collection('users');
+  const inactiveUsers = await usersRef.where('lastActivity', '<', thresholdTimestamp).get();
+  inactiveUsers.forEach(async (userDoc) => {
+    const userId = userDoc.id;
+    await usersRef.doc(userId).delete();
+  });
+
+  return null;
+});
