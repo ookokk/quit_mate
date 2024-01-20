@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quit_mate/src/core/const/material/device_size.dart';
-import 'package:quit_mate/src/core/google_ads/ad_container.dart';
 import 'package:quit_mate/src/core/theme/theme_provider.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/view/sober_page_view.dart';
 import 'package:quit_mate/src/feature/navigation/features/progress/viewmodel/sober_chart_viewmodel.dart';
+import 'package:quit_mate/src/product/user/model/sober_user.dart';
 
 class HomeView extends ConsumerWidget {
   const HomeView({
@@ -17,6 +17,7 @@ class HomeView extends ConsumerWidget {
     final currentTheme = ref.watch(themeProvider);
     final soberProvider = ref.watch(soberChartProvider);
     final totalDaysSober = soberProvider.calculateTotalDaysSober();
+    final SoberUser user = SoberUser();
     return SafeArea(
         child: Scaffold(
       backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -57,7 +58,6 @@ class HomeView extends ConsumerWidget {
             const SizedBox(
               height: 30,
             ),
-            const SizedBox(height: 150, child: AdContainer())
           ],
         ),
       ),

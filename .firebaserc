@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "quit-mate-1"
-  }
+    "default": "quit-mate-1",
+    "e": "quit-mate-1"
+  },
+  "targets": {},
+  "etags": {}
 }

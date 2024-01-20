@@ -10,6 +10,16 @@ class SoberUser {
   int? dailyUseOnDays;
   TimeOfDay? pledgeTime;
   TimeOfDay? reviewTime;
+  void setAllData(String userId, String factor, DateTime startDate, int weekUse,
+      int useOnDays, TimeOfDay pledge, TimeOfDay review) {
+    setUserId(userId);
+    setAddictiveFactor(factor);
+    setSoberStartDate(startDate);
+    setWeeklyUse(weekUse);
+    setDailyUseOnDays(useOnDays);
+    setPledgeTime(pledge);
+    setReviewTime(review);
+  }
 
   static final SoberUser _instance = SoberUser._internal();
   factory SoberUser() {
@@ -33,6 +43,7 @@ class SoberUser {
     _instance.reviewTime = _parseTime(json['reviewTime']);
     return _instance;
   }
+
   String generateRandomUserId() {
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
     final random = Random();
