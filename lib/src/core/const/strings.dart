@@ -1,7 +1,7 @@
 class Strings {
   // All of strings that below this comment line created before v1.0.0
              
-  //base
+  //base 
   static const String appName = "QuitMate";
   static const String bannerID = "ca-app-pub-2971104999770163/4048926185";
   static const String getStarted = "Get Started";
